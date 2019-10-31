@@ -14,10 +14,11 @@
  - Thought about being root by default, but this made me nervous, so I'm going with the second option.
 
 **Holy crap! The PATH**  
-*If you are not root*
+*If you are not root:*
 ```
 C:\Users\%USERNAME%\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\rootfs\home\UBUNTU_USERNAME
 ```  
+**NOTE** that the above is not actually correct; this is because I have a *newer* version of `UbuntuonWindows` installed than is used in the tutorial, so that part of the path is different
 The post above refers to:
 > We want to make Ubuntu have some good creature comforts and allow it act responsively with Windows programs. To do this, I have created a helpful [GitHub repository](https://github.com/betteridiot/terminal_support) chock-full of useful settings that you don't have to agonize over.  
 
@@ -27,14 +28,20 @@ The post above refers to:
 - Tried to uninstall and install 3.7, failed
 #### Install Anaconda on WSL
 [@kauffmanes kauffmanes/install_anaconda.md](https://gist.github.com/kauffmanes/5e74916617f9993bc3479f401dfec7da)
-- `wget https://repo.continuum.io/archive/Anaconda2-2019.10-Linux-x86_64.sh`
-- `bash Anaconda2-2019.10-Linux-x86_64.sh`
-- `which python`: This gives `/home/ries07nix/anaconda2/bin/python`, which is as it should be ("a path that has anaconda in it")
+- `$ wget https://repo.continuum.io/archive/Anaconda2-2019.10-Linux-x86_64.sh`
+- `$ bash Anaconda2-2019.10-Linux-x86_64.sh`
+- `$ which python`: This gives `/home/ries07nix/anaconda2/bin/python`, which is as it should be ("a path that has anaconda in it")
 #### Install Python libraries recommended by Alexis KM
-- `pip install rdfLib`: It worked--I didn't even know that I had pip...
-- `pip install Pyshacl`: It worked
+- `$ pip install rdfLib`: It worked--I didn't even know that I had pip...
+- `$ pip install Pyshacl`: It worked
 #### Install Spyder on WSL
-
+[Anaconda Python + Spyder on Windows Subsystem for Linux](https://www.scivision.dev/anaconda-python-with-windows-subsystem-for-linux/)
+- `$ sudo apt install libxcomposite libxss1`
+- **NO** not succeeding here... Don't want to try and install VcXsrv Windows X Server and all of that...
+How about this:  
+[Upgrading Windows Subsystem Linux (WSL)](http://notebook.chaopricha.com/?p=116)
+- Tried `$ spyder`: But no, it doesn't look like it was installed along with Anaconda
+- 
 ---
 #### Other resources
 - [Python setup on the Windows subsystem for Linux (WSL)](https://medium.com/@rhdzmota/python-development-on-the-windows-subsystem-for-linux-wsl-17a0fa1839d) (Meh.)
