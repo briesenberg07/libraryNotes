@@ -41,7 +41,12 @@ The post above refers to:
 How about this:  
 [Upgrading Windows Subsystem Linux (WSL)](http://notebook.chaopricha.com/?p=116)
 - Tried `$ spyder`: But no, it doesn't look like it was installed along with Anaconda
-- 
+
+### Starting Over (Again)
+- Uninstall
+- Check that my WSL home folder is gone
+ - (What about previous WSL home folders? Are any of them hanging around?)
+
 ---
 #### Other resources
 - [Python setup on the Windows subsystem for Linux (WSL)](https://medium.com/@rhdzmota/python-development-on-the-windows-subsystem-for-linux-wsl-17a0fa1839d) (Meh.)
