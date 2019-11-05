@@ -11,7 +11,7 @@
 > I, personally, use the first method (I think I just gave a sysadmin an aneurysm somewhere).  
 
  - Thought about being root by default, but this made me nervous, so I'm going with the second option.
-- **Holy crap! This article provides THE PATH!!** [See below](https://github.com/briesenberg07/libraryNotes/blob/master/computerNotes.md#Creating-a-*Quick-access*-link-to-my-Ubuntu-home-directory)  
+- **Holy crap! This article provides THE PATH!!** [See below](https://github.com/briesenberg07/libraryNotes/blob/master/computerNotes.md#creating-a-quick-access-link-to-my-ubuntu-home-directory)  
 ```
 C:\Users\%USERNAME%\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\rootfs\home\UBUNTU_USERNAME
 ```  
