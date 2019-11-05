@@ -11,7 +11,7 @@
 > I, personally, use the first method (I think I just gave a sysadmin an aneurysm somewhere).  
 
  - Thought about being root by default, but this made me nervous, so I'm going with the second option.
-**Holy crap! The PATH** *If you are not root:*  
+- **Holy crap! This article provides THE PATH!!** [See below](https://github.com/briesenberg07/libraryNotes/blob/master/computerNotes.md#Creating-a-*Quick access*-link-to-my-Ubuntu-home-directory)  
 ```
 C:\Users\%USERNAME%\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\rootfs\home\UBUNTU_USERNAME
 ```  
@@ -75,7 +75,16 @@ $ sudo apt install python3-pip
 $ pip3 install rdfLib
 $ pip3 install Pyshacl
 ```
-- And then on to creating a *Quick access* link to my Ubuntu home directory per [UPDATED: Windows 10 Subsystem for Linux (WSL) for Python developers](https://www.betteridiot.tech/blog/pop/2019/9/updated-windows-10-subsystem-for-linux-wsl-for-python-developers)
+- Done
+- Now on to:
+#### Creating a *Quick access* link to my Ubuntu home directory
+- Per [UPDATED: Windows 10 Subsystem for Linux (WSL) for Python developers](https://www.betteridiot.tech/blog/pop/2019/9/updated-windows-10-subsystem-for-linux-wsl-for-python-developers)
+- The path to my WSL Ubuntu home directory:
+```
+C:\Users\ries07\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc\LocalState\rootfs\home\ries07nix
+```
+- Added this to *Quick access*
+- *Now to try Pyshacl!!*
 ---
 #### Other resources
 - [Python setup on the Windows subsystem for Linux (WSL)](https://medium.com/@rhdzmota/python-development-on-the-windows-subsystem-for-linux-wsl-17a0fa1839d) (Meh.)
