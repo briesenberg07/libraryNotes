@@ -61,6 +61,7 @@ $ sudo apt update
 $ apt list --upgradable
 ```
 - `$ sudo apt update` seemed alright, except it told me that 126 packages could be upgraded, and told me that I could list them using the `--upgradable` command, but then didn't tell me how to actually do this (upgrade the packages!)
+- But then I **was** able to do the following, so `sudo apt update` did something
 ```
 $ sudo apt install python3-pip
 ```
