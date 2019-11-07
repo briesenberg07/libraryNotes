@@ -1,3 +1,7 @@
+### Assorted
+Try this in bash to find deleted files in git:
+`git log --diff-filter=D --summary`
+
 ### Windows Subsystem for Linux (WSL)
 - [Windows Subsystem for Linux Documentation](https://docs.microsoft.com/en-us/windows/wsl/about)
 - [User Accounts and Permissions for Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/user-support?redirectedfrom=MSDN)
@@ -35,7 +39,7 @@ How about this:
 [Upgrading Windows Subsystem Linux (WSL)](http://notebook.chaopricha.com/?p=116)
 - Tried `$ spyder`: But no, it doesn't look like it was installed along with Anaconda
 
-### ~~~Starting Over (Again)~~~
+## ~~~Starting Over (Again)~~~
 #### Windows Subsystem for Linux
 - Uninstall
 - Check that my WSL home folder is gone
