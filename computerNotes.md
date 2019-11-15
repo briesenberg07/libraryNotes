@@ -1,6 +1,12 @@
 ## git
-### git: Storing credentials
-Using [EXAMPLES](https://git-scm.com/docs/git-credential-store#_examples) from git documentation, git-credential-store - Helper to store credentials on disk  
+### git: Providing username + email; storing credentials
+- Provide username and email
+```
+$ git config --global user.email "ries07@uw.edu"
+$ git config --global user.name "briesenberg07"
+```
+- Save UN and password locally so I won't have to enter for every push
+  - Using [EXAMPLES](https://git-scm.com/docs/git-credential-store#_examples) from git documentation, git-credential-store - Helper to store credentials on disk  
 ```
 $ git config credential.helper store
 $ git push http://example.com/repo.git
@@ -23,22 +29,16 @@ Try this in bash to find deleted files in git:
 ### Notes
 - I disabled autocorrect because it was bugging me in **Settings** > **Packages**
 ![acApi](https://github.com/briesenberg07/libraryNotes/blob/master/images/acApi.png)
+- Also (?) disabled autocomplete-plus
+
 ---
 ## WSL / Windows Subsystem for Linux
 ### WSL: Notes
 - Directories/files in the WSL home directory are write-protected
 - I learned this this morning when trying to run Pyshacl using a data graph and shape graph that I had stored there
 - When I moved these to my Windows home directory I was able to run the pyShacl command (!)
-
 ### (Re)install Ubuntu 18.04 for WSL
 - Reminder--to get to Windows files from the Ubuntu CLI start with `/mnt/c`
-- Getting git up and running (again)
-```
-$ git config --global user.email "ries07@uw.edu"
-$ git config --global user.name "briesenberg07"
-```
-- Note that I still need to save UN and password locally for easier pushes
-
 ### WSL: Creating a *Quick access* link to my Ubuntu home directory
 - Per [UPDATED: Windows 10 Subsystem for Linux (WSL) for Python developers](https://www.betteridiot.tech/blog/pop/2019/9/updated-windows-10-subsystem-for-linux-wsl-for-python-developers)
 - The path to my WSL Ubuntu home directory:
@@ -46,16 +46,14 @@ $ git config --global user.name "briesenberg07"
 C:\Users\ries07\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc\LocalState\rootfs\home\ries07nix
 ```
 - Added this to *Quick access*
-
 ### WSL>Python
 - `python3 -V`: Python 3.6.7
-- `pip3`: Command 'pip3' not found, but can be installed with: `sudo apt install python3-pip`
- - So now **I'm going to run that command**
-- Dang! `E: Unable to locate package python3-pip`
-
 #### WSL>Python: Install pip for Python 3 in Ubuntu 18.04
-[How to Install Pip on Ubuntu 18.04](https://linuxize.com/post/how-to-install-pip-on-ubuntu-18.04/)
-- My thinking here is, "Let's try installing this just as if I was running an Ubuntu OS, not just Ubuntu in the WSL, and see what happens."
+- `pip3`: Command 'pip3' not found, but can be installed with: `sudo apt install python3-pip`
+  - So now **I'm going to run that command**
+  - Dang! `E: Unable to locate package python3-pip`
+- [How to Install Pip on Ubuntu 18.04](https://linuxize.com/post/how-to-install-pip-on-ubuntu-18.04/)
+  - My thinking here is, "Let's try installing this just as if I was running an Ubuntu OS, not just Ubuntu in the WSL, and see what happens."
 ```
 $ sudo apt update
 $ apt list --upgradable
@@ -73,7 +71,6 @@ $ pip3 install rdfLib
 $ pip3 install Pyshacl
 ```
 - Done
-
 #### WSL>Python: Uninstalling Alexis' shaclgen
 - For until I can install it using pip3
 - *NOTE* Does this following output give me hints about my PATH!?
@@ -91,7 +88,8 @@ Uninstalling shaclgen-0.1.0:
 Proceed (y/n)? y
   Successfully uninstalled shaclgen-0.1.0
 ```
-
 #### WSL>Python: Other resources
 - [Python setup on the Windows subsystem for Linux (WSL)](https://medium.com/@rhdzmota/python-development-on-the-windows-subsystem-for-linux-wsl-17a0fa1839d) (Meh.)
 - [How to Install Python 3.7 on Windows 10 (Ubuntu Subsystem)](https://youtu.be/ueBJnCOcbI4): Helped some. Mostly reminded me to check and see how to properly check my version of Python in the terminal. There is a difference between `python3 -v` and `python3 -V`!
+#### WSL>Python: More pyShacl!
+- Interesting to note: I just used the -o/--output option with pyshacl CLI, and I had to create the directory and an empty file (with filename to specify in command) in order to get the output option to work.
