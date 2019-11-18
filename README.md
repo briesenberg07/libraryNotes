@@ -1,6 +1,62 @@
 ### 20191118
-#### Sinopia User Group Meeting Notes
-- 
+- Attended Sinopia User Group Meeting
+#### Cataloging > finishing reading
+**[Alma Inventory (Creating Holdings, Items, and Portfolios)](https://staff.lib.uw.edu/operations/cams/policies-procedures/general-cataloging-procedures-and-resources/alma-inventory)**
+- What is an "order record"?
+- Lots of stuff about releasing records, saving and releasing records--what is "releasing" a record?
+**[Alma Overlay](https://staff.lib.uw.edu/operations/cams/policies-procedures/general-cataloging-procedures-and-resources/alma-overlay)**
+- Overlay: Replace individual bibliographic records in Alma with records exported from or updated in OCLC Connexion client
+- Explains IZ vs. NZ  
+**[Alma Work Orders](https://staff.lib.uw.edu/operations/cams/policies-procedures/general-cataloging-procedures-and-resources/alma-work-orders)**
+- Not sure how I will actually fit into this workflow...
+  - Probably just sending things to the marking room after I catalog them?
+#### Cataloging > finding OCLC nos review class nos in [ClassWeb](https://classweb.org/Auto/)
+- SEE: [OCLC Connexion: Searching WorldCat Quick Reference](https://www.oclc.org/content/dam/support/worldcat/documentation/searching/refcard/searchworldcatquickreference.pdf)
+  - This provides more detail on using the "Command Line Search" accessible via F2 in Connexion
+- Questions:
+    - "Held" column in OCLC search results--means held at WAU?
+    - I'm frustrated that I can't (?) open two records side-by-side in Connexion to compare them
+1. American Dinosaur Abroad:
+  - **OCLC nos**
+  - Two records look essentially the same to me:
+    - 1046614059
+    - 1101430841
+  - Reasons why I like these better than the other `eng` record 1102647764:
+    - Subject headings are live links
+    - They say "Held" in the "Held" column; I think that this means that they are WAU holdings/records and therefore high-quality
+  - **ClassWeb**
+    - Two `050` fields (both with **4** in the--what do you call it?--the second indicator position??)
+      - QE862.S3 ǂb N54 2019
+        - QE862.S3 = "Saurischia"
+        - Following link for LC subject correlation takes me [here](https://classweb.org/min/minaret?app=Corr&mod=Search&iname=l2nh&iterm=QE862.S3&count=75&auto=1&close=1&menu=/Auto/)--I have no idea what I'm looking at really, ALTHOUGH "diplodocus does appear here, albeit as 'Diplodocus--Juvenile literature'"
+      - QE718 ǂb .N54 2019
+        - QE718 = "Collection and preservation" (with [various options](https://classweb.org/min/minaret?app=Class&mod=Search&table=schedules&table=tables&tid=1&menu=/Auto/&iname=span&iterm=QE718&subtype=&ilabel=Class%20number&time=1574120358658))
+    - These all seem to be in the general ballpark
+    - Note that I tried to include the Cutter in my ClassWeb search string but this does *not* seem to work
+2. Ground Water Development - Issues and Sustainable Solutions:
+  - **OCLC nos**
+    - 1086553037
+    - Because:
+      - Three search results, one is a computer-mediated resource and one is in French
+  - **ClassWeb**
+    - One `050` field, again this is `050 | | 4`
+        - TD419-428
+        - This value looks funny to me...
+        - ClassWeb shows "Periodicals.Societies.Serials" > "LC subject correlation" > 
+        > TD419   
+           Water—Pollution—Periodicals [Topical] (2)  
+           Water—Pollution—Juvenile literature [Topical] (1)  
+           Coastal ecology—Congresses [Topical] (1)  
+           Water—Pollution—Congresses [Topical] (1)  
+           Refuse and refuse disposal—Congresses [Topical] (1)  
+           Water—Pollution—United States [Topical] (1)  
+           Nonpoint source pollution—Congresses [Topical] (1)  
+           Sewage—Purification—Fixed-film biological process—Congresses [Topical] (1)  
+
+3. Wood is Good:
+  - 971542226
+    - One English-language record gives "[electronic resource]" in the search-result column name
+    - Two other eng-lan records, I'm choosing the one with more info in it
 #### This week (from Theo's email)
 1.	Produce Sinopia data: this is our final push to get data in Sinopia; let’s focus on this this week and create a substantial Group 0 dataset. Although quality is not the main issue in creating this dataset, do try to get values associated with the appropriate RDA properties.
 2.	Start conceiving your final report on cataloging in Sinopia. You may want to do this in concert with other LDT7 members available this week. What will be the format of the report? What should it contain? How will it be produced? What can be created that can be re-used by future cataloging groups when they have to write their reports? Don’t forget the role that might be played by the Cataloging Feedback Form.
@@ -39,13 +95,6 @@ See:
 
 ### 20191112
 #### Cataloging training / notes
-**[Alma Inventory (Creating Holdings, Items, and Portfolios)](https://staff.lib.uw.edu/operations/cams/policies-procedures/general-cataloging-procedures-and-resources/alma-inventory)**
-- What is an "order record"?
-- Lots of stuff about releasing records, saving and releasing records--what is "releasing" a record?
-
-**[Alma Overlay](https://staff.lib.uw.edu/operations/cams/policies-procedures/general-cataloging-procedures-and-resources/alma-overlay)**
-- Overlay: Replace individual bibliographic records in Alma with records exported from or updated in OCLC Connexion client
-- Explains IZ vs. NZ  
 ![20191112152256448_0001](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191112152256448_0001.jpg)
 ![20191113170140777_0001](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191113170140777_0001.jpg)
 ### 20191105
