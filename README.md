@@ -1,4 +1,6 @@
 ### 20191118
+#### Sinopia User Group Meeting Notes
+- 
 #### This week (from Theo's email)
 1.	Produce Sinopia data: this is our final push to get data in Sinopia; let’s focus on this this week and create a substantial Group 0 dataset. Although quality is not the main issue in creating this dataset, do try to get values associated with the appropriate RDA properties.
 2.	Start conceiving your final report on cataloging in Sinopia. You may want to do this in concert with other LDT7 members available this week. What will be the format of the report? What should it contain? How will it be produced? What can be created that can be re-used by future cataloging groups when they have to write their reports? Don’t forget the role that might be played by the Cataloging Feedback Form.
