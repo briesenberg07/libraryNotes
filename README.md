@@ -1,5 +1,7 @@
 ### 20191118
 - Attended Sinopia User Group Meeting
+- Email / slack
+
 #### Cataloging > finishing reading
 **[Alma Inventory (Creating Holdings, Items, and Portfolios)](https://staff.lib.uw.edu/operations/cams/policies-procedures/general-cataloging-procedures-and-resources/alma-inventory)**
 - What is an "order record"?
@@ -16,7 +18,7 @@
 - Questions:
     - "Held" column in OCLC search results--means held at WAU?
     - I'm frustrated that I can't (?) open two records side-by-side in Connexion to compare them
-1. American Dinosaur Abroad:
+##### 1. American Dinosaur Abroad:
   - **OCLC nos**
   - Two records look essentially the same to me:
     - 1046614059
@@ -25,7 +27,7 @@
     - Subject headings are live links
     - They say "Held" in the "Held" column; I think that this means that they are WAU holdings/records and therefore high-quality
   - **ClassWeb**
-    - Two `050` fields (both with **4** in the--what do you call it?--the second indicator position??)
+    - Two `050` fields (both with **4** in the second indicator position)
       - QE862.S3 ǂb N54 2019
         - QE862.S3 = "Saurischia"
         - Following link for LC subject correlation takes me [here](https://classweb.org/min/minaret?app=Corr&mod=Search&iname=l2nh&iterm=QE862.S3&count=75&auto=1&close=1&menu=/Auto/)--I have no idea what I'm looking at really, ALTHOUGH "diplodocus does appear here, albeit as 'Diplodocus--Juvenile literature'"
@@ -33,7 +35,7 @@
         - QE718 = "Collection and preservation" (with [various options](https://classweb.org/min/minaret?app=Class&mod=Search&table=schedules&table=tables&tid=1&menu=/Auto/&iname=span&iterm=QE718&subtype=&ilabel=Class%20number&time=1574120358658))
     - These all seem to be in the general ballpark
     - Note that I tried to include the Cutter in my ClassWeb search string but this does *not* seem to work
-2. Ground Water Development - Issues and Sustainable Solutions:
+##### 2. Ground Water Development - Issues and Sustainable Solutions:
   - **OCLC nos**
     - 1086553037
     - Because:
@@ -42,7 +44,7 @@
     - One `050` field, again this is `050 | | 4`
         - TD419-428
         - This value looks funny to me...
-        - ClassWeb shows "Periodicals.Societies.Serials" > "LC subject correlation" > 
+        - ClassWeb shows "Periodicals.Societies.Serials" > "LC subject correlation" >
         > TD419   
            Water—Pollution—Periodicals [Topical] (2)  
            Water—Pollution—Juvenile literature [Topical] (1)  
@@ -53,10 +55,16 @@
            Nonpoint source pollution—Congresses [Topical] (1)  
            Sewage—Purification—Fixed-film biological process—Congresses [Topical] (1)  
 
-3. Wood is Good:
-  - 971542226
-    - One English-language record gives "[electronic resource]" in the search-result column name
-    - Two other eng-lan records, I'm choosing the one with more info in it
+##### 3. Wood is Good:
+  - **OCLC no**
+    - 971542226
+      - One English-language record gives "[electronic resource]" in the search-result column name
+      - Two other eng-lan records, I'm choosing the one with more info in it
+  - **ClassWeb**
+    - ` 050 | | 4 | TA419`
+    - Interestingly, I don't see any TA419 in ClassWeb. [Everything I'm looking at](https://classweb.org/min/minaret?app=Class&mod=Search&iterm=TA419-TA424.6&count=75&auto=1&menu=/Auto/&close=1) includes *something* after 419...
+    - Although, a ha! I *did* find *just* 419 [here](https://classweb.org/min/minaret?app=Corr&mod=Search&count=75&auto=1&close=1&menu=/Auto/&iname=l2nh&iterm=TA419&ilabel=LC%20class%20%23%20--%3E%20LCSH%20(w%2Fnames)&time=1574121318049)
+      - So what is the difference between the first and second locations in ClassWeb??
 #### This week (from Theo's email)
 1.	Produce Sinopia data: this is our final push to get data in Sinopia; let’s focus on this this week and create a substantial Group 0 dataset. Although quality is not the main issue in creating this dataset, do try to get values associated with the appropriate RDA properties.
 2.	Start conceiving your final report on cataloging in Sinopia. You may want to do this in concert with other LDT7 members available this week. What will be the format of the report? What should it contain? How will it be produced? What can be created that can be re-used by future cataloging groups when they have to write their reports? Don’t forget the role that might be played by the Cataloging Feedback Form.
