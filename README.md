@@ -1,7 +1,6 @@
 ### 20191118
 - Attended Sinopia User Group Meeting
 - Email / slack
-
 #### Cataloging > finishing reading
 **[Alma Inventory (Creating Holdings, Items, and Portfolios)](https://staff.lib.uw.edu/operations/cams/policies-procedures/general-cataloging-procedures-and-resources/alma-inventory)**
 - What is an "order record"?
