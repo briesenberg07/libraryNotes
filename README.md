@@ -27,7 +27,7 @@
     - has editor agent of text (see note above also)
     - ...
   - Opposite the page with ISBNs, LoC control number, copyright, etc. is a page containing only this--what is this and where do I record it?  
-  
+
     > The Members of Centre for Ground Water Studies, Kolkata
 
 
