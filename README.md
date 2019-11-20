@@ -1,9 +1,40 @@
 ### 20191120
-- Sinopia cataloging
-- Metadata consultation prep
+#### Sinopia cataloging
+- **Lots of questions**
+  - At what level (WEMI) do I record certain information--subject in particular*
+    - Looking at "has subject (RDA 23.4)", I don't think this is the RT we created for subjects, so subjects must not be recorded at the Work-level?
+    - But other elements also:
+      - Language
+      - Authorized access point (record at more than one level?)
+      - Date of ... (more than one level?)
+    - Lots of "has X agent of expression" props with links to RDA toolkit, but "has editor agent of text" with no link... Seems like there *should* be a "has editor agent of expressions (RDA #.#)" prop instead?
+  - Where are our WEMI-chaining properties? Just now in the Work RT I can't remember if I chain to the E from the W or chain back to the W from the E...
+    - **I can't find our WEMI-chaining properties in W or E...**
+    - Okay, wait, must be
+      - E: "has work expressed (RDA 17.6)"
+      - M: "has expression manifested (RDA 17.10)"
+  - has dimensions (RDA 3.5): Based on toolkit I'm not clear about whether I should measure *only* height or more dimensions (width, etc.)?
+    - Oh, no, here it is:
+    > Volumes
+      Record the height of the volume. If the volume measures less than 10 centimetres, record the height in millimetres and use the metric symbol mm.
+
+  - 
+- **Other notes**
+  - Quite a few E properties are missing links to the RDA toolkit...why?
+    - has reviser agent
+    - has related expression of expression
+    - has editor agent of text (see note above also)
+    - ...
+  - Opposite the page with ISBNs, LoC control number, copyright, etc. is a page containing only this--what is this and where do I record it?
+    > The Members of Centre for Ground Water Studies, Kolkata
+
+
+#### Metadata consultation prep
 ### 20191119
 ![20191120101746765_0b](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191120101746765_0b.jpg)
+#### Cataloging training
 ![20191120101746765_0c](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191120101746765_0c.jpg)
+![](https://github.com/briesenberg07/libraryNotes/blob/master/images/)
 ### 20191118
 - Attended Sinopia User Group Meeting
 - Email / slack
