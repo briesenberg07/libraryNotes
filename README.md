@@ -1,3 +1,9 @@
+### 20191120
+- Sinopia cataloging
+- Metadata consultation prep
+### 20191119
+![20191120101746765_0b](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191120101746765_0b.jpg)
+![20191120101746765_0c](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191120101746765_0c.jpg)
 ### 20191118
 - Attended Sinopia User Group Meeting
 - Email / slack
@@ -75,7 +81,7 @@
 ### 20191115
 #### Next week--Theo out of town
 ![2019111502](https://github.com/briesenberg07/libraryNotes/blob/master/images/2019111502.jpg)
-![](https://github.com/briesenberg07/libraryNotes/blob/master/images/)
+![20191120101746765_00A](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191120101746765_00A.jpg)
 ### 20191114
 #### Libraries Council meeting
 ![20191114182140138_00012](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191114182140138_00012.jpg)

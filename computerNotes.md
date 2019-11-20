@@ -36,7 +36,7 @@ Try this in bash to find deleted files in git:
 ### WSL > Install [Apache Jena](https://jena.apache.org/index.html) for use in the WSL
 - [Download](https://jena.apache.org/download/index.cgi#apache-jena)
 - Unzip to ries07 directory
-- In Command-line and other tools for Jena developers, follow directions for [Setting up your Environment](https://jena.apache.org/documentation/tools/#setting-up-your-environment)
+- In **Command-line and other tools for Jena developers**, follow directions for [Setting up your Environment](https://jena.apache.org/documentation/tools/#setting-up-your-environment)
 ```
 $ export JENA_HOME=/mnt/c/Users/ries07/apache-jena-3.13.1/
 $ export PATH=$PATH:$JENA_HOME/bin
@@ -47,14 +47,16 @@ $ sparql --version
 Jena:       VERSION: 3.13.1
 Jena:       BUILD_DATE: 2019-10-06T18:57:39+0000
 ```
-- Learn to use ARQ:
-  - [Jena documentation overview](https://jena.apache.org/documentation/)
-    - A ha: [ARQ - Command Line Applications](https://jena.apache.org/documentation/query/cmds.html)
-      - Hmm... No, something's not right:  
-      ```
-      $ arq.query --help
-      arq.query: command not found
-      ```
+### WSL > Apache Jena > Learn to use ARQ:
+- [Jena documentation overview](https://jena.apache.org/documentation/)
+  - A ha: [ARQ - Command Line Applications](https://jena.apache.org/documentation/query/cmds.html)
+    - Hmm... No, something's not right:  
+    ```
+    $ arq.query --help
+    arq.query: command not found
+    ```
+- [ARQ - Basic Federated SPARQL Query](https://jena.apache.org/documentation/query/service.html)
+- ...
 **Questions**
 - Need Java Development environment? If so, check and install from WSL Ubuntu terminal? Current status:  
 ```
