@@ -14,18 +14,20 @@
       - E: "has work expressed (RDA 17.6)"
       - M: "has expression manifested (RDA 17.10)"
   - has dimensions (RDA 3.5): Based on toolkit I'm not clear about whether I should measure *only* height or more dimensions (width, etc.)?
-    - Oh, no, here it is:
+    - Oh, no, here it is:  
+
     > Volumes
       Record the height of the volume. If the volume measures less than 10 centimetres, record the height in millimetres and use the metric symbol mm.
 
-  - 
+  -
 - **Other notes**
   - Quite a few E properties are missing links to the RDA toolkit...why?
     - has reviser agent
     - has related expression of expression
     - has editor agent of text (see note above also)
     - ...
-  - Opposite the page with ISBNs, LoC control number, copyright, etc. is a page containing only this--what is this and where do I record it?
+  - Opposite the page with ISBNs, LoC control number, copyright, etc. is a page containing only this--what is this and where do I record it?  
+  
     > The Members of Centre for Ground Water Studies, Kolkata
 
 
