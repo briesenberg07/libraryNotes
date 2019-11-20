@@ -47,12 +47,27 @@ $ sparql --version
 Jena:       VERSION: 3.13.1
 Jena:       BUILD_DATE: 2019-10-06T18:57:39+0000
 ```
-- Looks like I'm ready to learn to use ARQ!
+- Learn to use ARQ:
   - [Jena documentation overview](https://jena.apache.org/documentation/)
+    - A ha: [ARQ - Command Line Applications](https://jena.apache.org/documentation/query/cmds.html)
+      - Hmm... No, something's not right:  
+      ```
+      $ arq.query --help
+      arq.query: command not found
+      ```
+**Questions**
+- Need Java Development environment? If so, check and install from WSL Ubuntu terminal? Current status:  
+```
+$ java --version
+openjdk 11.0.4 2019-07-16
+OpenJDK Runtime Environment (build 11.0.4+11-post-Ubuntu-1ubuntu218.04.3)
+OpenJDK 64-Bit Server VM (build 11.0.4+11-post-Ubuntu-1ubuntu218.04.3, mixed mode, sharing)
+```
 ### WSL > Notes
 - Directories/files in the WSL home directory are write-protected
 - I learned this this morning when trying to run Pyshacl using a data graph and shape graph that I had stored there
 - When I moved these to my Windows home directory I was able to run the pyShacl command (!)
+- Also, when looking at WSL-related stuff I keep seeing **DON'T CHANGE ANYTHING IN THE WSL DIRECTORY**
 ### WSL > (Re)install Ubuntu 18.04 for WSL
 - Reminder--to get to Windows files from the Ubuntu CLI start with `/mnt/c`
 ### WSL > Creating a *Quick access* link to my Ubuntu home directory

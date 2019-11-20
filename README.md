@@ -21,7 +21,7 @@
   - **OCLC nos**
   - Two records look essentially the same to me:
     - 1046614059
-    - 1101430841
+    - ~~1101430841~~ (ELIMINATED BECAUSE Form = o)
   - Reasons why I like these better than the other `eng` record 1102647764:
     - Subject headings are live links
     - They say "Held" in the "Held" column; I think that this means that they are WAU holdings/records and therefore high-quality
