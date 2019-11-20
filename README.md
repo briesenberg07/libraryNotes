@@ -8,17 +8,17 @@
       - Authorized access point (record at more than one level?)
       - Date of ... (more than one level?)
     - Lots of "has X agent of expression" props with links to RDA toolkit, but "has editor agent of text" with no link... Seems like there *should* be a "has editor agent of expressions (RDA #.#)" prop instead?
-  - Where are our WEMI-chaining properties? Just now in the Work RT I can't remember if I chain to the E from the W or chain back to the W from the E...
-    - **I can't find our WEMI-chaining properties in W or E...**
-    - Okay, wait, must be
-      - E: "has work expressed (RDA 17.6)"
-      - M: "has expression manifested (RDA 17.10)"
+  - **WEMI-chaining properties** (is this correct?)
+    - E: "has work expressed (RDA 17.6)"
+    - M: "has expression manifested (RDA 17.10)"
+    - I: "has manifestation exemplified (RDA 17.12)"
   - has dimensions (RDA 3.5): Based on toolkit I'm not clear about whether I should measure *only* height or more dimensions (width, etc.)?
     - Oh, no, here it is:  
 
-    > Volumes
-      Record the height of the volume. If the volume measures less than 10 centimetres, record the height in millimetres and use the metric symbol mm.
+      > Volumes
+        Record the height of the volume. If the volume measures less than 10 centimetres, record the height in millimetres and use the metric symbol mm.
 
+  - has name of publisher ([RDA 2.8.4](http://access.rdatoolkit.org/2.8.4.html)) vs. has publisher agent ([RDA 21.3](http://access.rdatoolkit.org/21.3.html)): What's the difference? Why do we need both?
   -
 - **Other notes**
   - Quite a few E properties are missing links to the RDA toolkit...why?
