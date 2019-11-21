@@ -30,8 +30,9 @@
 
     > The Members of Centre for Ground Water Studies, Kolkata
 
-
 #### Metadata consultation prep
+- https://reclaimhosting.com/category/omeka/
+- [Omeka S](https://omeka.org/s/) is, I believe, the version that Reclaim will host for UW during the pilot(?)
 ### 20191119
 ![20191120101746765_0b](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191120101746765_0b.jpg)
 #### Cataloging training
