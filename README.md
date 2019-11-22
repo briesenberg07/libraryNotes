@@ -1,31 +1,41 @@
-### 20191120
-#### Staffweb training
-![20191120172750970bbbb](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191120172750970bbbb.jpg)
-![20191120172750970_page_0002](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191120172750970_page_0002.jpg)
+### 20191120 - 20191122
 #### Sinopia cataloging
-- **Lots of questions**
-  - At what level (WEMI) do I record certain information--subject in particular*
-    - Looking at "has subject (RDA 23.4)", I don't think this is the RT we created for subjects, so subjects must not be recorded at the Work-level?
-    - But other elements also:
-      - Language
-      - Authorized access point (record at more than one level?)
-      - Date of ... (more than one level?)
-    - [My work around](https://uwcams.slack.com/archives/CFG42EX5F/p1574382665005100)
-  - Lots of "has X agent of expression" props with links to RDA toolkit, but "has editor agent of text" with no link... Seems like there *should* be a "has editor agent of expressions (RDA #.#)" prop instead?
-  - http://rdaregistry.info/Elements/e/P20002 / has identifier for expression: In CEC data this was a number, but which identifier to use here?
-  - How to go back and fix data in resources that I've already closed/saved??
-  - has name of publisher ([RDA 2.8.4](http://access.rdatoolkit.org/2.8.4.html)) vs. has publisher agent ([RDA 21.3](http://access.rdatoolkit.org/21.3.html)): What's the difference? Why do we need both?
-  - Quite a few E properties are missing links to the RDA toolkit...why?
-    - has reviser agent
-    - has related expression of expression
-    - has editor agent of text (see **"Lots of 'has X agent of expression' props"** above also)
-  - Found random non-dereferencing IRI:
-    - file:///home/forge/rda.metadataregistry.org/storage/repos/projects/177/xml/termList/rdacc1003
-  - ...
 - **WEMI-chaining properties** (is this correct?)
   - E: "has work expressed (RDA 17.6)"
   - M: "has expression manifested (RDA 17.10)"
   - I: "has manifestation exemplified (RDA 17.12)"
+##### Sinopia cataloging > Lots of questions
+- At what level (WEMI) do I record certain information--subject in particular*
+  - Looking at "has subject (RDA 23.4)", I don't think this is the RT we created for subjects, so subjects must not be recorded at the Work-level?
+  - But other elements also:
+    - Language
+    - Authorized access point (record at more than one level?)
+    - Date of ... (more than one level?)
+  - [My work around](https://uwcams.slack.com/archives/CFG42EX5F/p1574382665005100)
+- Lots of "has X agent of expression" props with links to RDA toolkit, but "has editor agent of text" with no link... Seems like there *should* be a "has editor agent of expressions (RDA #.#)" prop instead?
+- Identifiers:
+  - http://rdaregistry.info/Elements/e/P20002 / has identifier for expression
+  - http://rdaregistry.info/Elements/m/datatype/P30004 / has identifier for manifestation
+    - CEC data has values for these that are only numbers; what values to use for these? For M value I see 13 digits, so must be ISBN-13? Always use this??
+- How to go back and fix data in resources that I've already closed/saved??
+- has name of publisher ([RDA 2.8.4](http://access.rdatoolkit.org/2.8.4.html)) vs. has publisher agent ([RDA 21.3](http://access.rdatoolkit.org/21.3.html)): What's the difference? Why do we need both?
+- Quite a few E properties are missing links to the RDA toolkit...why?
+  - has reviser agent
+  - has related expression of expression
+  - has editor agent of text (see **"Lots of 'has X agent of expression' props"** above also)
+- Found random non-dereferencing IRI:
+  - file:///home/forge/rda.metadataregistry.org/storage/repos/projects/177/xml/termList/rdacc1003
+- So many properties repeated at more than one level (W, E, M, I)!! Why??
+  - https://doi.org/10.6069/uwlib.55.d.4#hasLcClassificationPartA
+  - https://doi.org/10.6069/uwlib.55.d.4#hasLcClassificationPartB
+  - Title props
+  - Responsibility props
+- **Sinopia feature request (?)**: Clicking `+Add` should put active cursor in entry field; user should not have to click again
+- ...
+### 20191120
+#### Staffweb training
+![20191120172750970bbbb](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191120172750970bbbb.jpg)
+![20191120172750970_page_0002](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191120172750970_page_0002.jpg)
 #### Metadata consultation prep
 - https://reclaimhosting.com/category/omeka/
 - [Omeka Classic](https://omeka.org/classic/) is the version that Reclaim will host for UW during the pilot
