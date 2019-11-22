@@ -25,12 +25,16 @@
   - has editor agent of text (see **"Lots of 'has X agent of expression' props"** above also)
 - Found random non-dereferencing IRI:
   - file:///home/forge/rda.metadataregistry.org/storage/repos/projects/177/xml/termList/rdacc1003
-- So many properties repeated at more than one level (W, E, M, I)!! Why??
-  - https://doi.org/10.6069/uwlib.55.d.4#hasLcClassificationPartA
-  - https://doi.org/10.6069/uwlib.55.d.4#hasLcClassificationPartB
-  - Title props
-  - Responsibility props
+- **So many properties repeated at more than one level (W, E, M, I)!! Why??**
+  - Creates more opportunities for input error...
+  - If these prop/values *are truly* needed at multiple levels, autopopulate?
+    - https://doi.org/10.6069/uwlib.55.d.4#hasLcClassificationPartA
+    - https://doi.org/10.6069/uwlib.55.d.4#hasLcClassificationPartB
+    - https://doi.org/10.6069/uwlib.55.d.4#heldBy (But this is autopopulated w/ default, so, good)
+    - (more...)
 - **Sinopia feature request (?)**: Clicking `+Add` should put active cursor in entry field; user should not have to click again
+- Unsure about whether I'm getting the correct codes from Alma for physical location/sublocation
+![locCodes0001](https://github.com/briesenberg07/libraryNotes/blob/master/images/locCodes0001.png)
 - ...
 ### 20191120
 #### Staffweb training
