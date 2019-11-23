@@ -40,12 +40,39 @@
 #### Staffweb training
 ![20191120172750970bbbb](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191120172750970bbbb.jpg)
 ![20191120172750970_page_0002](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191120172750970_page_0002.jpg)
-#### Metadata consultation prep
+#### Metadata consultation: Anthropocene
+**Project info:**
+  - Lead: Annie Dwyer, CHID
+  - ...
+
+**Platform info**
 - https://reclaimhosting.com/category/omeka/
 - [Omeka Classic](https://omeka.org/classic/) is the version that Reclaim will host for UW during the pilot
+  - [Omeka Classic User Manual](https://omeka.org/classic/docs/)
+    - [Working with Dublin Core](https://omeka.org/classic/docs/Content/Working_with_Dublin_Core/)
+    - [Item Types](https://omeka.org/classic/docs/Content/Item_Types/): Corresponds roughly with DCMI Type Vocab (but not exactly--for example "Document," "Oral History" are not DCMI Types)
+
+**Notes**
+- Looks like it's the *element set v1.1*, not the terms
+  - I had never looked at the [Dublin Core Metadata Element Set, Version 1.1: Reference Description](https://www.dublincore.org/specifications/dublin-core/dces/)
+- The [metadata documentation](https://omeka.org/classic/docs/Content/Working_with_Dublin_Core/) (same as "Working with Dublin Core above") looks pretty solid for end-users
+- **Okay but can we create/add/modify fields??**
+  - This process *seems* to be described in Item Types > Creating a new Item Type > New elements
+- Making format/encoding-scheme decisions beforehand:
+  - For example, deciding on a date format (encoding scheme) before any metadata work begins (do *we* have an opinion on date format?) could benefit others in the future who may want to reuse this data
+  - Other fields that could benefit from forethought re: encoding scheme:
+      - Language
+      - ...
+- ...
+**Developer documentation and repo:**
+- [GitHub](https://github.com/omeka/Omeka) It's written in PHP
+- [Omeka Classic Developer Documentation](https://omeka.readthedocs.io/en/latest/#omeka-classic-developer-documentation)
 ### 20191119
 ![20191120101746765_0b](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191120101746765_0b.jpg)
 #### Cataloging training
+##### Cataloging training > Library of Congress Subject Headings: Online Training
+- [Library of Congress Subject Headings: Online Training](https://www.loc.gov/catworkshop/lcsh/index.html)
+  - Add this to weekly cataloging time
 ![20191120101746765_0c](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191120101746765_0c.jpg)
 ![20191120172750970_page_0001a](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191120172750970_page_0001a.jpg)
 ### 20191118
