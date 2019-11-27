@@ -1,3 +1,8 @@
+### 20191125
+#### Metadata Librarians' weekly meeting
+**[Running meeting notes](https://docs.google.com/document/d/1eobgIHZ6gM0B-0s8eeN1Z4YCp0L4kuyUAZb5BC_C-wg/edit?usp=sharing)**
+![20191126092837426_a](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191126092837426_a.jpg)
+![](https://github.com/briesenberg07/libraryNotes/blob/master/images/)
 ### 20191120 - 20191122
 #### Sinopia cataloging
 - **WEMI-chaining properties** (is this correct?)
@@ -69,15 +74,16 @@
 - [Omeka Classic Developer Documentation](https://omeka.readthedocs.io/en/latest/#omeka-classic-developer-documentation)
 ### 20191119
 ![20191120101746765_0b](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191120101746765_0b.jpg)
+### 20191118
+- Attended Sinopia User Group Meeting
+- Email / slack
 #### Cataloging training
 ##### Cataloging training > Library of Congress Subject Headings: Online Training
 - [Library of Congress Subject Headings: Online Training](https://www.loc.gov/catworkshop/lcsh/index.html)
   - Add this to weekly cataloging time
+  - Part of [Catalogers Learning Workshop (CLW)](http://www.loc.gov/catworkshop/)
 ![20191120101746765_0c](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191120101746765_0c.jpg)
 ![20191120172750970_page_0001a](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191120172750970_page_0001a.jpg)
-### 20191118
-- Attended Sinopia User Group Meeting
-- Email / slack
 #### Cataloging > finishing reading
 **[Alma Inventory (Creating Holdings, Items, and Portfolios)](https://staff.lib.uw.edu/operations/cams/policies-procedures/general-cataloging-procedures-and-resources/alma-inventory)**
 - What is an "order record"?
@@ -178,7 +184,7 @@ See:
      - Maybe take a step back and think in concrete terms about what would make this a successful **pilot** program?
 
 ### 20191112
-#### Cataloging training / notes
+#### Cataloging training > notes
 ![20191112152256448_0001](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191112152256448_0001.jpg)
 ![20191113170140777_0001](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191113170140777_0001.jpg)
 ### 20191105

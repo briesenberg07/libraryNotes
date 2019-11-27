@@ -1,5 +1,5 @@
 ## git
-### git: Providing username + email; storing credentials
+### git > Providing username + email; storing credentials
 - Provide username and email
 ```
 $ git config --global user.email "ries07@uw.edu"
@@ -19,11 +19,14 @@ $ git push http://example.com/repo.git
 ### git: Find deleted files
 Try this in bash to find deleted files in git:
 `git log --diff-filter=D --summary`
-### git: Syncing my clone with the upstream repository
+### git > Syncing my clone with the upstream repository
 - I've done this a million times but I have to look it up every time!
 - A couple of resources, each slightly different:
    - [Syncing a fork](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/syncing-a-fork): This is what I've used in the past and will use again right now
    - [Merging an upstream repository into your fork](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/merging-an-upstream-repository-into-your-fork): This is slightly different from what I've done in the past...
+### git > Revert a single file back to the current repo state
+`git checkout -- scripts/json2xml.xsl`
+- Where `scripts/json2xml.xsl` is the filepath to the file I want to revert
 ---
 ## Atom
 ### Atom > Notes
