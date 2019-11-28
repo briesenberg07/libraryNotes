@@ -80,16 +80,15 @@
 - ...
 **Developer documentation and repo:**
 - [GitHub](https://github.com/omeka/Omeka) It's written in PHP
-- [Omeka Classic Developer Documentation](https://omeka.readthedocs.io/en/latest/#omeka-classic-developer-documentation)
-![20191127125412297fff](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191127125412297fff.jpg)
+- [Omeka Classic Developer Documentation](https://omeka.readthedocs.io/en/latest/#omeka-classic-developer-documentation)  
 
+![20191127125412297fff](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191127125412297fff.jpg)
 ### 20191119
 ![20191120101746765_0b](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191120101746765_0b.jpg)
 ### 20191118
 - Attended Sinopia User Group Meeting
 - Email / slack
 #### Cataloging training
-![20191127161913988yyy](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191127161913988yyy.jpg)
 ##### Cataloging training > Library of Congress Subject Headings: Online Training
 - [Library of Congress Subject Headings: Online Training](https://www.loc.gov/catworkshop/lcsh/index.html)
   - Add this to weekly cataloging time
