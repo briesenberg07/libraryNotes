@@ -1,8 +1,17 @@
+### 20191127
+#### VALID
+![20191127161913988ppp](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191127161913988ppp.jpg)
+![20191127161913988rrr.](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191127161913988rrr.jpg)
 ### 20191125
 #### Metadata Librarians' weekly meeting
 **[Running meeting notes](https://docs.google.com/document/d/1eobgIHZ6gM0B-0s8eeN1Z4YCp0L4kuyUAZb5BC_C-wg/edit?usp=sharing)**
 ![20191126092837426_a](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191126092837426_a.jpg)
-![](https://github.com/briesenberg07/libraryNotes/blob/master/images/)
+![20191126165928546aa](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191126165928546aa.jpg)
+#### VALID / Cataloging Drop-in / Sinopia training event 1
+![20191126165928546bb](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191126165928546bb.jpg)
+![20191126165928546ccc](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191126165928546ccc.jpg)
+![20191126165928546ddd.jpg](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191126165928546ddd.jpg)
+![20191127125412297eee](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191127125412297eee.jpg)
 ### 20191120 - 20191122
 #### Sinopia cataloging
 - **WEMI-chaining properties** (is this correct?)
@@ -72,12 +81,15 @@
 **Developer documentation and repo:**
 - [GitHub](https://github.com/omeka/Omeka) It's written in PHP
 - [Omeka Classic Developer Documentation](https://omeka.readthedocs.io/en/latest/#omeka-classic-developer-documentation)
+![20191127125412297fff](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191127125412297fff.jpg)
+
 ### 20191119
 ![20191120101746765_0b](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191120101746765_0b.jpg)
 ### 20191118
 - Attended Sinopia User Group Meeting
 - Email / slack
 #### Cataloging training
+![20191127161913988yyy](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191127161913988yyy.jpg)
 ##### Cataloging training > Library of Congress Subject Headings: Online Training
 - [Library of Congress Subject Headings: Online Training](https://www.loc.gov/catworkshop/lcsh/index.html)
   - Add this to weekly cataloging time
