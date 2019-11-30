@@ -1,3 +1,175 @@
+### 20191127
+#### VALID
+![20191127161913988ppp](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191127161913988ppp.jpg)
+![20191127161913988rrr.](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191127161913988rrr.jpg)
+### 20191125
+#### Metadata Librarians' weekly meeting
+**[Running meeting notes](https://docs.google.com/document/d/1eobgIHZ6gM0B-0s8eeN1Z4YCp0L4kuyUAZb5BC_C-wg/edit?usp=sharing)**
+![20191126092837426_a](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191126092837426_a.jpg)
+![20191126165928546aa](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191126165928546aa.jpg)
+#### VALID / Cataloging Drop-in / Sinopia training event 1
+![20191126165928546bb](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191126165928546bb.jpg)
+![20191126165928546ccc](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191126165928546ccc.jpg)
+![20191126165928546ddd.jpg](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191126165928546ddd.jpg)
+![20191127125412297eee](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191127125412297eee.jpg)
+### 20191120 - 20191122
+#### Sinopia cataloging
+- **WEMI-chaining properties** (is this correct?)
+  - E: "has work expressed (RDA 17.6)"
+  - M: "has expression manifested (RDA 17.10)"
+  - I: "has manifestation exemplified (RDA 17.12)"
+##### Sinopia cataloging > Lots of questions
+- At what level (WEMI) do I record certain information--subject in particular*
+  - Looking at "has subject (RDA 23.4)", I don't think this is the RT we created for subjects, so subjects must not be recorded at the Work-level?
+  - But other elements also:
+    - Language
+    - Authorized access point (record at more than one level?)
+    - Date of ... (more than one level?)
+  - [My work around](https://uwcams.slack.com/archives/CFG42EX5F/p1574382665005100)
+- Lots of "has X agent of expression" props with links to RDA toolkit, but "has editor agent of text" with no link... Seems like there *should* be a "has editor agent of expressions (RDA #.#)" prop instead?
+- Identifiers:
+  - http://rdaregistry.info/Elements/e/P20002 / has identifier for expression
+  - http://rdaregistry.info/Elements/m/datatype/P30004 / has identifier for manifestation
+    - CEC data has values for these that are only numbers; what values to use for these? For M value I see 13 digits, so must be ISBN-13? Always use this??
+- How to go back and fix data in resources that I've already closed/saved??
+- has name of publisher ([RDA 2.8.4](http://access.rdatoolkit.org/2.8.4.html)) vs. has publisher agent ([RDA 21.3](http://access.rdatoolkit.org/21.3.html)): What's the difference? Why do we need both?
+- Quite a few E properties are missing links to the RDA toolkit...why?
+  - has reviser agent
+  - has related expression of expression
+  - has editor agent of text (see **"Lots of 'has X agent of expression' props"** above also)
+- Found random non-dereferencing IRI:
+  - file:///home/forge/rda.metadataregistry.org/storage/repos/projects/177/xml/termList/rdacc1003
+- **So many properties repeated at more than one level (W, E, M, I)!! Why??**
+  - Creates more opportunities for input error...
+  - If these prop/values *are truly* needed at multiple levels, autopopulate?
+    - https://doi.org/10.6069/uwlib.55.d.4#hasLcClassificationPartA
+    - https://doi.org/10.6069/uwlib.55.d.4#hasLcClassificationPartB
+    - https://doi.org/10.6069/uwlib.55.d.4#heldBy (But this is autopopulated w/ default, so, good)
+    - (more...)
+- **Sinopia feature request (?)**: Clicking `+Add` should put active cursor in entry field; user should not have to click again
+- Unsure about whether I'm getting the correct codes from Alma for physical location/sublocation
+![locCodes0001](https://github.com/briesenberg07/libraryNotes/blob/master/images/locCodes0001.png)
+- ...
+### 20191120
+#### Staffweb training
+![20191120172750970bbbb](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191120172750970bbbb.jpg)
+![20191120172750970_page_0002](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191120172750970_page_0002.jpg)
+#### Metadata consultation: Anthropocene
+**Project info:**
+  - Lead: Annie Dwyer, CHID
+  - ...
+
+**Platform info**
+- https://reclaimhosting.com/category/omeka/
+- [Omeka Classic](https://omeka.org/classic/) is the version that Reclaim will host for UW during the pilot
+  - [Omeka Classic User Manual](https://omeka.org/classic/docs/)
+    - [Working with Dublin Core](https://omeka.org/classic/docs/Content/Working_with_Dublin_Core/)
+    - [Item Types](https://omeka.org/classic/docs/Content/Item_Types/): Corresponds roughly with DCMI Type Vocab (but not exactly--for example "Document," "Oral History" are not DCMI Types)
+
+**Notes**
+- Looks like it's the *element set v1.1*, not the terms
+  - I had never looked at the [Dublin Core Metadata Element Set, Version 1.1: Reference Description](https://www.dublincore.org/specifications/dublin-core/dces/)
+- The [metadata documentation](https://omeka.org/classic/docs/Content/Working_with_Dublin_Core/) (same as "Working with Dublin Core above") looks pretty solid for end-users
+- **Okay but can we create/add/modify fields??**
+  - This process *seems* to be described in Item Types > Creating a new Item Type > New elements
+- Making format/encoding-scheme decisions beforehand:
+  - For example, deciding on a date format (encoding scheme) before any metadata work begins (do *we* have an opinion on date format?) could benefit others in the future who may want to reuse this data
+  - Other fields that could benefit from forethought re: encoding scheme:
+      - Language
+      - ...
+- ...
+**Developer documentation and repo:**
+- [GitHub](https://github.com/omeka/Omeka) It's written in PHP
+- [Omeka Classic Developer Documentation](https://omeka.readthedocs.io/en/latest/#omeka-classic-developer-documentation)  
+
+![20191127125412297fff](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191127125412297fff.jpg)
+### 20191119
+![20191120101746765_0b](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191120101746765_0b.jpg)
+### 20191118
+- Attended Sinopia User Group Meeting
+- Email / slack
+#### Cataloging training
+##### Cataloging training > Library of Congress Subject Headings: Online Training
+- [Library of Congress Subject Headings: Online Training](https://www.loc.gov/catworkshop/lcsh/index.html)
+  - Add this to weekly cataloging time
+  - Part of [Catalogers Learning Workshop (CLW)](http://www.loc.gov/catworkshop/)
+![20191120101746765_0c](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191120101746765_0c.jpg)
+![20191120172750970_page_0001a](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191120172750970_page_0001a.jpg)
+#### Cataloging > finishing reading
+**[Alma Inventory (Creating Holdings, Items, and Portfolios)](https://staff.lib.uw.edu/operations/cams/policies-procedures/general-cataloging-procedures-and-resources/alma-inventory)**
+- What is an "order record"?
+- Lots of stuff about releasing records, saving and releasing records--what is "releasing" a record?
+**[Alma Overlay](https://staff.lib.uw.edu/operations/cams/policies-procedures/general-cataloging-procedures-and-resources/alma-overlay)**
+- Overlay: Replace individual bibliographic records in Alma with records exported from or updated in OCLC Connexion client
+- Explains IZ vs. NZ  
+**[Alma Work Orders](https://staff.lib.uw.edu/operations/cams/policies-procedures/general-cataloging-procedures-and-resources/alma-work-orders)**
+- Not sure how I will actually fit into this workflow...
+  - Probably just sending things to the marking room after I catalog them?
+#### Cataloging > finding OCLC nos review class nos in [ClassWeb](https://classweb.org/Auto/)
+- SEE: [OCLC Connexion: Searching WorldCat Quick Reference](https://www.oclc.org/content/dam/support/worldcat/documentation/searching/refcard/searchworldcatquickreference.pdf)
+  - This provides more detail on using the "Command Line Search" accessible via F2 in Connexion
+- Questions:
+    - "Held" column in OCLC search results--means held at WAU?
+    - I'm frustrated that I can't (?) open two records side-by-side in Connexion to compare them
+##### 1. American Dinosaur Abroad:
+  - **OCLC nos**
+  - Two records look essentially the same to me:
+    - 1046614059
+    - ~~1101430841~~ (ELIMINATED BECAUSE Form = o)
+  - Reasons why I like these better than the other `eng` record 1102647764:
+    - Subject headings are live links
+    - They say "Held" in the "Held" column; I think that this means that they are WAU holdings/records and therefore high-quality
+  - **ClassWeb**
+    - Two `050` fields (both with **4** in the second indicator position)
+      - QE862.S3 ǂb N54 2019
+        - QE862.S3 = "Saurischia"
+        - Following link for LC subject correlation takes me [here](https://classweb.org/min/minaret?app=Corr&mod=Search&iname=l2nh&iterm=QE862.S3&count=75&auto=1&close=1&menu=/Auto/)--I have no idea what I'm looking at really, ALTHOUGH "diplodocus does appear here, albeit as 'Diplodocus--Juvenile literature'"
+      - QE718 ǂb .N54 2019
+        - QE718 = "Collection and preservation" (with [various options](https://classweb.org/min/minaret?app=Class&mod=Search&table=schedules&table=tables&tid=1&menu=/Auto/&iname=span&iterm=QE718&subtype=&ilabel=Class%20number&time=1574120358658))
+    - These all seem to be in the general ballpark
+    - Note that I tried to include the Cutter in my ClassWeb search string but this does *not* seem to work
+##### 2. Ground Water Development - Issues and Sustainable Solutions:
+  - **OCLC nos**
+    - 1086553037
+    - Because:
+      - Three search results, one is a computer-mediated resource and one is in French
+  - **ClassWeb**
+    - One `050` field, again this is `050 | | 4`
+        - TD419-428
+        - This value looks funny to me...
+        - ClassWeb shows "Periodicals.Societies.Serials" > "LC subject correlation" >
+        > TD419   
+           Water—Pollution—Periodicals [Topical] (2)  
+           Water—Pollution—Juvenile literature [Topical] (1)  
+           Coastal ecology—Congresses [Topical] (1)  
+           Water—Pollution—Congresses [Topical] (1)  
+           Refuse and refuse disposal—Congresses [Topical] (1)  
+           Water—Pollution—United States [Topical] (1)  
+           Nonpoint source pollution—Congresses [Topical] (1)  
+           Sewage—Purification—Fixed-film biological process—Congresses [Topical] (1)  
+
+##### 3. Wood is Good:
+  - **OCLC no**
+    - 971542226
+      - One English-language record gives "[electronic resource]" in the search-result column name
+      - Two other eng-lan records, I'm choosing the one with more info in it
+  - **ClassWeb**
+    - ` 050 | | 4 | TA419`
+    - Interestingly, I don't see any TA419 in ClassWeb. [Everything I'm looking at](https://classweb.org/min/minaret?app=Class&mod=Search&iterm=TA419-TA424.6&count=75&auto=1&menu=/Auto/&close=1) includes *something* after 419...
+    - Although, a ha! I *did* find *just* 419 [here](https://classweb.org/min/minaret?app=Corr&mod=Search&count=75&auto=1&close=1&menu=/Auto/&iname=l2nh&iterm=TA419&ilabel=LC%20class%20%23%20--%3E%20LCSH%20(w%2Fnames)&time=1574121318049)
+      - So what is the difference between the first and second locations in ClassWeb??
+#### This week (from Theo's email)
+1.	Produce Sinopia data: this is our final push to get data in Sinopia; let’s focus on this this week and create a substantial Group 0 dataset. Although quality is not the main issue in creating this dataset, do try to get values associated with the appropriate RDA properties.
+2.	Start conceiving your final report on cataloging in Sinopia. You may want to do this in concert with other LDT7 members available this week. What will be the format of the report? What should it contain? How will it be produced? What can be created that can be re-used by future cataloging groups when they have to write their reports? Don’t forget the role that might be played by the Cataloging Feedback Form.
+3.	Review training materials. You may want to start reviewing the training materials. Considering we need to teach others how to catalog in Sinopia (starting Nov 26) we should know these materials well. In addition, the final push to create data in Sinopia, mentioned in \#1 above, should be done with consideration of how we will instruct others to perform that task.
+4.	The Sinopia cataloging page you created, that can serve as a hub for cataloging efforts, is excellent; thank you for creating that. If anything else needs to be done with that page, please do that and pass the administration of that page on to Melissa. As the administrator, she can make us all administrators able to edit that page as needed. But I think we shuld put Melissa in charge of that excellent “hub” of Sinopia cataloging at UW.
+5.	SHACL validation. Please continue your work with SHACL. You have things you know you need to do, like continue work with shaclgen. What may not be as obvious is that we’d like you to continue producing SHACL validation code for additional UWL SemWeb Data; namely, WebResource and SourceResource. Assuming that you’ve completed Aggregation and Agent. Melissa and Emmaline can do Collection and Rights.
+6.	Ben and Melissa might like a little assistance with Sinopia.
+7.	Anything Ben or Crystal specifically ask for can be prioritized.
+### 20191115
+#### Next week--Theo out of town
+![2019111502](https://github.com/briesenberg07/libraryNotes/blob/master/images/2019111502.jpg)
+![20191120101746765_00A](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191120101746765_00A.jpg)
 ### 20191114
 #### Libraries Council meeting
 ![20191114182140138_00012](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191114182140138_00012.jpg)
@@ -23,14 +195,7 @@ See:
      - Maybe take a step back and think in concrete terms about what would make this a successful **pilot** program?
 
 ### 20191112
-#### Cataloging training / notes
-**[Alma Inventory (Creating Holdings, Items, and Portfolios)](https://staff.lib.uw.edu/operations/cams/policies-procedures/general-cataloging-procedures-and-resources/alma-inventory)**
-- What is an "order record"?
-- Lots of stuff about releasing records, saving and releasing records--what is "releasing" a record?
-
-**[Alma Overlay](https://staff.lib.uw.edu/operations/cams/policies-procedures/general-cataloging-procedures-and-resources/alma-overlay)**
-- Overlay: Replace individual bibliographic records in Alma with records exported from or updated in OCLC Connexion client
-- Explains IZ vs. NZ  
+#### Cataloging training > notes
 ![20191112152256448_0001](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191112152256448_0001.jpg)
 ![20191113170140777_0001](https://github.com/briesenberg07/libraryNotes/blob/master/images/20191113170140777_0001.jpg)
 ### 20191105
