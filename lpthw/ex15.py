@@ -24,5 +24,6 @@ txt_again = open(file_again)
 
 print(txt_again.read())
 
+# UH--do I actually need both of these?
 txt.close()
 txt_again.close()
