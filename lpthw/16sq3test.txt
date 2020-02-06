@@ -1,0 +1,3 @@
+here we go
+second line now
+Whoo hot rod let's see what \n does

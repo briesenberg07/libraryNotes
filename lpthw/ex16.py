@@ -4,18 +4,19 @@
 from sys import argv
 
 # The first command-line argument will be the var script, the second will be the var filename
+    # I *think* that "argument" is the correct term here
 script, filename = argv
 
-# Pretty straight-forward here with one line that uses a format string
+# Pretty straightforward here with one line that uses a format string
 print(f"We're going to erase {filename}.")
 print("If you don't want that, hit CTRL-C (^C).")
 print("If you do want that, hit RETURN.")
 
 # Now this is a little tricksy. If CTRL+C is entered, the script stops due to something that I believe was called
     # a 'keyboard interrupt' in the error message
-    # But the tricsy thing is that, really, would *any other* input allow the script to continue?
+    # But the tricksy thing is that, really, would *any other* input allow the script to continue?
     # I mean, it doesn't necessarily have to be only RETURN, right?
-    # Just any input that doesn't stop the script. I'm going to try a random alpha-numeric input and see.
+    # Just any input that doesn't stop the script, like the CTRL+C. I'm going to try a random alpha-numeric input and see.
         # Yes. Random alpha-numeric allowed the script to continue
 input("?")
 
@@ -39,7 +40,7 @@ line3 = input("line 3: ")
 
 print("I'm going to write these to the file.")
 
-# The key here (L47-52, L55) is the 'target' var; the target var is the filename provided in CLI, opened in 'w' mode. 
+# The key here (L47-52, L55) is the 'target' var; the target var is the filename provided in CLI, opened in 'w' mode.
     # We take *this* (which has been 'captured in' [?] 'put into' [?]), and then we *do something to it*
     # The thing that I think I'm getting is that we do something by providing the var, then a period, then
     # the function(s) to use on the thing that the var is...

@@ -44,7 +44,12 @@ print("I'm going to write these to the file.")
     # The thing that I think I'm getting is that we do something by providing the var, then a period, then
     # the function(s) to use on the thing that the var is...
     # Does this make sense?
-target.write(f"{line1}\n{line2}\n{line3}\n")
+
+# A couple of ways to print with one line of code:
+
+# target.write(f"{line1}\n{line2}\n{line3}\n")
+    # OR
+target.write(line1 + "\n" + line2 + "\n" + line3)
 
 print("And finally, we close it.")
 target.close()
