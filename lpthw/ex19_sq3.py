@@ -25,3 +25,19 @@ First, the third argument you entered on the command line. That is, '{aw2}'.
 Second, the second argument you entered on the command line. That is, '{aw1}'.
 Note that the first thing you entered in the command line prompt, that is, the script name '{script}', wasn't used as part of the new word.
 """)
+
+print("Now let's combine what was given on the command line and what you'll give in input right here.")
+print("I'll ask you for a couple of pieces of input, I1 and I2.")
+I1 = input("I1: ")
+I2 = input("I2: ")
+UBER1 = aw1 + I1
+UBER2 = aw2 + I2
+# I tried to use double-quotations inside the parens below ('{I1}') and it messed up bringing in the var. Why??
+print(f"""Now here's what I'm going to do:
+I'm going to combine I1 ('{I1}'') with the second argument from the CL ('{aw1}')--let's call this UBER1.
+Then I'll combine I2 ('{I2}') with the third argument from the CL ('{aw2}')--let's call this UBER2.
+Lastly, I'll combine UBER1 ('{UBER1}') and UBER2 ('{UBER2}') to make a new word!
+But not in the order you'd think! At any stage of the process!
+""")
+word_meld(UBER1, UBER2)
+# SQ3 says call the function *10* ways. So far I've called it 3 ways...
