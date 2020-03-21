@@ -34,7 +34,7 @@ UBER1 = aw1 + I1
 UBER2 = aw2 + I2
 # I tried to use double-quotations inside the parens below ('{I1}') and it messed up bringing in the var. Why??
 print(f"""Now here's what I'm going to do:
-I'm going to combine I1 ('{I1}'') with the second argument from the CL ('{aw1}')--let's call this UBER1.
+I'm going to combine I1 ('{I1}') with the second argument from the CL ('{aw1}')--let's call this UBER1.
 Then I'll combine I2 ('{I2}') with the third argument from the CL ('{aw2}')--let's call this UBER2.
 Lastly, I'll combine UBER1 ('{UBER1}') and UBER2 ('{UBER2}') to make a new word!
 But not in the order you'd think! At any stage of the process!
