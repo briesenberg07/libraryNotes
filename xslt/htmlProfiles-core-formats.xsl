@@ -1,39 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Why does the same namespace occur twice, once as xmlns and once as xmlns:j ? (As in jsonxml2formats.xsl) -->
-<xsl:stylesheet 
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:j="http://www.w3.org/2005/xpath-functions" 
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:j="http://www.w3.org/2005/xpath-functions"
     xmlns="http://www.w3.org/2005/xpath-functions"
-    exclude-result-prefixes="j" 
-    version="3.0">
+    xmlns:brgh="https://github.com/briesenberg07/bmrLIS/" version="3.0">
     <xsl:strip-space elements="*"/>
+    <xsl:param name="brgh:format"/>
+    
+    <!-- TO DOs:
+        1) Create var or param to give format names capitalized, spelled-out, etc. as needed
+    -->
+    
     <xsl:template match="/">
-        <!-- Don't completely understand the function of the map element here. Matches root element in source... -->
-        <map xmlns="http://www.w3.org/2005/xpath-functions">
-            <!-- Generate filename based on source XML -->
-            <xsl:result-document
-                href="../html/{translate(j:map/j:map[@key = 'Profile']/j:string[@key = 'id'], ':', '.')}.html">
-                <!-- Why did we use a moded template here again?? -->
-                <xsl:apply-templates select="j:map/j:map[@key = 'Profile']" mode="profile"/>
-            </xsl:result-document>
-        </map>
+        <xsl:apply-templates select="map/j:map[@key = 'Profile']"/>
     </xsl:template>
-    <xsl:template match="j:map[@key = 'Profile']" mode="profile">
-        <!-- HTML element attrs. taken from rdf2rdfa-sourceResource.xsl / "version" attr. OK (removed "+RDFa 1.1")? / Also, removed http://www.w3.org/MarkUp/SCHEMA/xhtml-rdfa-2.xsd from xsi:schemaLocation -->
+    
+    <xsl:template match="map/j:map[@key = 'Profile']">
+        <!-- HTML element attrs. taken from rdf2rdfa-sourceResource.xsl
+            "version" attr. OK? removed "+RDFa 1.1"
+            Also, removed http://www.w3.org/MarkUp/SCHEMA/xhtml-rdfa-2.xsd from xsi:schemaLocation -->
         <html xmlns="http://www.w3.org/1999/xhtml" version="XHTML"
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
             <head>
+                <!-- Need meta? -->
                 <title>
-                    <xsl:value-of select="j:string[@key = 'title']"/>
+                    <xsl:value-of select="concat('RDA Profile: ', $brgh:format)"/>
                 </title>
                 <link href="profiles.css" rel="stylesheet" type="text/css"/>
-                <!-- Need meta? -->
             </head>
             <body>
                 <h1 id="profileTop">
                     <xsl:value-of
-                        select="concat(j:string[@key = 'title'], ': ', j:string[@key = 'description'])"
+                        select="concat('University of Washington Libraries RDA Registry Profile for format: ', $brgh:format)"
                     />
                 </h1>
                 <xsl:apply-templates select="." mode="profileAttrs"/>
