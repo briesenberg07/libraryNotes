@@ -6,7 +6,7 @@
         <xsl:for-each
             select="('adminMetadata', 'dvdVideo', 'eBook', 'eGraphic', 'eMap', 'eSerial', 'etd', 'graphic', 'map', 'monograph', 'serial', 'soundRecording')">
             <xsl:variable name="fmat" select="."/>
-            <xsl:variable name="create-html-profile">
+            <xsl:variable name="html-transform">
                 <xsl:sequence
                     select="
                         let $t := transform(
@@ -19,9 +19,8 @@
                             $t?output"
                 />
             </xsl:variable>
-            <xsl:result-document href="../html/WAU.profile.RDA.{$fmat}.html" indent="true"
-                omit-xml-declaration="true">
-                <xsl:value-of select="$create-html-profile"/>
+            <xsl:result-document href="../html/WAU.profile.RDA.{$fmat}.html">
+                <xsl:value-of select="$html-transform"/>
             </xsl:result-document>
         </xsl:for-each>
     </xsl:template>

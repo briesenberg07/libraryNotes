@@ -11,10 +11,10 @@
     -->
     
     <xsl:template match="/">
-        <xsl:apply-templates select="map/j:map[@key = 'Profile']"/>
+        <xsl:apply-templates select="j:map/j:map[@key = 'Profile']"/>
     </xsl:template>
     
-    <xsl:template match="map/j:map[@key = 'Profile']">
+    <xsl:template match="j:map/j:map[@key = 'Profile']">
         <!-- HTML element attrs. taken from rdf2rdfa-sourceResource.xsl
             "version" attr. OK? removed "+RDFa 1.1"
             Also, removed http://www.w3.org/MarkUp/SCHEMA/xhtml-rdfa-2.xsd from xsi:schemaLocation -->
