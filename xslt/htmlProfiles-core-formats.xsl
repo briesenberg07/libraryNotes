@@ -7,7 +7,7 @@
     <xsl:param name="brgh:format"/>
     
     <!-- TO DOs:
-        1) Create var or param to give format names capitalized, spelled-out, etc. as needed
+        1) Create vars or param(s) to give format names capitalized, spelled-out, etc. as needed
     -->
     
     <xsl:template match="/">
