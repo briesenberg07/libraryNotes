@@ -55,3 +55,4 @@ print(threeThings.format("\u1685", "\u1696", "\u1699"))
 
 sail = "\u1684"
 print(f"Ogham's a trip man. Like look at the character sail: {sail}")
+print("Or I could say \N{ogham letter sail}")
