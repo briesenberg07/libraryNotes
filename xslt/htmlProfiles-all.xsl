@@ -6,7 +6,7 @@
         <xsl:for-each
             select="('adminMetadata', 'dvdVideo', 'eBook', 'eGraphic', 'eMap', 'eSerial', 'etd', 'graphic', 'map', 'monograph', 'serial', 'soundRecording')">
             <xsl:variable name="format" select="."/>
-            <!-- Will there be any conflicts with $brgh:format var in -core-formats? 
+            <!-- Will there be any conflicts with $brgh:format var in -core-formats?
                 I don't believe so; we are passing the $format var values defined here to the QName param which will be used in -core-formats -->
             <xsl:variable name="html-transform">
                 <xsl:sequence
