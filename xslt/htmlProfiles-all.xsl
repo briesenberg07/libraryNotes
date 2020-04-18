@@ -6,8 +6,6 @@
         <xsl:for-each
             select="('adminMetadata', 'dvdVideo', 'eBook', 'eGraphic', 'eMap', 'eSerial', 'etd', 'graphic', 'map', 'monograph', 'serial', 'soundRecording')">
             <xsl:variable name="format" select="."/>
-            <!-- Will there be any conflicts with $brgh:format var in -core-formats?
-                I don't believe so; we are passing the $format var values defined here to the QName param which will be used in -core-formats -->
             <xsl:variable name="html-transform">
                 <xsl:sequence
                     select="
@@ -24,8 +22,7 @@
             <xsl:result-document href="../html/WAU.profile.RDA.{$format}.html">
                 <xsl:sequence select="$html-transform"/>
             </xsl:result-document>
-            <!-- TO DOs:
-                1) Use additional xsl:result-document to output profiles to wwwlib folder for publishing; add as param? -->
+            <!-- Change to xsl:result-document to publish to profiles directory; use param so that filepath is not in code in GitHub -->
         </xsl:for-each>
     </xsl:template>
 </xsl:stylesheet>

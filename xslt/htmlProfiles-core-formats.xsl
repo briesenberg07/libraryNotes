@@ -1,34 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"    xmlns:j="http://www.w3.org/2005/xpath-functions"    xmlns="http://www.w3.org/2005/xpath-functions"    xmlns:brgh="https://github.com/briesenberg07/bmrLIS/" version="3.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:j="http://www.w3.org/2005/xpath-functions"
+  xmlns:brgh="https://github.com/briesenberg07/bmrLIS/" exclude-result-prefixes="j" version="3.0">
   <xsl:strip-space elements="*"/>
+
   <xsl:param name="brgh:format"/>
-  <!-- TO DOs:
-    1) Create vars/param(s)/ to give format names capitalized, spelled-out, etc. as needed
-    2) Other string values needed? -->
+  <xsl:variable name="id" select="concat(':', $brgh:format)"/>
+  <xsl:variable name="title">
+    <xsl:choose>
+      <xsl:when test="$brgh:format = 'adminMetadata'">
+        <xsl:text> for administrative metadata</xsl:text>
+      </xsl:when>
+      <xsl:when test="$brgh:format = 'dvdVideo'">
+        <xsl:text> for DVD videos</xsl:text>
+      </xsl:when>
+      <xsl:when test="$brgh:format = 'eBook'">
+        <xsl:text> for e-books</xsl:text>
+      </xsl:when>
+      <xsl:when test="$brgh:format = 'eGraphic'">
+        <xsl:text> for electronic graphic materials</xsl:text>
+      </xsl:when>
+      <xsl:when test="$brgh:format = 'eMap'">
+        <xsl:text> for electronic maps</xsl:text>
+      </xsl:when>
+      <xsl:when test="$brgh:format = 'eSerial'">
+        <xsl:text> for electronic serials</xsl:text>
+      </xsl:when>
+      <xsl:when test="$brgh:format = 'etd'">
+        <xsl:text> for electronic theses and dissertations</xsl:text>
+      </xsl:when>
+      <xsl:when test="$brgh:format = 'graphic'">
+        <xsl:text> for graphic materials</xsl:text>
+      </xsl:when>
+      <xsl:when test="$brgh:format = 'map'">
+        <xsl:text> for maps</xsl:text>
+      </xsl:when>
+      <xsl:when test="$brgh:format = 'monograph'">
+        <xsl:text> for monographs</xsl:text>
+      </xsl:when>
+      <xsl:when test="$brgh:format = 'serial'">
+        <xsl:text> for serials</xsl:text>
+      </xsl:when>
+      <xsl:when test="$brgh:format = 'soundRecording'">
+        <xsl:text> for sound recordings</xsl:text>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:variable>
+
   <xsl:template match="/">
-    <xsl:apply-templates select="j:map/j:map[@key = 'Profile']"/>
+    <xsl:apply-templates select="j:map/j:map[@key = 'Profile']" mode="htmlAll"/>
   </xsl:template>
-  <xsl:template match="j:map/j:map[@key = 'Profile']">
-    <html xmlns="http://www.w3.org/1999/xhtml" version="XHTML"            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"            xsi:schemaLocation="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <xsl:template match="j:map/j:map[@key = 'Profile']" mode="htmlAll">
+    <html xmlns="http://www.w3.org/1999/xhtml" version="XHTML"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
       <head>
-        <!-- Need meta? -->
         <title>
-          <!-- HOW TO: Get string value of $brgh:format and capitalize the first letter?
-                Same as TO DO above -->
-          <xsl:value-of select="concat('RDA Profile: ', $brgh:format)"/>
+          <xsl:value-of select="concat('RDA/RDF profile | ', $brgh:format)"/>
         </title>
         <link href="profiles.css" rel="stylesheet" type="text/css"/>
       </head>
       <body>
         <h1 id="profileTop">
-          <xsl:value-of                        select="concat('University of Washington Libraries RDA Registry Profile for format: ', $brgh:format)"                    />
+          <xsl:value-of
+            select="concat('University of Washington Libraries RDA-in-RDF Profile', $title)"
+          />
         </h1>
-        <!-- Why did I use a moded template here? -->
-        <xsl:apply-templates select="." mode="profileAttrs"/>
+        <xsl:apply-templates select="." mode="startProfile"/>
       </body>
     </html>
   </xsl:template>
-  <xsl:template match="." mode="profileAttrs">
+  <xsl:template match="j:map/j:map[@key = 'Profile']" mode="startProfile">
+    <!-- Why am I getting attr xmlns="" in table element below? -->
     <table class="profileAttrs">
       <thead>
         <tr>
@@ -41,13 +84,13 @@
         <tr>
           <th scope="row">Title</th>
           <td>
-            <xsl:value-of select="concat(j:string[@key = 'title'],': ', $brgh:format)"/>
+            <xsl:value-of select="concat(j:string[@key = 'title'], $title)"/>
           </td>
         </tr>
         <tr>
           <th scope="row">ID</th>
           <td>
-            <xsl:value-of select="concat(j:string[@key = 'id'], ':', $brgh:format)"/>
+            <xsl:value-of select="concat(j:string[@key = 'id'], $id)"/>
           </td>
         </tr>
         <tr>
@@ -65,26 +108,29 @@
         <tr>
           <th scope="row">Description</th>
           <td>
-            <xsl:value-of select="j:string[@key = 'description']"/>
+            <xsl:value-of select="concat('Resource templates and property templates',$title)"/>
           </td>
         </tr>
         <tr>
           <th scope="row">Schema</th>
           <td>
-            <a href="{j:string[@key='schema']}">
-              <xsl:value-of select="j:string[@key = 'schema']"/>
+            <!-- Hard coding -->
+            <a href="https://ld4p.github.io/sinopia/schemas/0.2.1/profile.json">
+              <xsl:text>https://ld4p.github.io/sinopia/schemas/0.2.1/profile.json</xsl:text>
             </a>
           </td>
         </tr>
       </tbody>
     </table>
+    <!-- section element? XHTML or HTML5? Etc. Etc. -->
     <section class="rtsHead">
       <h2 id="rtList">
         <xsl:text>Resource Templates in </xsl:text>
-        <xsl:value-of select="j:string[@key = 'title']"/>
+        <xsl:value-of select="concat(j:string[@key = 'title'],$title)"/>
       </h2>
       <ul>
-        <xsl:for-each                    select="j:array[@key = 'resourceTemplates']/j:map/j:string[@key = 'resourceLabel']">
+        <xsl:for-each
+          select="j:array[@key = 'resourceTemplates']/j:map/j:string[@key = 'resourceLabel']">
           <li>
             <a href="#{translate(., ' ', '')}">
               <xsl:value-of select="."/>
@@ -93,281 +139,6 @@
         </xsl:for-each>
       </ul>
     </section>
-    <xsl:apply-templates select="j:array[@key = 'resourceTemplates']/j:map" mode="rtsAttrs"/>
-  </xsl:template>
-  <xsl:template match="j:map" mode="rtsAttrs">
-    <table class="rtsAttrs" id="{translate(j:string[@key = 'resourceLabel'], ' ', '')}">
-      <thead>
-        <tr>
-          <th>
-            <xsl:text>Resource template information: </xsl:text>
-            <xsl:value-of select="j:string[@key = 'resourceLabel']"/>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">Resource IRI</th>
-          <!-- Currently multiple RT URIs for Agent in source RDA profile; unsightly HTML created here -->
-          <td>
-            <a href="{j:string[@key='resourceURI']}">
-              <xsl:value-of select="j:string[@key = 'resourceURI']"/>
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">ID</th>
-          <td>
-            <xsl:value-of select="j:string[@key = 'id']"/>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">Last Updated</th>
-          <td>
-            <xsl:value-of select="j:string[@key = 'date']"/>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">Author</th>
-          <td>
-            <xsl:value-of select="j:string[@key = 'author']"/>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">Schema</th>
-          <td>
-            <a href="{j:string[@key = 'schema']}">
-              <xsl:value-of select="j:string[@key = 'schema']"/>
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <a href="#rtList">
-              <i class="strong">
-                <xsl:text>RETURN TO RESOURCE TEMPLATE LIST</xsl:text>
-              </i>
-            </a>
-          </th>
-        </tr>
-      </tbody>
-    </table>
-    <section class="propsHead">
-      <h3>
-        <xsl:text>Properties in </xsl:text>
-        <xsl:value-of select="j:string[@key = 'resourceLabel']"/>
-      </h3>
-      <ul>
-        <xsl:for-each select="j:array[@key = 'propertyTemplates']/j:map">
-          <li>
-            <a href="#{translate(j:string[@key='propertyLabel'], ' ', '')}">
-              <xsl:value-of select="j:string[@key = 'propertyLabel']"/>
-            </a>
-          </li>
-        </xsl:for-each>
-        <li>
-          <a href="#{translate(j:string[@key = 'resourceLabel'], ' ', '')}">
-            <i class="strong">
-              <xsl:text>RETURN TO RESOURCE TEMPLATE TOP</xsl:text>
-            </i>
-          </a>
-        </li>
-        <li>
-          <a href="#profileTop">
-            <i class="strong">
-              <xsl:text>RETURN TO PAGE TOP</xsl:text>
-            </i>
-          </a>
-        </li>
-      </ul>
-    </section>
-    <xsl:apply-templates select="j:array[@key = 'propertyTemplates']/j:map" mode="ptsAttrs"/>
-  </xsl:template>
-  <xsl:template match="j:map" mode="ptsAttrs">
-    <table class="ptsAttrs" id="{translate(j:string[@key='propertyLabel'], ' ', '')}">
-      <thead>
-        <tr>
-          <th>
-            <xsl:text>Property template: </xsl:text>
-            <xsl:value-of select="j:string[@key = 'propertyLabel']"/>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <a href="{j:string[@key = 'propertyURI']}">
-              <xsl:value-of select="j:string[@key = 'propertyURI']"/>
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <xsl:choose>
-              <xsl:when test="j:string[@key = 'mandatory'] = 'true'">
-                <xsl:text>Mandatory</xsl:text>
-              </xsl:when>
-              <xsl:when test="j:string[@key = 'mandatory'] = 'false'">
-                <xsl:text>Optional</xsl:text>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:text>Missing/incorrect value for 'mandatory' (!)</xsl:text>
-              </xsl:otherwise>
-            </xsl:choose>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <xsl:choose>
-              <xsl:when test="j:string[@key = 'repeatable'] = 'true'">
-                <xsl:text>Repeatable</xsl:text>
-              </xsl:when>
-              <xsl:when test="j:string[@key = 'repeatable'] = 'false'">
-                <xsl:text>Not repeatable</xsl:text>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:text>Missing/incorrect value for 'repeatable' (!)</xsl:text>
-              </xsl:otherwise>
-            </xsl:choose>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <xsl:choose>
-              <xsl:when test="j:string[@key = 'type'][text()]">
-                <xsl:text>Type: </xsl:text>
-                <xsl:value-of select="j:string[@key = 'type']"/>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:text>Property type not given (!)</xsl:text>
-              </xsl:otherwise>
-            </xsl:choose>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <xsl:text>Value constraints</xsl:text>
-          </th>
-          <xsl:choose>
-            <xsl:when test="j:map[@key = 'valueConstraint']/descendant::text()">
-              <xsl:apply-templates select="j:map[@key = 'valueConstraint']" mode="vc"                            />
-            </xsl:when>
-            <xsl:otherwise>
-              <td>
-                <xsl:text>N/A</xsl:text>
-              </td>
-            </xsl:otherwise>
-          </xsl:choose>
-        </tr>
-        <tr>
-          <th scope="row">
-            <a href="#{translate(../../j:string[@key = 'resourceLabel'], ' ', '')}">
-              <i class="strong">
-                <xsl:text>RETURN TO RESOURCE TEMPLATE TOP</xsl:text>
-              </i>
-            </a>
-          </th>
-        </tr>
-        <tr>
-          <th scope="row">
-            <a href="#profileTop">
-              <i class="strong">
-                <xsl:text>RETURN TO PROFILE TOP</xsl:text>
-              </i>
-            </a>
-          </th>
-        </tr>
-      </tbody>
-    </table>
-  </xsl:template>
-  <xsl:template match="j:map[@key = 'valueConstraint']" mode="vc">
-    <xsl:choose>
-      <xsl:when test="j:array[@key = 'valueTemplateRefs']/descendant::text()">
-        <tr>
-          <td/>
-          <th scope="row">
-            <xsl:text>Value template references</xsl:text>
-          </th>
-          <xsl:for-each select="j:array[@key = 'valueTemplateRefs']/j:string">
-            <td>
-              <xsl:value-of select="."/>
-            </td>
-          </xsl:for-each>
-        </tr>
-      </xsl:when>
-      <xsl:otherwise/>
-    </xsl:choose>
-    <xsl:choose>
-      <xsl:when test="j:array[@key = 'useValuesFrom']/descendant::text()">
-        <tr>
-          <td/>
-          <th scope="row">
-            <xsl:text>Use values from</xsl:text>
-          </th>
-          <xsl:for-each select="j:array[@key = 'useValuesFrom']/j:string">
-            <td>
-              <xsl:value-of select="."/>
-            </td>
-          </xsl:for-each>
-        </tr>
-      </xsl:when>
-      <xsl:otherwise/>
-    </xsl:choose>
-    <xsl:choose>
-      <xsl:when test="j:map[@key = 'valueDataType']/j:string[@key = 'dataTypeURI'][text()]">
-        <tr>
-          <td/>
-          <th scope="row">
-            <xsl:text>Value datatype</xsl:text>
-          </th>
-          <!-- Not sure if this needs to be a for-each: Are there ever multiple datatype IRIs? -->
-          <xsl:for-each                        select="j:map[@key = 'valueDataType']/j:string[@key = 'dataTypeURI']">
-            <td>
-              <a href="{.}">
-                <xsl:value-of select="."/>
-              </a>
-            </td>
-          </xsl:for-each>
-        </tr>
-      </xsl:when>
-      <xsl:otherwise/>
-    </xsl:choose>
-    <xsl:choose>
-      <xsl:when test="j:array[@key = 'defaults']/descendant::text()">
-        <tr>
-          <td/>
-          <th scope="row">
-            <xsl:text>Defaults</xsl:text>
-          </th>
-        </tr>
-        <xsl:for-each                    select="j:array[@key = 'defaults']/j:map/j:string[@key = 'defaultURI']/text()">
-          <tr>
-            <td/>
-            <td/>
-            <th scope="row">
-              <xsl:text>Default IRI</xsl:text>
-            </th>
-            <td>
-              <a href="{.}">
-                <xsl:value-of select="."/>
-              </a>
-            </td>
-          </tr>
-        </xsl:for-each>
-        <xsl:for-each                    select="j:array[@key = 'defaults']/j:map/j:string[@key = 'defaultLiteral']/text()">
-          <tr>
-            <td/>
-            <td/>
-            <th scope="row">
-              <xsl:text>Default Literal</xsl:text>
-            </th>
-            <td>
-              <xsl:value-of select="."/>
-            </td>
-          </tr>
-        </xsl:for-each>
-      </xsl:when>
-      <xsl:otherwise/>
-    </xsl:choose>
+    <xsl:apply-templates select="j:array[@key = 'resourceTemplates']/j:map"/>
   </xsl:template>
 </xsl:stylesheet>

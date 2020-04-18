@@ -18,28 +18,7 @@ tbody tr:nth-child(even) {
     font-size: 120% ;
     background-color: #66CDAA ;
 }
-.rtsHead {
-    padding-left: 25px ;
-}
-.rtsAttrs {
-    padding-left: 25px ;
-	text-align: center ;
-}
-.rtsAttrs thead {
-    font-size: 120% ;
-    background-color: #98FB98 ;
-}
-.propsHead {
-    padding-left: 30px ;
-}
-.ptsAttrs {
-    padding-left: 50px ;
-	text-align: left ;
-}
-.ptsAttrs thead {
-    font-size: 120% ;
-    background-color: #C0C0C0 ;
-}
+
 
 
 
