@@ -6,7 +6,7 @@
 
   <xsl:param name="brgh:format"/>
   <xsl:variable name="id" select="concat(':', $brgh:format)"/>
-  <xsl:variable name="title">
+  <xsl:variable name="desc">
     <xsl:choose>
       <xsl:when test="$brgh:format = 'adminMetadata'">
         <xsl:text> for administrative metadata</xsl:text>
@@ -46,11 +46,52 @@
       </xsl:when>
     </xsl:choose>
   </xsl:variable>
+  <xsl:variable name="title">
+    <xsl:choose>
+      <xsl:when test="$brgh:format = 'adminMetadata'">
+        <xsl:text> for Administrative Metadata</xsl:text>
+      </xsl:when>
+      <xsl:when test="$brgh:format = 'dvdVideo'">
+        <xsl:text> for DVD Videos</xsl:text>
+      </xsl:when>
+      <xsl:when test="$brgh:format = 'eBook'">
+        <xsl:text> for e-Books</xsl:text>
+      </xsl:when>
+      <xsl:when test="$brgh:format = 'eGraphic'">
+        <xsl:text> for Electronic Graphic Materials</xsl:text>
+      </xsl:when>
+      <xsl:when test="$brgh:format = 'eMap'">
+        <xsl:text> for Electronic Maps</xsl:text>
+      </xsl:when>
+      <xsl:when test="$brgh:format = 'eSerial'">
+        <xsl:text> for Electronic Serials</xsl:text>
+      </xsl:when>
+      <xsl:when test="$brgh:format = 'etd'">
+        <xsl:text> for Electronic Theses and Dissertations</xsl:text>
+      </xsl:when>
+      <xsl:when test="$brgh:format = 'graphic'">
+        <xsl:text> for Graphic Materials</xsl:text>
+      </xsl:when>
+      <xsl:when test="$brgh:format = 'map'">
+        <xsl:text> for Maps</xsl:text>
+      </xsl:when>
+      <xsl:when test="$brgh:format = 'monograph'">
+        <xsl:text> for Monographs</xsl:text>
+      </xsl:when>
+      <xsl:when test="$brgh:format = 'serial'">
+        <xsl:text> for Serials</xsl:text>
+      </xsl:when>
+      <xsl:when test="$brgh:format = 'soundRecording'">
+        <xsl:text> for Sound Recordings</xsl:text>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:variable>
 
   <xsl:template match="/">
     <xsl:apply-templates select="j:map/j:map[@key = 'Profile']" mode="htmlAll"/>
   </xsl:template>
   <xsl:template match="j:map/j:map[@key = 'Profile']" mode="htmlAll">
+    <!-- Why does html element in output have xmlns=""? -->
     <html xmlns="http://www.w3.org/1999/xhtml" version="XHTML"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
@@ -75,7 +116,7 @@
     <table class="profileAttrs">
       <thead>
         <tr>
-          <th>
+          <th colspan="2">
             <xsl:text>Profile Information</xsl:text>
           </th>
         </tr>
@@ -108,7 +149,7 @@
         <tr>
           <th scope="row">Description</th>
           <td>
-            <xsl:value-of select="concat('Resource templates and property templates',$title)"/>
+            <xsl:value-of select="concat('Resource templates and property templates',$desc)"/>
           </td>
         </tr>
         <tr>
@@ -123,7 +164,7 @@
       </tbody>
     </table>
     <!-- section element? XHTML or HTML5? Etc. Etc. -->
-    <section class="rtsHead">
+    <section class="rtList">
       <h2 id="rtList">
         <xsl:text>Resource Templates in </xsl:text>
         <xsl:value-of select="concat(j:string[@key = 'title'],$title)"/>
