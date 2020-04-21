@@ -107,13 +107,13 @@
             select="concat('University of Washington Libraries RDA-in-RDF Profile', $title)"
           />
         </h1>
-        <xsl:apply-templates select="." mode="startProfile"/>
+        <xsl:apply-templates select="." mode="profileTop"/>
       </body>
     </html>
   </xsl:template>
-  <xsl:template match="j:map/j:map[@key = 'Profile']" mode="startProfile">
+  <xsl:template match="j:map/j:map[@key = 'Profile']" mode="profileTop">
     <!-- Why am I getting attr xmlns="" in table element below? -->
-    <table class="profileAttrs">
+    <table class="profileInfo">
       <thead>
         <tr>
           <th colspan="2">
@@ -167,19 +167,20 @@
     <section class="rtList">
       <h2 id="rtList">
         <xsl:text>Resource Templates in </xsl:text>
-        <xsl:value-of select="concat(j:string[@key = 'title'],$title)"/>
+        <xsl:value-of select="concat('RDA/RDF profile | ', $brgh:format)"/>
       </h2>
       <ul>
+        <!-- HERE is where it currently breaks -->
         <xsl:for-each
-          select="j:array[@key = 'resourceTemplates']/j:map/j:string[@key = 'resourceLabel']">
+          select="j:array[@key='resourceTemplates'][j:map/j:array[@key='propertyTemplates']/j:map/j:array[@key='usedInProfile']/j:string=$brgh:format]">
           <li>
-            <a href="#{translate(., ' ', '')}">
-              <xsl:value-of select="."/>
+            <a href="#{translate(j:map/j:string[@key='resourceLabel'],' ','')}">
+              <xsl:value-of select="j:map/j:string[@key='resourceLabel']"/>
             </a>
           </li>
         </xsl:for-each>
       </ul>
     </section>
-    <xsl:apply-templates select="j:array[@key = 'resourceTemplates']/j:map"/>
+    <xsl:apply-templates select="j:array[@key = 'resourceTemplates']/j:map" mode="rtInfo"/>
   </xsl:template>
 </xsl:stylesheet>

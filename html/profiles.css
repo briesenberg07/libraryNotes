@@ -11,10 +11,10 @@ tbody tr:nth-child(odd) {
 tbody tr:nth-child(even) {
     background-color: #F8F8F8 ;
 }
-.profileAttrs {
+.profileInfo {
 	text-align: center ;
 }
-.profileAttrs thead {
+.profileInfo thead {
     font-size: 120% ;
     background-color: #66CDAA ;
 }
