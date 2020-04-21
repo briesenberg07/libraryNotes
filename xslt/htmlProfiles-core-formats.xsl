@@ -91,7 +91,7 @@
     <xsl:apply-templates select="j:map/j:map[@key = 'Profile']" mode="htmlAll"/>
   </xsl:template>
   <xsl:template match="j:map/j:map[@key = 'Profile']" mode="htmlAll">
-    <!-- Why does html element in output have xmlns=""? -->
+    <!-- Would there be any advantages to outputting HTML5 over XHTML? Is this possible/advisable? -->
     <html xmlns="http://www.w3.org/1999/xhtml" version="XHTML"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
