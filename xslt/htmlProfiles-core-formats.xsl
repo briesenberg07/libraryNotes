@@ -172,7 +172,7 @@
       <ul>
         <!-- HERE is where it currently breaks -->
         <xsl:for-each
-          select="j:array[@key='resourceTemplates'][j:map/j:array[@key='propertyTemplates']/j:map/j:array[@key='usedInProfile']/j:string=$brgh:format]">
+          select="j:array[@key='resourceTemplates'][contains(j:map/j:array[@key='propertyTemplates']/j:map/j:array[@key='usedInProfile']/j:string, $brgh:format)]">
           <li>
             <a href="#{translate(j:map/j:string[@key='resourceLabel'],' ','')}">
               <xsl:value-of select="j:map/j:string[@key='resourceLabel']"/>
