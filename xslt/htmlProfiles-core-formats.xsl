@@ -104,8 +104,7 @@
       <body>
         <h1 id="profileTop">
           <xsl:value-of
-            select="concat('University of Washington Libraries RDA-in-RDF Profile', $title)"
-          />
+            select="concat('University of Washington Libraries RDA-in-RDF Profile', $title)"/>
         </h1>
         <xsl:apply-templates select="." mode="profileTop"/>
       </body>
@@ -149,7 +148,7 @@
         <tr>
           <th scope="row">Description</th>
           <td>
-            <xsl:value-of select="concat('Resource templates and property templates',$desc)"/>
+            <xsl:value-of select="concat('Resource templates and property templates', $desc)"/>
           </td>
         </tr>
         <tr>
@@ -170,14 +169,15 @@
         <xsl:value-of select="concat('RDA/RDF profile | ', $brgh:format)"/>
       </h2>
       <ul>
-        <!-- HERE is where it currently breaks -->
-        <xsl:for-each
-          select="j:array[@key='resourceTemplates'][contains(j:map/j:array[@key='propertyTemplates']/j:map/j:array[@key='usedInProfile']/j:string, $brgh:format)]">
-          <li>
-            <a href="#{translate(j:map/j:string[@key='resourceLabel'],' ','')}">
-              <xsl:value-of select="j:map/j:string[@key='resourceLabel']"/>
-            </a>
-          </li>
+        <xsl:for-each select="j:array[@key = 'resourceTemplates']">
+          <xsl:if
+            test="j:map/j:array[@key = 'propertyTemplates']/j:map/j:array[@key = 'usedInProfile']/j:string=$brgh:format">
+            <li>
+              <a> <!-- href="#{translate(j:map/j:string[@key='resourceLabel'],' ','')}"> -->
+                <xsl:value-of select="j:map/j:string[@key = 'resourceLabel']"/>
+              </a>
+            </li>
+          </xsl:if>
         </xsl:for-each>
       </ul>
     </section>
