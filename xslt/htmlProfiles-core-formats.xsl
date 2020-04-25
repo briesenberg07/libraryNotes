@@ -169,15 +169,12 @@
         <xsl:value-of select="concat('RDA/RDF profile | ', $brgh:format)"/>
       </h2>
       <ul>
-        <xsl:for-each select="j:array[@key = 'resourceTemplates']">
-          <xsl:if
-            test="j:map/j:array[@key = 'propertyTemplates']/j:map/j:array[@key = 'usedInProfile']/j:string=$brgh:format">
+        <xsl:for-each select="j:array[@key = 'resourceTemplates']/j:map[j:array[@key = 'propertyTemplates']/j:map/j:array[@key = 'usedInProfile']/j:string=$brgh:format]">
             <li>
-              <a> <!-- href="#{translate(j:map/j:string[@key='resourceLabel'],' ','')}"> -->
-                <xsl:value-of select="j:map/j:string[@key = 'resourceLabel']"/>
+              <a href="#{translate(j:string[@key='resourceLabel'],' ','')}">
+                <xsl:value-of select="j:string[@key = 'resourceLabel']"/>
               </a>
             </li>
-          </xsl:if>
         </xsl:for-each>
       </ul>
     </section>
