@@ -88,9 +88,9 @@
   </xsl:variable>
 
   <xsl:template match="/">
-    <xsl:apply-templates select="j:map/j:map[@key = 'Profile']" mode="htmlAll"/>
+    <xsl:apply-templates select="j:map/j:map[@key = 'Profile']" mode="html"/>
   </xsl:template>
-  <xsl:template match="j:map/j:map[@key = 'Profile']" mode="htmlAll">
+  <xsl:template match="j:map/j:map[@key = 'Profile']" mode="html">
     <!-- Would there be any advantages to outputting HTML5 over XHTML? Is this possible/advisable? -->
     <html xmlns="http://www.w3.org/1999/xhtml" version="XHTML"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -102,21 +102,22 @@
         <link href="profiles.css" rel="stylesheet" type="text/css"/>
       </head>
       <body>
-        <h1 id="profileTop">
+        <h1 id="profile">
           <xsl:value-of
-            select="concat('University of Washington Libraries RDA-in-RDF Profile', $title)"/>
+            select="concat('University of Washington Libraries RDA/RDF Profile', $title)"/>
         </h1>
-        <xsl:apply-templates select="." mode="profileTop"/>
+        <xsl:apply-templates select="." mode="profileInfo"/>
       </body>
     </html>
   </xsl:template>
-  <xsl:template match="j:map/j:map[@key = 'Profile']" mode="profileTop">
+  <xsl:template match="j:map/j:map[@key = 'Profile']" mode="profileInfo">
     <!-- Why am I getting attr xmlns="" in table element below? -->
     <table class="profileInfo">
       <thead>
         <tr>
           <th colspan="2">
-            <xsl:text>Profile Information</xsl:text>
+            <xsl:text>Profile: </xsl:text>
+            <xsl:value-of select="j:string[@key='title']"/>
           </th>
         </tr>
       </thead>
@@ -142,7 +143,7 @@
         <tr>
           <th scope="row">Last Updated</th>
           <td>
-            <xsl:value-of select="j:string[@key = 'date']"/>
+            <xsl:value-of select="current-date()"/>
           </td>
         </tr>
         <tr>
@@ -154,7 +155,7 @@
         <tr>
           <th scope="row">Schema</th>
           <td>
-            <!-- Hard coding -->
+            <!-- *NOTE hard coding* -->
             <a href="https://ld4p.github.io/sinopia/schemas/0.2.1/profile.json">
               <xsl:text>https://ld4p.github.io/sinopia/schemas/0.2.1/profile.json</xsl:text>
             </a>
@@ -165,8 +166,8 @@
     <!-- section element? XHTML or HTML5? Etc. Etc. -->
     <section class="rtList">
       <h2 id="rtList">
-        <xsl:text>Resource Templates in </xsl:text>
-        <xsl:value-of select="concat('RDA/RDF profile | ', $brgh:format)"/>
+        <xsl:text>Resource Templates </xsl:text>
+        <xsl:value-of select="$title"/>
       </h2>
       <ul>
         <xsl:for-each select="j:array[@key = 'resourceTemplates']/j:map[j:array[@key = 'propertyTemplates']/j:map/j:array[@key = 'usedInProfile']/j:string=$brgh:format]">
@@ -179,5 +180,57 @@
       </ul>
     </section>
     <xsl:apply-templates select="j:array[@key = 'resourceTemplates']/j:map" mode="rtInfo"/>
+  </xsl:template>
+  <xsl:template match="j:array[@key='resourceTemplates']/j:map" mode="rtInfo">
+    <xsl:for-each select=".[j:array[@key = 'propertyTemplates']/j:map/j:array[@key = 'usedInProfile']/j:string=$brgh:format]">
+      <table class="rtInfo" id="{translate(j:string[@key='resourceLabel'],' ', '')}">
+        <thead>
+          <tr>
+            <th colspan="2">
+              <xsl:text>Resource Template: </xsl:text>
+              <xsl:value-of select="j:string[@key='resourceLabel']"/>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Resource IRI</th>
+            <td>
+              <a href="{j:string[@key='resourceURI']}">
+                <xsl:value-of select="j:string[@key='resourceURI']"/>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Label</th>
+            <td>
+              <!-- Would like a way to remove 'WAU RT ' from labels here and elsewhere -->
+              <xsl:value-of select="j:string[@key='resourceLabel']"/>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">ID</th>
+            <td>
+              <xsl:value-of select="j:string[@key='id']"/>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- <section class="ptList">
+        <h3 id="{concat(translate(j:string[@key='resourceLabel'],' ',''), 'ptList')}">
+          <xsl:text>Property Templates in </xsl:text>
+          <xsl:value-of select="j:string[@key='resourceLabel']"/>
+        </h3>
+        <ul>
+          <xsl:for-each select="j:array[@key='propertyTemplates']/j:map/j:array[@key='usedInProfile']=$brgh:format">
+            <li>
+              <a href="{translate(j:array[@key='propertyTemplates']/j:map/j:string[@key='propertyLabel'], ' ', '')}">
+                
+              </a>
+            </li>
+          </xsl:for-each>
+        </ul>
+      </section> -->
+    </xsl:for-each>
   </xsl:template>
 </xsl:stylesheet>
