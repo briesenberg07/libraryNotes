@@ -117,7 +117,7 @@
         <tr>
           <th colspan="2">
             <xsl:text>Profile: </xsl:text>
-            <xsl:value-of select="j:string[@key='title']"/>
+            <xsl:value-of select="j:string[@key = 'title']"/>
           </th>
         </tr>
       </thead>
@@ -170,25 +170,27 @@
         <xsl:value-of select="$title"/>
       </h2>
       <ul>
-        <xsl:for-each select="j:array[@key = 'resourceTemplates']/j:map[j:array[@key = 'propertyTemplates']/j:map/j:array[@key = 'usedInProfile']/j:string=$brgh:format]">
-            <li>
-              <a href="#{translate(j:string[@key='resourceLabel'],' ','')}">
-                <xsl:value-of select="j:string[@key = 'resourceLabel']"/>
-              </a>
-            </li>
+        <xsl:for-each
+          select="j:array[@key = 'resourceTemplates']/j:map[j:array[@key = 'propertyTemplates']/j:map/j:array[@key = 'usedInProfile']/j:string = $brgh:format]">
+          <li>
+            <a href="#{translate(j:string[@key='resourceLabel'],' ','')}">
+              <xsl:value-of select="j:string[@key = 'resourceLabel']"/>
+            </a>
+          </li>
         </xsl:for-each>
       </ul>
     </section>
     <xsl:apply-templates select="j:array[@key = 'resourceTemplates']/j:map" mode="rtInfo"/>
   </xsl:template>
-  <xsl:template match="j:array[@key='resourceTemplates']/j:map" mode="rtInfo">
-    <xsl:for-each select=".[j:array[@key = 'propertyTemplates']/j:map/j:array[@key = 'usedInProfile']/j:string=$brgh:format]">
+  <xsl:template match="j:array[@key = 'resourceTemplates']/j:map" mode="rtInfo">
+    <xsl:for-each
+      select=".[j:array[@key = 'propertyTemplates']/j:map/j:array[@key = 'usedInProfile']/j:string = $brgh:format]">
       <table class="rtInfo" id="{translate(j:string[@key='resourceLabel'],' ', '')}">
         <thead>
           <tr>
             <th colspan="2">
               <xsl:text>Resource Template: </xsl:text>
-              <xsl:value-of select="j:string[@key='resourceLabel']"/>
+              <xsl:value-of select="j:string[@key = 'resourceLabel']"/>
             </th>
           </tr>
         </thead>
@@ -197,7 +199,7 @@
             <th scope="row">Resource IRI</th>
             <td>
               <a href="{j:string[@key='resourceURI']}">
-                <xsl:value-of select="j:string[@key='resourceURI']"/>
+                <xsl:value-of select="j:string[@key = 'resourceURI']"/>
               </a>
             </td>
           </tr>
@@ -205,32 +207,56 @@
             <th scope="row">Label</th>
             <td>
               <!-- Would like a way to remove 'WAU RT ' from labels here and elsewhere -->
-              <xsl:value-of select="j:string[@key='resourceLabel']"/>
+              <xsl:value-of select="j:string[@key = 'resourceLabel']"/>
             </td>
           </tr>
           <tr>
             <th scope="row">ID</th>
             <td>
-              <xsl:value-of select="j:string[@key='id']"/>
+              <xsl:value-of select="j:string[@key = 'id']"/>
             </td>
+          </tr>
+          <tr>
+            <th scope="row" colspan="2">
+              <a href="#rtList">
+                <xsl:text>RETURN TO RESOURCE TEMPLATE LIST</xsl:text>
+              </a>
+            </th>
           </tr>
         </tbody>
       </table>
-      <!-- <section class="ptList">
+      <section class="ptList">
         <h3 id="{concat(translate(j:string[@key='resourceLabel'],' ',''), 'ptList')}">
           <xsl:text>Property Templates in </xsl:text>
-          <xsl:value-of select="j:string[@key='resourceLabel']"/>
+          <xsl:value-of select="j:string[@key = 'resourceLabel']"/>
         </h3>
+        <!-- Is this the correct place to add xsl:sort for property templates? -->
         <ul>
-          <xsl:for-each select="j:array[@key='propertyTemplates']/j:map/j:array[@key='usedInProfile']=$brgh:format">
+          <xsl:for-each
+            select="j:array[@key = 'propertyTemplates']/j:map[j:array[@key = 'usedInProfile']/j:string = $brgh:format]">
             <li>
-              <a href="{translate(j:array[@key='propertyTemplates']/j:map/j:string[@key='propertyLabel'], ' ', '')}">
-                
+              <!-- NOTE translate pattern for later use when creating prop ID values -->
+              <a href="#{translate(j:string[@key='propertyLabel'],' (*)','')}">
+                <xsl:value-of select="j:string[@key = 'propertyLabel']"/>
               </a>
             </li>
           </xsl:for-each>
+          <li>
+            <a href="#{translate(j:string[@key='resourceLabel'],' ', '')}" class="toRtTop">
+              <strong>
+                <xsl:text>RETURN TO RESOURCE TEMPLATE TOP</xsl:text>
+              </strong>
+            </a>
+          </li>
+          <li>
+            <a href="#rtList" class="toRtList">
+              <strong>
+                <xsl:text>RETURN TO RESOURCE TEMPLATE LIST</xsl:text>
+              </strong>
+            </a>
+          </li>
         </ul>
-      </section> -->
+      </section>
     </xsl:for-each>
   </xsl:template>
 </xsl:stylesheet>
