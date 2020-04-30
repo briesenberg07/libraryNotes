@@ -143,7 +143,7 @@
         <tr>
           <th scope="row">Last Updated</th>
           <td>
-            <xsl:value-of select="current-date()"/>
+            <xsl:value-of select="format-date(current-date(), '[Y0001]-[M01]-[D01]')"/>
           </td>
         </tr>
         <tr>
@@ -216,10 +216,17 @@
               <xsl:value-of select="j:string[@key = 'id']"/>
             </td>
           </tr>
-          <tr>
+          <!-- <tr>
             <th scope="row" colspan="2">
               <a href="#rtList">
                 <xsl:text>RETURN TO RESOURCE TEMPLATE LIST</xsl:text>
+              </a>
+            </th>
+          </tr> -->
+          <tr>
+            <th scope="row" colspan="2">
+              <a href="#profile">
+                <xsl:text>RETURN TO PROFILE TOP</xsl:text>
               </a>
             </th>
           </tr>
@@ -230,10 +237,12 @@
           <xsl:text>Property Templates in </xsl:text>
           <xsl:value-of select="j:string[@key = 'resourceLabel']"/>
         </h3>
-        <!-- Is this the correct place to add xsl:sort for property templates? -->
+        <!-- TO DO: SORT BY uwFormOrder
+          Is this the correct place to add xsl:sort for property templates? -->
         <ul>
           <xsl:for-each
             select="j:array[@key = 'propertyTemplates']/j:map[j:array[@key = 'usedInProfile']/j:string = $brgh:format]">
+            <xsl:sort select="j:number[@key = 'uwFormOrder']" data-type="number"/>
             <li>
               <!-- NOTE translate pattern for later use when creating prop ID values -->
               <a href="#{translate(j:string[@key='propertyLabel'],' (*)','')}">
@@ -249,12 +258,45 @@
             </a>
           </li>
           <li>
-            <a href="#rtList" class="toRtList">
+            <a href="#profile" class="toRtList">
               <strong>
-                <xsl:text>RETURN TO RESOURCE TEMPLATE LIST</xsl:text>
+                <xsl:text>RETURN TO PROFILE TOP</xsl:text>
               </strong>
             </a>
           </li>
+        </ul>
+      </section>
+    </xsl:for-each>
+    <xsl:apply-templates select="j:array[@key = 'propertyTemplates']/j:map" mode="ptInfo"/>
+  </xsl:template>
+  <xsl:template match="j:array[@key = 'propertyTemplates']/j:map" mode="ptInfo">
+    <xsl:for-each select=".[j:array[@key = 'usedInProfile']/j:string = $brgh:format]">
+      <xsl:sort select="j:number[@key = 'uwFormOrder']"/>
+      <!-- See translate pattern NOTE above -->
+      <section class="ptInfo" id="{translate(j:string[@key='propertyLabel'],' (*)','')}">
+        <h4>
+          <span>
+            <xsl:text>Property Template: </xsl:text>
+            <xsl:value-of select="j:string[@key = 'propertyLabel']"/>
+          </span>
+        </h4>
+        <ul>
+          <li>
+            <xsl:text>Property IRI: </xsl:text>
+            <a href="{j:string[@key='propertyURI']}">
+              <xsl:value-of select="j:string[@key = 'propertyURI']"/>
+            </a>
+          </li>
+          <xsl:if test="j:string[@key = 'remark']/text()">
+            <li>
+              <xsl:text>RDA Toolkit Element Reference: </xsl:text>
+              <!-- Would be a great place for a regex to get part of URL or part of label
+                  and display rule number as hot text -->
+              <a href="{j:string[@key='remark']}">
+                <xsl:value-of select="j:string[@key = 'remark']"/>
+              </a>
+            </li>
+          </xsl:if>
         </ul>
       </section>
     </xsl:for-each>
