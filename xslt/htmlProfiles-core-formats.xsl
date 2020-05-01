@@ -191,6 +191,7 @@
             <th colspan="2">
               <xsl:text>Resource Template: </xsl:text>
               <xsl:value-of select="j:string[@key = 'resourceLabel']"/>
+              <xsl:value-of select="$title"/>
             </th>
           </tr>
         </thead>
@@ -236,6 +237,7 @@
         <h3 id="{concat(translate(j:string[@key='resourceLabel'],' ',''), 'ptList')}">
           <xsl:text>Property Templates in </xsl:text>
           <xsl:value-of select="j:string[@key = 'resourceLabel']"/>
+          <xsl:value-of select="$title"/>
         </h3>
         <!-- TO DO: SORT BY uwFormOrder
           Is this the correct place to add xsl:sort for property templates? -->
@@ -287,6 +289,9 @@
               <xsl:value-of select="j:string[@key = 'propertyURI']"/>
             </a>
           </li>
+          <!-- May want to double-check my node/child text elements tests,
+            especially later when testing for content in child nodes;
+            see prev. html transform -->
           <xsl:if test="j:string[@key = 'remark']/text()">
             <li>
               <xsl:text>RDA Toolkit Element Reference: </xsl:text>
