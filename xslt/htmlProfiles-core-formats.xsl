@@ -3,9 +3,14 @@
   xmlns:j="http://www.w3.org/2005/xpath-functions"
   xmlns:brgh="https://github.com/briesenberg07/bmrLIS/" exclude-result-prefixes="j" version="3.0">
   <xsl:strip-space elements="*"/>
-
   <xsl:param name="brgh:format"/>
   <xsl:variable name="id" select="concat(':', $brgh:format)"/>
+  
+  <!-- Trying something; not yet successful:
+    See below vars qaNameString, qaSourceURL, and qaInfo -->
+  <xsl:include href="qaSources.xsl"/>
+
+  <!-- When successful above move these to external stylesheet module as well -->
   <xsl:variable name="desc">
     <xsl:choose>
       <xsl:when test="$brgh:format = 'adminMetadata'">
@@ -166,8 +171,10 @@
     <!-- section element? XHTML or HTML5? Etc. Etc. -->
     <section class="rtList">
       <h2 id="rtList">
-        <xsl:text>Resource Templates </xsl:text>
-        <xsl:value-of select="$title"/>
+        <span>
+          <xsl:text>Resource Templates </xsl:text>
+          <xsl:value-of select="$title"/>
+        </span>
       </h2>
       <ul>
         <xsl:for-each
@@ -235,9 +242,11 @@
       </table>
       <section class="ptList">
         <h3 id="{concat(translate(j:string[@key='resourceLabel'],' ',''), 'ptList')}">
-          <xsl:text>Property Templates in </xsl:text>
-          <xsl:value-of select="j:string[@key = 'resourceLabel']"/>
-          <xsl:value-of select="$title"/>
+          <span>
+            <xsl:text>Property Templates in </xsl:text>
+            <xsl:value-of select="j:string[@key = 'resourceLabel']"/>
+            <xsl:value-of select="$title"/>
+          </span>
         </h3>
         <!-- TO DO: SORT BY uwFormOrder
           Is this the correct place to add xsl:sort for property templates? -->
@@ -272,10 +281,10 @@
     <xsl:apply-templates select="j:array[@key = 'propertyTemplates']/j:map" mode="ptInfo"/>
   </xsl:template>
   <xsl:template match="j:array[@key = 'propertyTemplates']/j:map" mode="ptInfo">
-    <xsl:for-each select=".[j:array[@key = 'usedInProfile']/j:string = $brgh:format]">
-      <xsl:sort select="j:number[@key = 'uwFormOrder']"/>
-      <!-- See translate pattern NOTE above -->
-      <section class="ptInfo" id="{translate(j:string[@key='propertyLabel'],' (*)','')}">
+    <section class="ptInfo" id="{translate(j:string[@key='propertyLabel'],' (*)','')}">
+      <xsl:for-each select=".[j:array[@key = 'usedInProfile']/j:string = $brgh:format]">
+        <xsl:sort select="j:number[@key = 'uwFormOrder']"/>
+        <!-- See translate pattern NOTE above -->
         <h4>
           <span>
             <xsl:text>Property Template: </xsl:text>
@@ -302,8 +311,105 @@
               </a>
             </li>
           </xsl:if>
+          <xsl:choose>
+            <xsl:when test="j:string[@key = 'mandatory'] = 'true'">
+              <li>
+                <xsl:text>Mandatory</xsl:text>
+              </li>
+            </xsl:when>
+            <xsl:when test="j:string[@key = 'mandatory'] = 'false'">
+              <li>
+                <xsl:text>Optional</xsl:text>
+              </li>
+            </xsl:when>
+            <xsl:otherwise>
+              <li>
+                <xsl:text>Missing/incorrect value for 'mandatory' (!)</xsl:text>
+              </li>
+            </xsl:otherwise>
+          </xsl:choose>
+          <xsl:choose>
+            <xsl:when test="j:string[@key = 'repeatable'] = 'true'">
+              <li>
+                <xsl:text>Repeatable</xsl:text>
+              </li>
+            </xsl:when>
+            <xsl:when test="j:string[@key = 'repeatable'] = 'false'">
+              <li>
+                <xsl:text>Not repeatable</xsl:text>
+              </li>
+            </xsl:when>
+            <xsl:otherwise>
+              <li>
+                <xsl:text>Missing/incorrect value for 'repeatable' (!)</xsl:text>
+              </li>
+            </xsl:otherwise>
+          </xsl:choose>
+          <xsl:choose>
+            <xsl:when test="j:string[@key = 'type'][text()]">
+              <li>
+                <xsl:text>Property type: </xsl:text>
+                <!-- NOTE that there are new property types in Sinopia schema v0.2.1!
+                  Ideally capitalize property type value (regex?) -->
+                <xsl:value-of select="j:string[@key = 'type']"/>
+              </li>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:text>Missing/incorrect value for 'propertyType' (!)</xsl:text>
+            </xsl:otherwise>
+          </xsl:choose>
+          <xsl:if test="j:map[@key = 'valueConstraint']/descendant-or-self::text()">
+            <li>
+              <xsl:text>Value Constraint(s):</xsl:text>
+              <ul>
+                <xsl:apply-templates select="j:map[@key = 'valueConstraint']" mode="valCons"/>
+              </ul>
+            </li>
+          </xsl:if>
+          <li>
+            <span class="propBacklink">
+              <a href="#{concat(translate(../../j:string[@key='resourceLabel'],' ',''), 'ptList')}">
+                <xsl:text>RETURN TO PROPERTY LIST FOR </xsl:text>
+                <xsl:value-of select="../../j:string[@key = 'resourceLabel']"/>
+              </a>
+            </span>
+          </li>
+          <li>
+            <span class="propBacklink">
+              <a href="#rtList">
+                <xsl:text>RETURN TO RESOURCE TEMPLATE LIST</xsl:text>
+              </a>
+            </span>
+          </li>
         </ul>
-      </section>
-    </xsl:for-each>
+      </xsl:for-each>
+    </section>
+  </xsl:template>
+  <xsl:template match="j:map[@key = 'valueConstraint']" mode="valCons">
+    <xsl:if test="j:array[@key = 'valueTemplateRefs']/j:string/text()">
+      <li>
+        <!-- NOTE *hard coding* -->
+        <xsl:text>Resource Template for Value(s): </xsl:text>
+        <a
+          href="{concat('https://www.lib.washington.edu/static/public/cams/profiles/WAU.profile.RDA.adminMetadata.html#',translate(j:array[@key='valueTemplateRefs']/j:string,':',''))}">
+          <xsl:value-of select="j:array[@key = 'valueTemplateRefs']/j:string"/>
+        </a>
+      </li>
+    </xsl:if>
+    <xsl:if test="j:array[@key = 'useValuesFrom']/j:string/text()">
+      <li>
+        <xsl:text>Resource Lookup Sources:</xsl:text>
+        <ul>
+          <xsl:for-each select="j:array[@key = 'useValuesFrom']/j:string/text()">
+            <li>
+              <a href="{$qaSourceURL}">
+                <xsl:value-of select="$qaNameString"/>
+              </a>
+              <xsl:value-of select="$qaInfo"/>
+            </li>
+          </xsl:for-each>
+        </ul>
+      </li>
+    </xsl:if>
   </xsl:template>
 </xsl:stylesheet>

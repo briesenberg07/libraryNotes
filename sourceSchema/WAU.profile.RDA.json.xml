@@ -3801,7 +3801,7 @@
                         <string key="mandatory">false</string>
                         <string key="repeatable">true</string>
                         <string key="type">literal</string>
-                        <number key="uwFormOrder">19</number>
+                        <number key="uwFormOrder">-1</number>
                         <string key="statusUw">done</string>
                         <array key="noteUw"/>
                         <array key="qUw"/>
@@ -7601,7 +7601,16 @@
                         <string key="propertyURI">http://rdaregistry.info/Elements/w/P10002</string>
                         <string key="mandatory">false</string>
                         <string key="repeatable">true</string>
-                        <string key="type">literal</string>
+                        <string key="type">lookup</string>
+                        <map key="valueConstraint">
+                            <array key="useValuesFrom">
+                                <string>urn:ld4p:qa:dbpedia</string>
+                                <string>urn:ld4p:qa:isni</string>
+                                <string>urn:ld4p:qa:names</string>
+                                <string>urn:ld4p:qa:fast:work</string>
+                                <string>urn:wikidata</string>
+                            </array>
+                        </map>
                         <number key="uwFormOrder">0.1</number>
                         <string key="statusUw">attention</string>
                         <array key="noteUw">
@@ -15509,7 +15518,16 @@
                         <string key="propertyURI">http://rdaregistry.info/Elements/e/P20002</string>
                         <string key="mandatory">false</string>
                         <string key="repeatable">true</string>
-                        <string key="type">literal</string>
+                        <string key="type">lookup</string>
+                        <map key="valueConstraint">
+                            <array key="useValuesFrom">
+                                <string>urn:ld4p:qa:dbpedia</string>
+                                <string>urn:ld4p:qa:isni</string>
+                                <string>urn:ld4p:qa:names</string>
+                                <string>urn:ld4p:qa:fast:work</string>
+                                <string>urn:wikidata</string>
+                            </array>
+                        </map>
                         <number key="uwFormOrder">0.1</number>
                         <string key="statusUw">attention</string>
                         <array key="noteUw">
@@ -17786,6 +17804,29 @@
                             <string>dvdVideo</string>
                         </array>
                         <string key="remark">http://access.rdatoolkit.org/24.5.html</string>
+                    </map>
+                    <map>
+                        <string key="propertyLabel">has photographer of expression</string>
+                        <string key="propertyURI">http://rdaregistry.info/Elements/e/P20288</string>
+                        <string key="mandatory">false</string>
+                        <string key="repeatable">true</string>
+                        <string key="type">lookup</string>
+                        <map key="valueConstraint">
+                            <array key="useValuesFrom">
+                                <string>urn:ld4p:qa:names:person</string>
+                            </array>
+                        </map>
+                        <number key="uwFormOrder">279.1</number>
+                        <string key="statusUw"/>
+                        <string key="noteUw">Deprecated property</string>
+                        <array key="qUw"/>
+                        <array key="usedInProfile">
+                            <string>monograph</string>
+                            <string>eBook</string>
+                            <string>graphic</string>
+                            <string>eGraphic</string>
+                            <string>etd</string>
+                        </array>
                     </map>
                     <map>
                         <string key="propertyLabel">is translated as (RDA 24.5)</string>
@@ -21818,7 +21859,12 @@
                         <string key="statusUw">done</string>
                         <array key="noteUw"/>
                         <array key="qUw"/>
-                        <array key="usedInProfile"/>
+                        <array key="usedInProfile">
+                            <string>eBook</string>
+                            <string>eGraphic</string>
+                            <string>graphic</string>
+                            <string>monograph</string>
+                        </array>
                         <string key="remark">http://access.rdatoolkit.org/18.5.html</string>
                     </map>
                     <map>
@@ -34582,7 +34628,16 @@
                             >http://rdaregistry.info/Elements/m/datatype/P30004</string>
                         <string key="mandatory">false</string>
                         <string key="repeatable">true</string>
-                        <string key="type">literal</string>
+                        <string key="type">lookup</string>
+                        <map key="valueConstraint">
+                            <array key="useValuesFrom">
+                                <string>urn:ld4p:qa:dbpedia</string>
+                                <string>urn:ld4p:qa:isni</string>
+                                <string>urn:ld4p:qa:names</string>
+                                <string>urn:ld4p:qa:fast:work</string>
+                                <string>urn:wikidata</string>
+                            </array>
+                        </map>
                         <number key="uwFormOrder">0.009</number>
                         <string key="statusUw">done</string>
                         <array key="noteUw"/>
