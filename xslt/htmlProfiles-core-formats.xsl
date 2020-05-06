@@ -6,8 +6,6 @@
   <xsl:param name="brgh:format"/>
   <xsl:variable name="id" select="concat(':', $brgh:format)"/>
   
-  <!-- Trying something; not yet successful:
-    See below vars qaNameString, qaSourceURL, and qaInfo -->
   <xsl:include href="qaSources.xsl"/>
 
   <!-- When successful above move these to external stylesheet module as well -->
@@ -177,6 +175,8 @@
         </span>
       </h2>
       <ul>
+        <!-- WHY IS THE AGENT RT SHOWING UP IN OUTPUT PROFILES??
+          Is it also showing up in output JSON? -->
         <xsl:for-each
           select="j:array[@key = 'resourceTemplates']/j:map[j:array[@key = 'propertyTemplates']/j:map/j:array[@key = 'usedInProfile']/j:string = $brgh:format]">
           <li>
@@ -190,6 +190,7 @@
     <xsl:apply-templates select="j:array[@key = 'resourceTemplates']/j:map" mode="rtInfo"/>
   </xsl:template>
   <xsl:template match="j:array[@key = 'resourceTemplates']/j:map" mode="rtInfo">
+    <!-- SEE COMMENT ABOVE: WHY IS THE AGENT RT COMING THROUGH? -->
     <xsl:for-each
       select=".[j:array[@key = 'propertyTemplates']/j:map/j:array[@key = 'usedInProfile']/j:string = $brgh:format]">
       <table class="rtInfo" id="{translate(j:string[@key='resourceLabel'],' ', '')}">
@@ -386,6 +387,7 @@
     </section>
   </xsl:template>
   <xsl:template match="j:map[@key = 'valueConstraint']" mode="valCons">
+    <!-- Do I need to wrap my xsl:ifs in for each statements? -->
     <xsl:if test="j:array[@key = 'valueTemplateRefs']/j:string/text()">
       <li>
         <!-- NOTE *hard coding* -->
@@ -402,13 +404,20 @@
         <ul>
           <xsl:for-each select="j:array[@key = 'useValuesFrom']/j:string/text()">
             <li>
-              <a href="{$qaSourceURL}">
-                <xsl:value-of select="$qaNameString"/>
-              </a>
-              <xsl:value-of select="$qaInfo"/>
+              <xsl:call-template name="qaLink">
+                <xsl:with-param name="node" select="."/>
+              </xsl:call-template>
             </li>
           </xsl:for-each>
         </ul>
+      </li>
+    </xsl:if>
+    <xsl:if test="j:map[@key='valueDataType']/j:string[@key='dataTypeURI']/text()">
+      <li>
+        <xsl:text>Value Datatype: </xsl:text>
+        <a href="{}">
+          <xsl:text></xsl:text>
+        </a>
       </li>
     </xsl:if>
   </xsl:template>
