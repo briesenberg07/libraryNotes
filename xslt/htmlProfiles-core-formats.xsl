@@ -3,92 +3,12 @@
   xmlns:j="http://www.w3.org/2005/xpath-functions"
   xmlns:brgh="https://github.com/briesenberg07/bmrLIS/" exclude-result-prefixes="j" version="3.0">
   <xsl:strip-space elements="*"/>
+
   <xsl:param name="brgh:format"/>
   <xsl:variable name="id" select="concat(':', $brgh:format)"/>
-  
-  <xsl:include href="qaSources.xsl"/>
 
-  <!-- When successful above move these to external stylesheet module as well -->
-  <xsl:variable name="desc">
-    <xsl:choose>
-      <xsl:when test="$brgh:format = 'adminMetadata'">
-        <xsl:text> for administrative metadata</xsl:text>
-      </xsl:when>
-      <xsl:when test="$brgh:format = 'dvdVideo'">
-        <xsl:text> for DVD videos</xsl:text>
-      </xsl:when>
-      <xsl:when test="$brgh:format = 'eBook'">
-        <xsl:text> for e-books</xsl:text>
-      </xsl:when>
-      <xsl:when test="$brgh:format = 'eGraphic'">
-        <xsl:text> for electronic graphic materials</xsl:text>
-      </xsl:when>
-      <xsl:when test="$brgh:format = 'eMap'">
-        <xsl:text> for electronic maps</xsl:text>
-      </xsl:when>
-      <xsl:when test="$brgh:format = 'eSerial'">
-        <xsl:text> for electronic serials</xsl:text>
-      </xsl:when>
-      <xsl:when test="$brgh:format = 'etd'">
-        <xsl:text> for electronic theses and dissertations</xsl:text>
-      </xsl:when>
-      <xsl:when test="$brgh:format = 'graphic'">
-        <xsl:text> for graphic materials</xsl:text>
-      </xsl:when>
-      <xsl:when test="$brgh:format = 'map'">
-        <xsl:text> for maps</xsl:text>
-      </xsl:when>
-      <xsl:when test="$brgh:format = 'monograph'">
-        <xsl:text> for monographs</xsl:text>
-      </xsl:when>
-      <xsl:when test="$brgh:format = 'serial'">
-        <xsl:text> for serials</xsl:text>
-      </xsl:when>
-      <xsl:when test="$brgh:format = 'soundRecording'">
-        <xsl:text> for sound recordings</xsl:text>
-      </xsl:when>
-    </xsl:choose>
-  </xsl:variable>
-  <xsl:variable name="title">
-    <xsl:choose>
-      <xsl:when test="$brgh:format = 'adminMetadata'">
-        <xsl:text> for Administrative Metadata</xsl:text>
-      </xsl:when>
-      <xsl:when test="$brgh:format = 'dvdVideo'">
-        <xsl:text> for DVD Videos</xsl:text>
-      </xsl:when>
-      <xsl:when test="$brgh:format = 'eBook'">
-        <xsl:text> for e-Books</xsl:text>
-      </xsl:when>
-      <xsl:when test="$brgh:format = 'eGraphic'">
-        <xsl:text> for Electronic Graphic Materials</xsl:text>
-      </xsl:when>
-      <xsl:when test="$brgh:format = 'eMap'">
-        <xsl:text> for Electronic Maps</xsl:text>
-      </xsl:when>
-      <xsl:when test="$brgh:format = 'eSerial'">
-        <xsl:text> for Electronic Serials</xsl:text>
-      </xsl:when>
-      <xsl:when test="$brgh:format = 'etd'">
-        <xsl:text> for Electronic Theses and Dissertations</xsl:text>
-      </xsl:when>
-      <xsl:when test="$brgh:format = 'graphic'">
-        <xsl:text> for Graphic Materials</xsl:text>
-      </xsl:when>
-      <xsl:when test="$brgh:format = 'map'">
-        <xsl:text> for Maps</xsl:text>
-      </xsl:when>
-      <xsl:when test="$brgh:format = 'monograph'">
-        <xsl:text> for Monographs</xsl:text>
-      </xsl:when>
-      <xsl:when test="$brgh:format = 'serial'">
-        <xsl:text> for Serials</xsl:text>
-      </xsl:when>
-      <xsl:when test="$brgh:format = 'soundRecording'">
-        <xsl:text> for Sound Recordings</xsl:text>
-      </xsl:when>
-    </xsl:choose>
-  </xsl:variable>
+  <xsl:include href="qaSources.xsl"/>
+  <xsl:include href="formatStrings.xsl"/>
 
   <xsl:template match="/">
     <xsl:apply-templates select="j:map/j:map[@key = 'Profile']" mode="html"/>
@@ -106,8 +26,10 @@
       </head>
       <body>
         <h1 id="profile">
-          <xsl:value-of
-            select="concat('University of Washington Libraries RDA/RDF Profile', $title)"/>
+          <xsl:text>University of Washington Libraries RDA/RDF Profile for </xsl:text>
+          <xsl:call-template name="titleCase">
+            <xsl:with-param name="format" select="$brgh:format"/>
+          </xsl:call-template>
         </h1>
         <xsl:apply-templates select="." mode="profileInfo"/>
       </body>
@@ -121,16 +43,14 @@
           <th colspan="2">
             <xsl:text>Profile: </xsl:text>
             <xsl:value-of select="j:string[@key = 'title']"/>
+            <xsl:text> for </xsl:text>
+            <xsl:call-template name="titleCase">
+              <xsl:with-param name="format" select="$brgh:format"/>
+            </xsl:call-template>
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">Title</th>
-          <td>
-            <xsl:value-of select="concat(j:string[@key = 'title'], $title)"/>
-          </td>
-        </tr>
         <tr>
           <th scope="row">ID</th>
           <td>
@@ -152,7 +72,10 @@
         <tr>
           <th scope="row">Description</th>
           <td>
-            <xsl:value-of select="concat('Resource templates and property templates', $desc)"/>
+            <xsl:text>Resource templates and property templates for </xsl:text>
+            <xsl:call-template name="lowerCase">
+              <xsl:with-param name="format" select="$brgh:format"/>
+            </xsl:call-template>
           </td>
         </tr>
         <tr>
@@ -170,8 +93,10 @@
     <section class="rtList">
       <h2 id="rtList">
         <span>
-          <xsl:text>Resource Templates </xsl:text>
-          <xsl:value-of select="$title"/>
+          <xsl:text>Resource Templates for </xsl:text>
+          <xsl:call-template name="titleCase">
+            <xsl:with-param name="format" select="$brgh:format"/>
+          </xsl:call-template>
         </span>
       </h2>
       <ul>
@@ -199,7 +124,10 @@
             <th colspan="2">
               <xsl:text>Resource Template: </xsl:text>
               <xsl:value-of select="j:string[@key = 'resourceLabel']"/>
-              <xsl:value-of select="$title"/>
+              <xsl:text> for </xsl:text>
+              <xsl:call-template name="titleCase">
+                <xsl:with-param name="format" select="$brgh:format"/>
+              </xsl:call-template>
             </th>
           </tr>
         </thead>
@@ -225,14 +153,7 @@
               <xsl:value-of select="j:string[@key = 'id']"/>
             </td>
           </tr>
-          <!-- <tr>
-            <th scope="row" colspan="2">
-              <a href="#rtList">
-                <xsl:text>RETURN TO RESOURCE TEMPLATE LIST</xsl:text>
-              </a>
-            </th>
-          </tr> -->
-          <tr>
+          <tr class="backlink">
             <th scope="row" colspan="2">
               <a href="#profile">
                 <xsl:text>RETURN TO PROFILE TOP</xsl:text>
@@ -246,7 +167,10 @@
           <span>
             <xsl:text>Property Templates in </xsl:text>
             <xsl:value-of select="j:string[@key = 'resourceLabel']"/>
-            <xsl:value-of select="$title"/>
+            <xsl:text> for </xsl:text>
+            <xsl:call-template name="titleCase">
+              <xsl:with-param name="format" select="$brgh:format"/>
+            </xsl:call-template>
           </span>
         </h3>
         <!-- TO DO: SORT BY uwFormOrder
@@ -263,18 +187,22 @@
             </li>
           </xsl:for-each>
           <li>
-            <a href="#{translate(j:string[@key='resourceLabel'],' ', '')}" class="toRtTop">
-              <strong>
-                <xsl:text>RETURN TO RESOURCE TEMPLATE TOP</xsl:text>
-              </strong>
-            </a>
+            <span class="backlink">
+              <a href="#{translate(j:string[@key='resourceLabel'],' ', '')}">
+                <strong>
+                  <xsl:text>RETURN TO RESOURCE TEMPLATE TOP</xsl:text>
+                </strong>
+              </a>
+            </span>
           </li>
           <li>
-            <a href="#profile" class="toRtList">
-              <strong>
-                <xsl:text>RETURN TO PROFILE TOP</xsl:text>
-              </strong>
-            </a>
+            <span class="backlink">
+              <a href="#profile">
+                <strong>
+                  <xsl:text>RETURN TO PROFILE TOP</xsl:text>
+                </strong>
+              </a>
+            </span>
           </li>
         </ul>
       </section>
@@ -368,7 +296,7 @@
             </li>
           </xsl:if>
           <li>
-            <span class="propBacklink">
+            <span class="backlink">
               <a href="#{concat(translate(../../j:string[@key='resourceLabel'],' ',''), 'ptList')}">
                 <xsl:text>RETURN TO PROPERTY LIST FOR </xsl:text>
                 <xsl:value-of select="../../j:string[@key = 'resourceLabel']"/>
@@ -376,7 +304,7 @@
             </span>
           </li>
           <li>
-            <span class="propBacklink">
+            <span class="backlink">
               <a href="#rtList">
                 <xsl:text>RETURN TO RESOURCE TEMPLATE LIST</xsl:text>
               </a>
@@ -387,7 +315,9 @@
     </section>
   </xsl:template>
   <xsl:template match="j:map[@key = 'valueConstraint']" mode="valCons">
-    <!-- Do I need to wrap my xsl:ifs in for each statements? -->
+    <!-- TO DO:
+      I think I need for-each elements below for valueDataType, defaults... 
+      I don't need one below for valueTemplateRefs because there can't be more than one? -->
     <xsl:if test="j:array[@key = 'valueTemplateRefs']/j:string/text()">
       <li>
         <!-- NOTE *hard coding* -->
@@ -400,11 +330,11 @@
     </xsl:if>
     <xsl:if test="j:array[@key = 'useValuesFrom']/j:string/text()">
       <li>
-        <xsl:text>Resource Lookup Sources:</xsl:text>
+        <xsl:text>Value Lookup Source(s):</xsl:text>
         <ul>
           <xsl:for-each select="j:array[@key = 'useValuesFrom']/j:string/text()">
             <li>
-              <xsl:call-template name="qaLink">
+              <xsl:call-template name="qaLinks">
                 <xsl:with-param name="node" select="."/>
               </xsl:call-template>
             </li>
@@ -412,11 +342,12 @@
         </ul>
       </li>
     </xsl:if>
-    <xsl:if test="j:map[@key='valueDataType']/j:string[@key='dataTypeURI']/text()">
+    <!-- See note above re: for-each -->
+    <xsl:if test="j:map[@key = 'valueDataType']/j:string[@key = 'dataTypeURI']/text()">
       <li>
         <xsl:text>Value Datatype: </xsl:text>
         <a href="{}">
-          <xsl:text></xsl:text>
+          <xsl:text/>
         </a>
       </li>
     </xsl:if>
