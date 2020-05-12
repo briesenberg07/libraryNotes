@@ -8,15 +8,10 @@ Modified by Ben Riesenberg
 import os
 import rdflib
 from rdflib import *
-from SPARQLWrapper import SPARQLWrapper, JSON, POST, DIGEST, N3
-#import requests
-#import random
-
 
 """Generate directories - program will generate a set of directories to save the exported records in"""
 if not os.path.exists('export_xml'):# creates xml directory
     os.makedirs('export_xml')
-
 
 """Initializes a graph, loads in UW trellis repo, and extracts record URIS"""
 print("...\nretrieving graph uris", flush=True)
