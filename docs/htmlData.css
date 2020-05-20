@@ -1,0 +1,30 @@
+html {
+    font-family: monospace ;
+}
+.descSet {
+    background-color: #DCE8F5 ;
+    font-size: 150% ;
+}
+.work {
+    background-color: #E8E8E8 ;
+    font-size: 130% ;
+}
+.em_i_set {
+    padding-left: 50px ;
+}
+.expression {
+    background-color: #DCF5DF ;
+    font-size: 120% ;
+}
+.manifestation {
+    background-color: #F5E0DC ;
+    font-size: 120% ;
+}
+.item {
+    background-color: #F4F5DC ;
+    font-size: 120% ;
+}
+.literals {}
+.langTags {
+    font-style: italic ;
+}
