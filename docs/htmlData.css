@@ -5,13 +5,15 @@ html {
     background-color: #DCE8F5 ;
     font-size: 150% ;
 }
+.sinopiaUrl {
+    font-size: 110% ;
+    font-weight: bold ;
+}
 .work {
     background-color: #E8E8E8 ;
     font-size: 130% ;
 }
-.em_i_set {
-    padding-left: 50px ;
-}
+.em_i_set {}
 .expression {
     background-color: #DCF5DF ;
     font-size: 120% ;
@@ -24,6 +26,7 @@ html {
     background-color: #F4F5DC ;
     font-size: 120% ;
 }
+.resourceLabel {}
 .literals {}
 .langTags {
     font-style: italic ;
