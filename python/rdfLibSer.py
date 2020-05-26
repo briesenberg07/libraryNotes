@@ -3,6 +3,8 @@ import rdflib
 from rdflib import *
 import datetime
 
+# NOTES: https://hackmd.io/@ries07/r1W0h6coI
+
 # (AKM) Generate directories - program will generate a set of directories to save the exported records in
 if not os.path.exists('export_xml'):# creates xml directory
     os.makedirs('export_xml')
