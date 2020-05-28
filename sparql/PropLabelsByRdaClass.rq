@@ -1,0 +1,11 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?label
+# Work props
+FROM <http://rdaregistry.info/Elements/w.xml>
+
+
+WHERE {
+?propIRI rdfs:label ?label
+FILTER ( LANG(?label) = "en" )
+}
