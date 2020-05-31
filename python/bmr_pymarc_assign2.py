@@ -6,9 +6,11 @@ from pymarc import *
 # See
     # https://pymarc.readthedocs.io/en/latest/index.html?highlight=marcreader#writing
     # https://pymarc.readthedocs.io/en/latest/index.html?highlight=marcreader#updating
+
+# This code only adds the 655 to one (the first, I believe) record in the MARC file
 with open('marcfile.mrc', 'rb') as openFile:
     mrFile = MARCReader(openFile)
-    record = Record()
+    record = next(mrFile)
     record.add_field(
         Field(
         tag = '655',
