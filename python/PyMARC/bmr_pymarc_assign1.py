@@ -6,7 +6,6 @@
 # Import all functions from the PyMARC library
 from pymarc import *
 
-# ... I've never used 'with' before!
 with open('marcfile.mrc', 'rb') as openFile:
     mrFile = MARCReader(openFile)
     for record in mrFile:

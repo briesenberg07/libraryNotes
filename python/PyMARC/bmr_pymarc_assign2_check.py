@@ -5,4 +5,5 @@ from pymarc import *
 with open('newMarcfile.mrc', 'rb') as openFile:
     mrFile = MARCReader(openFile)
     for record in mrFile:
+        print(record['100'])
         print(record['655'])
