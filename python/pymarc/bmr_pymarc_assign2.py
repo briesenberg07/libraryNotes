@@ -11,6 +11,12 @@ from pymarc import *
 with open('marcfile.mrc', 'rb') as openFile:
     mrFile = MARCReader(openFile)
     record = next(mrFile)
+
+    for record in mrFile:
+        print(record)
+
+"""
+    record = next(mrFile)
     record.add_field(
         Field(
         tag = '655',
@@ -19,5 +25,7 @@ with open('marcfile.mrc', 'rb') as openFile:
             'a', 'Academic theses'
         ]))
 
+
 with open('newMarcfile.mrc', 'wb') as out:
     out.write(record.as_marc())
+"""
