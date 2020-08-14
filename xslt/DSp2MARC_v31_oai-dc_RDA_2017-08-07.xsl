@@ -10,7 +10,7 @@
      Version: 3.1
      Date: August 7, 2017
  -->
-
+    <!-- BMR note: Only need to preserve in leader? Not 006, 007, etc.? -->
     <xsl:preserve-space elements="leader"/>
     <xsl:output indent="yes" encoding="UTF-8"/>
 
@@ -55,11 +55,13 @@
                     <xsl:text>m&#x20;&#x20;&#x20;&#x20;&#x20;o&#x20;&#x20;d&#x20;s&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;</xsl:text>
                 </controlfield>
 
+                <!-- BMR note: Use of octothorpe versus pipe in leader, 006 (all octothorpe) versus 007 (some octothorpe, some pipe)? -->
                 <!-- 007 should be 14 positions: cr#||#|||||||| -->
                 <controlfield tag="007">
                     <xsl:text>cr&#x20;||&#x20;||||||||</xsl:text>
                 </controlfield>
 
+                <!-- BMR note: Funny MARC stuff: 07-10 date 1 and 11-14 date 2 are the same value repeated? -->
                 <!-- 008 should be 40 positions: ######t[date:YYYY][date:YYYY]waua####obm##s000#0#eng#d -->
                 <controlfield tag="008">
                     <xsl:text>&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;t</xsl:text>
@@ -77,6 +79,7 @@
                                     </xsl:otherwise>
                                 </xsl:choose>
                             </xsl:when>
+                            <!-- BMR note: Output *no value* in case of YYYY-MM-DD? -->
                             <xsl:when test="matches(.,'\d{4}-\d{2}-.+')"/>
                             <xsl:otherwise>
                                 <xsl:text>&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;</xsl:text>
@@ -139,9 +142,11 @@
                 </datafield>
 
                 <!-- 245 field and with conditional indicator value -->
+                <!-- BMR note: Oooh xsl:element* Haven't had much opportunity to use it... -->
                 <xsl:element name="datafield">
                     <xsl:variable name="title-ind2">
                         <xsl:choose>
+                            <!-- BMR note: Trying to come up with any other initial articles which may need to be accounted for... -->
                             <xsl:when test="starts-with($path/dc:title, 'A ')">2</xsl:when>
                             <xsl:when test="starts-with($path/dc:title, 'An ')">3</xsl:when>
                             <xsl:when test="starts-with($path/dc:title, 'The ')">4</xsl:when>
@@ -150,6 +155,7 @@
                     </xsl:variable>
 
                     <xsl:variable name="titleProper">
+                        <!-- BMR note: Any other title/subtitle dividers to account for? \n, hyphen, etc.? -->
                         <xsl:value-of
                             select="normalize-space(substring-before($path/dc:title, ':'))"/>
                         <xsl:text> : </xsl:text>
@@ -203,6 +209,8 @@
                                     <xsl:when test="matches(.,'\d{4}-\d{2}$')">
                                         <xsl:value-of select="substring-before(.,'-')"/>
                                     </xsl:when>
+                                    <!-- BMR note: As above, no date ouput for patterns that don't match? 
+                                        Ah! Of course, this is a save file to be reviewed. -->
                                     <xsl:otherwise/>
                                 </xsl:choose>
                         </xsl:for-each>
@@ -222,6 +230,7 @@
                                 <xsl:when test="matches(.,'\d{4}-\d{2}$')">
                                     <xsl:value-of select="substring-before(.,'-')"/>
                                 </xsl:when>
+                                <!-- See BMR note just above -->
                                 <xsl:otherwise/>
                             </xsl:choose>
                         </xsl:for-each>
@@ -260,6 +269,7 @@
                     <subfield code="b">PDF</subfield>
                 </datafield>
 
+                <!-- BMR note: This block likely not needed for SSDC work -->
                 <!-- 502 field will not output if there isn't a dc:description field beginning "Thesis" -->
                 <xsl:if test="$path/dc:description[starts-with(., 'Thesis')]">
                     <datafield tag="502" ind1=" " ind2=" ">
@@ -344,8 +354,12 @@
                 <datafield tag="653" ind1="0" ind2=" ">
                     <subfield code="a">
                         <xsl:choose>
+                            <!-- BMR note: Empty xsl:when does nothing, right? No result output -->
                             <xsl:when test="not(text())"/>
+                            <!-- BMR note: I don't think I've seen fn:matches used with fn:text... -->
                             <xsl:when test="matches(text(),'^[a-z]')">
+                                <!-- BMR note: Don't yet understand this function chain.
+                                    Could use 3.0 function-chaining arrow here and elsewhere? -->
                                 <xsl:value-of select="concat(upper-case(substring(., 1, 1)), substring(., 2))"/>
                             </xsl:when>
                             <xsl:otherwise><xsl:value-of select="."/></xsl:otherwise>
@@ -427,6 +441,7 @@
 
     </xsl:template>
 
+    <!-- BMR note: OAI headers and tokens present at multiple levels of XML hierarchy? -->
     <!-- suppress oai:header info -->
     <xsl:template match="oai:header"/>
     <!-- suppress oai:resumptionToken info -->
