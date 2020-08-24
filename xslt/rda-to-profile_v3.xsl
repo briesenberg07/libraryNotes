@@ -54,7 +54,7 @@
         <j:array key="resourceTemplates">
             <j:map>
                 <j:string key="resourceURI">
-                    <xsl:value-of select="distinct-values(//rdfs:domain/@rdf:resource)"/>
+                    <xsl:value-of select="distinct-values($w//rdfs:domain/@rdf:resource)"/>
                 </j:string>
                 <j:string key="resourceLabel">RT RDA Work</j:string>
                 <j:string key="id">rt:rda:work</j:string>
