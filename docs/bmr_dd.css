@@ -1,0 +1,30 @@
+body {
+  font-family: monospace;
+}
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+/*
+With only the styling above, there are no internal cell borders (!? I could swear that it used to work differently...??)
+*/
+table th {
+	border: 1px solid black;
+	background: #e6e6e6;
+
+}
+table tr {
+	border: 1px solid black;
+}
+table td {
+	border: 1px solid black;
+}
+/*
+Still leaves much to be desired:
+- Column width should vary based on content--left col should be less wide
+- Look for consistency with CSS for other webviews?
+- ...
+*/
+
