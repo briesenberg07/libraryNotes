@@ -23,6 +23,8 @@ start = @<fac_staff_shape>
     # transgender male (Q2449503)
     # non-binary (Q48270)
     # agender (Q505371)
-  wdt:P21 [ wdt:Q6581097 wdt:Q6581072 wdt: ]
+  wdt:P21 [ wdt:Q6581097 wdt:Q6581072 wdt:Q1097630 wdt:Q1052281 wdt:Q2449503 wdt:Q48270 wdt:Q505371 ]
   # [TO DO, how to allow for 'unknown' value here?
+
+  
 }
