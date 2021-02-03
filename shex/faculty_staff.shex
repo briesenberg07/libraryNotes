@@ -1,0 +1,28 @@
+# ShExC for University of Washington Faculty and Staff, per UWL CAMS application profile for faculty and staff
+  # https://www.wikidata.org/wiki/Wikidata:WikiProject_PCC_Wikidata_Pilot/University_of_Washington/Application_Profiles/Faculty_and_Staff
+
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+
+start = @<fac_staff_shape>
+
+<fac_staff_shape> EXTRA wdt:P31 {
+
+  # on focus list of WikiProject - PCC Wikidata Pilot - University of Washington
+  # for work-tracking purposes
+  wdt:P5008 [ wd:Q98970039 ] ;
+
+  # UW faculty and staff are human beings
+  wdt:P31 [ wd:Q5 ] ;
+
+  # sex or gender
+    # male (Q6581097)
+    # female (Q6581072)
+    # intersex (Q1097630)
+    # transgender female (Q1052281)
+    # transgender male (Q2449503)
+    # non-binary (Q48270)
+    # agender (Q505371)
+  wdt:P21 [ wdt:Q6581097 wdt:Q6581072 wdt: ]
+  # [TO DO, how to allow for 'unknown' value here?
+}
