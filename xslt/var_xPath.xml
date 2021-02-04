@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <tree01>
+        <trunk>
+            <branch/>
+            <branch>
+                <leaf attr="elementAttribute01">
+                    <text>Element content 01</text>
+                </leaf>
+            </branch>
+        </trunk>
+    </tree01>
+    <tree02>
+        <trunk01 attr="elementAttribute02"/>
+        <trunk02>
+            <branch>Element content 02</branch>
+        </trunk02>
+    </tree02>
+</root>
