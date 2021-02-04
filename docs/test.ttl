@@ -1,0 +1,10 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ex: <https://example.com/> . # FAKE DOMAIN - THIS DATA IS ONLY FOR TESTING PURPOSES!!
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+
+
+ex:test a skos:Concept ;
+  rdfs:label "Test snippet"@en ;
+  dcterms:created "2021-02-04" .
