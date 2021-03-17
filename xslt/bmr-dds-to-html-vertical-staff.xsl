@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Copied/modified from dds-to-html-vertical-staff.xsl ('original')-->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:mig="http://www.lib.washington.edu/msd/mig/schemas/dataDictionaries"
@@ -6,11 +7,14 @@
     exclude-result-prefixes="xs">
 
     <xsl:include href="https://github.com/uwlib-cams/webviews/raw/master/xslt/common-elements.xsl"/>
-
+    
+    <!-- add html-version attribute -->
     <xsl:output method="html" html-version="5.0" indent="yes" use-character-maps="angleBrackets"/>
+    
     <!-- I don't understand @use-character-maps, refer to:
         https://www.saxonica.com/html/documentation/xsl-elements/output.html
-        https://www.saxonica.com/html/documentation/xsl-elements/character-map.html -->
+        https://www.saxonica.com/html/documentation/xsl-elements/character-map.html
+        [!?] This may be what allows the encoding of anchors for output?? -->
     <xsl:character-map name="angleBrackets">
         <xsl:output-character character="&lt;" string="&lt;"/>
         <xsl:output-character character="&gt;" string="&gt;"/>
@@ -22,7 +26,7 @@
                 <title>
                     <xsl:value-of select="mig:migDataDictionary/mig:ddName"/>
                 </title>
-                <!-- Style issues TBD, linking to scratch CSS for now -->
+                <!-- no style element here or style attributes below, using external css -->
                 <link rel="stylesheet" href="bmr_dd.css"/>
             </head>
             <body>
@@ -68,18 +72,19 @@
         </xsl:choose>
     </xsl:template>
 
-    <!-- NOTE that I'm going to dispense with writing templates for modes 'standalone' and 'co' at this point;
-        the current project is a 'combined' DD -->
+    <!-- This transform does not include templates:
+        match="mig:properties" mode="standalone" 
+        match="mig:properties" mode="co" -->
 
     <xsl:template match="mig:properties" mode="combined">
         <h2>
             <xsl:text>OBJECT DESCRIPTION</xsl:text>
         </h2>
+        <!-- 3rd predicate will result in omitting properties? -->
         <!-- [?] Can fn:not conditions be combined? -->
         <!-- [?] What do '//' in 3rd, 4th conditions' XPaths do? -->
         <!-- Don't understand 4th condition -->
-        <!-- Possible to miss relevant prop with no default CO instruction but custom instruction for CO?
-        Or, just know that no customization should be created for CO, item, or standalone until a default already exists?? -->
+        <!-- Possible to miss relevant prop with no default CO instruction but custom instruction for CO? -->
         <xsl:for-each
             select="
                 mig2:property
@@ -87,6 +92,7 @@
                 [not(mig2:cdm/mig2:dcmDatatype = 'uwAdministrative')]
                 [mig2:descriptions//mig2:instructions/@co = 'object']
                 [not(mig2:labels/mig2:platformIndependent = //mig:suppressObjectProp)]">
+            <!-- table structure differs from original -->
             <table>
                 <thead>
                     <tr>
@@ -106,7 +112,7 @@
                             <xsl:value-of select="mig2:cdm/mig2:label"/>
                         </td>
                     </tr>
-                    <!-- Omitting local prop URI at this point; local prop URIs still not published? -->
+                    <!-- Omitting URI for local properties; there currently are no URIs for local properties -->
                     <tr>
                         <th scope="row">
                             <xsl:text>Dublin Core Equivalent</xsl:text>
@@ -116,8 +122,29 @@
                                 <xsl:when test="mig2:labels/mig2:dc = 'none'">
                                     <xsl:text>[No DC equivalent]</xsl:text>
                                 </xsl:when>
+                                <!-- Special condition with hard-coding for the restrictions property (does not match label of equivalent DC Element) -->
+                                <xsl:when test="mig2:labels/mig2:platformIndependent = 'restrictions'">
+                                    <a href="http://purl.org/dc/elements/1.1/rights">rights [Dublin Core Element Set 1.1]</a>
+                                </xsl:when>
+                                <!-- Condition for equivalents which 1) are OWL datatype props and 2) match DC Element names -->
+                                <xsl:when test="mig2:rdf/mig2:owlDatatypeProperty = 'yes'">
+                                    <a href="{concat('http://purl.org/dc/elements/1.1/', mig2:labels/mig2:dc)}">
+                                        <xsl:value-of select="mig2:labels/mig2:dc"/>
+                                        <xsl:text> [Dublin Core Element Set 1.1]</xsl:text>
+                                    </a>
+                                </xsl:when>
+                                <!-- Condition for equivalents which 2) are *not* OWL datatype props and 2) match DC Element names -->
+                                <xsl:when test="mig2:rdf/mig2:owlDatatypeProperty = 'no'">
+                                    <a href="{concat('http://purl.org/dc/elements/1.1/', mig2:labels/mig2:dc)}">
+                                        <xsl:value-of select="mig2:labels/mig2:dc"/>
+                                        <xsl:text> [Dublin Core Element Set 1.1]</xsl:text>
+                                    </a>
+                                </xsl:when>
                                 <xsl:otherwise>
-                                    <xsl:text>PICK UP HERE</xsl:text>
+                                    <a href="{concat('http://purl.org/dc/terms/', mig2:labels/mig2:dc)}">
+                                        <xsl:value-of select="mig2:labels/mig2:dc"/>
+                                        <xsl:text> [DCMI Metadata Terms]</xsl:text>
+                                    </a>
                                 </xsl:otherwise>
                             </xsl:choose>
                         </td>
