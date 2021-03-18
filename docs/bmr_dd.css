@@ -1,8 +1,8 @@
-/* TO-DO: */
-	/* Make left column proportionally smaller than right */
-	/* Bring column edges in just a bit from the edge of the page */
-	/* */
-	/* */
+/* TO-DO: 
+	Make left column proportionally smaller than right 
+	Bring column edges in just a bit from the edge of the page 
+	
+*/
 	
 body {
   font-family: monospace;
@@ -19,6 +19,7 @@ With only the styling above, there are no internal cell borders (!? I could swea
 table th {
 	border: 1px solid black;
 	background: #e6e6e6;
+	text-align: left;
 
 }
 table tr {
@@ -26,11 +27,7 @@ table tr {
 }
 table td {
 	border: 1px solid black;
+	text-align: left;
 }
-/*
-Still leaves much to be desired:
-- Column width should vary based on content--left col should be less wide
-- Look for consistency with CSS for other webviews?
-- ...
-*/
+
 
