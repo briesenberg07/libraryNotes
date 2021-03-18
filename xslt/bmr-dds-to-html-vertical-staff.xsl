@@ -57,6 +57,9 @@
         </ul>
         <xsl:choose>
             <!-- NOTE template mode conditions here -->
+            <!-- This transform does not include templates:
+                match="mig:properties" mode="standalone" 
+                match="mig:properties" mode="co" -->
             <xsl:when test="mig:standalone = 'yes' and mig:cdmCo = 'no'">
                 <xsl:apply-templates select="mig:properties" mode="standalone"/>
             </xsl:when>
@@ -72,10 +75,6 @@
         </xsl:choose>
     </xsl:template>
 
-    <!-- This transform does not include templates:
-        match="mig:properties" mode="standalone" 
-        match="mig:properties" mode="co" -->
-
     <xsl:template match="mig:properties" mode="combined">
         <h2>
             <xsl:text>OBJECT DESCRIPTION</xsl:text>
@@ -83,7 +82,7 @@
         <!-- 3rd predicate will result in omitting properties? -->
         <!-- [?] Can fn:not conditions be combined? -->
         <!-- [?] What do '//' in 3rd, 4th conditions' XPaths do? -->
-        <!-- Don't understand 4th condition -->
+        <!-- [?] Don't understand 4th condition -->
         <!-- Possible to miss relevant prop with no default CO instruction but custom instruction for CO? -->
         <xsl:for-each
             select="
@@ -149,9 +148,101 @@
                             </xsl:choose>
                         </td>
                     </tr>
+                    <tr>
+                        <th scope="row">
+                            <xsl:text>CONTENTdm searchable?</xsl:text>
+                        </th>
+                        <td>
+                            <xsl:value-of select="mig2:cdm/mig2:searchable"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <!-- This might not really be necessary -->
+                            <xsl:text>Turn on the </xsl:text>
+                            <a href="https://briesenberg07.github.io/libraryNotes/images/cdm_controlled_vocab.jpg">controlled vocabulary feature</a>
+                            <xsl:text> for this property?</xsl:text>
+                        </th>
+                        <td>
+                            <xsl:value-of select="mig2:cdm/mig2:cdmControlledVocab"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <xsl:text>CONTENTdm hidden?</xsl:text>
+                        </th>
+                        <td>
+                            <xsl:value-of select="mig2:cdm/mig2:hidden"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <xsl:text>Required by CONTENTdm?</xsl:text>
+                        </th>
+                        <td>
+                            <xsl:value-of select="mig2:cdm/mig2:cdmRequired"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <xsl:text>Required by UW Libraries?</xsl:text>
+                        </th>
+                        <td>
+                            <xsl:value-of select="mig2:uwRequired/mig2:uwObject"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <xsl:text>Property definition</xsl:text>
+                        </th>
+                        <td>
+                            <xsl:for-each select="mig2:descriptions/mig2:definition/mig2:para">
+                                <p>
+                                    <xsl:value-of select="."/>
+                                </p>
+                            </xsl:for-each>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <xsl:text>Input instructions</xsl:text>
+                        </th>
+                        <td>
+                            <xsl:choose>
+                                <!-- See comment in the original XSLT...is there a problem here? -->
+                                <xsl:when test="../../mig:cdmCode = mig2:descriptions/mig2:customization/@dd">
+                                    <xsl:for-each 
+                                        select="mig2:descriptions/mig2:customization[@co='object'][@dd=../../../../mig:cdmCode]/mig2:para">
+                                        <p>
+                                            <xsl:value-of select="."/>
+                                        </p>
+                                    </xsl:for-each>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:for-each
+                                        select="mig2:descriptions/mig2:instructions[@co='object']/mig2:para">
+                                        <p>
+                                            <xsl:value-of select="."/>
+                                        </p>
+                                    </xsl:for-each>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <xsl:text></xsl:text>
+                        </th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <xsl:text></xsl:text>
+                        </th>
+                        <td></td>
+                    </tr>
                 </tbody>
             </table>
-            <!-- Do this with CSS instead -->
             <br/>
         </xsl:for-each>
     </xsl:template>
