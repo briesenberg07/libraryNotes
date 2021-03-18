@@ -1,14 +1,14 @@
 /* TO-DO: 
 	Make left column proportionally smaller than right 
 	Bring column edges in just a bit from the edge of the page 
-	
+	Find out how to pad around text in cells
 */
 	
 body {
   font-family: monospace;
 }
 table {
-  table-layout: fixed;
+  table-layout: auto;
   width: 100%;
   border-collapse: collapse;
   border: 1px solid black;
@@ -28,6 +28,21 @@ table tr {
 table td {
 	border: 1px solid black;
 	text-align: left;
+}
+.prop_table_head {
+    background: #e6e8f0;
+    text-align: center;
+    font-size: 120%;
+}
+.note {
+    font-style: italic;
+}
+.prop_info_group {
+    background: #e6e8f0;
+}
+.backlink {
+    font-style: italic;
+    text-align: right;
 }
 
 
