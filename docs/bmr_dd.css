@@ -38,7 +38,7 @@ table td {
     background: #e6e8f0;
 }
 .indent {
-	text-indent: 10px;
+	padding-left: 10px;
 }
 .italic {
     font-style: italic;
