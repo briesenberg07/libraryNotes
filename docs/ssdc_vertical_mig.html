@@ -21,6 +21,7 @@
          <li><a href="#co_object_p88">Title</a></li>
          <li><a href="#co_object_p117">Title (ALA-LC Romanization)</a></li>
          <li><a href="#co_object_p116">Title (Aki Yerushalayim Romanization)</a></li>
+         <li><a href="#co_object_p118">Title (Harvard Romanization)</a></li>
          <li><a href="#co_object_p50">Language</a></li>
          <li><a href="#co_object_p21">Date</a></li>
          <li><a href="#co_object_p23">Date Edtf</a></li>
@@ -247,12 +248,15 @@
                      <li>Use a colon and space (": ") to indicate the break between title and subtitle, even
                         if no colon appears on title page.</li>
                      <li>Only Romanize the portion of the title that will be included in the Title field.</li>
+                     <li>Required for all compound objects.</li>
                   </ul>
                </td>
             </tr>
             <tr>
                <th scope="row">Input examples</th>
-               <td></td>
+               <td>
+                  <p>Pavlo i Virjinia: Romanso</p>
+               </td>
             </tr>
          </tbody>
       </table>
@@ -260,7 +264,79 @@
       <table>
          <thead>
             <tr>
-               <th colspan="3" id="co_object_p50" class="prop_table_head">4. Language</th>
+               <th colspan="3" id="co_object_p118" class="prop_table_head">4. Title (Harvard Romanization)</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <th rowspan="5" scope="rowgroup" class="prop_info_group">
+                  <p>CONTENTdm field properties*</p>
+                  <p class="note">*CONTENTdm Administration » Collections » Field properties » <a href="https://briesenberg07.github.io/libraryNotes/images/cdm_edit_field_properties.jpg">edit</a></p>
+               </th>
+            </tr>
+            <tr>
+               <th scope="row">Dublin Core Equivalent<br></th>
+               <td><a href="http://purl.org/dc/terms/title">title</a> [DCMI Metadata Terms]</td>
+            </tr>
+            <tr>
+               <th scope="row">Searchable?</th>
+               <td>yes</td>
+            </tr>
+            <tr>
+               <th scope="row">Controlled vocabulary?</th>
+               <td>no</td>
+            </tr>
+            <tr>
+               <th scope="row">Hidden?</th>
+               <td>no</td>
+            </tr>
+            <tr>
+               <th rowspan="6" scope="rowgroup" class="prop_info_group">
+                  <p>Required status, definition, guidance</p>
+               </th>
+            </tr>
+            <tr>
+               <th scope="row">Required by CONTENTdm?</th>
+               <td>no</td>
+            </tr>
+            <tr>
+               <th scope="row">Required by UW Libraries?</th>
+               <td>no</td>
+            </tr>
+            <tr>
+               <th scope="row">Property definition</th>
+               <td>
+                  <ul>
+                     <li>A Ladino title in Hebrew script Romanized according to the Harvard Library standard.</li>
+                  </ul>
+               </td>
+            </tr>
+            <tr>
+               <th scope="row">Input instructions</th>
+               <td>
+                  <ul>
+                     <li>Search for the title in the Harvard Library <a href="https://library.harvard.edu/>HOLLIS online catalog</a>.</li>
+                     <li>When searching it helps to filter results by language and approximate year.</li>
+                     <li>If a potentical match is found, copy the title just as it appears in the title field
+                        on HOLLIS.</li>
+                     <li>If no record exists, do not create a Romanized title for this field.</li>
+                     <li>Required for all compound objects.</li>
+                  </ul>
+               </td>
+            </tr>
+            <tr>
+               <th scope="row">Input examples</th>
+               <td>
+                  <p>Sefer ḥovat ha-levavot shaʻar ha-biṭaḥon en ladino</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <p class="backlink"><a href="#co_props">Return to compound-object properties</a><br><a href="#dd_props">Return to data dictionary properties</a></p>
+      <table>
+         <thead>
+            <tr>
+               <th colspan="3" id="co_object_p50" class="prop_table_head">5. Language</th>
             </tr>
          </thead>
          <tbody>
@@ -328,7 +404,7 @@
       <table>
          <thead>
             <tr>
-               <th colspan="3" id="co_object_p21" class="prop_table_head">5. Date</th>
+               <th colspan="3" id="co_object_p21" class="prop_table_head">6. Date</th>
             </tr>
          </thead>
          <tbody>
@@ -416,7 +492,7 @@
       <table>
          <thead>
             <tr>
-               <th colspan="3" id="co_object_p23" class="prop_table_head">6. Date Edtf</th>
+               <th colspan="3" id="co_object_p23" class="prop_table_head">7. Date Edtf</th>
             </tr>
          </thead>
          <tbody>
@@ -513,7 +589,7 @@
       <table>
          <thead>
             <tr>
-               <th colspan="3" id="co_object_p26" class="prop_table_head">7. Dates</th>
+               <th colspan="3" id="co_object_p26" class="prop_table_head">8. Dates</th>
             </tr>
          </thead>
          <tbody>
@@ -599,7 +675,7 @@
       <table>
          <thead>
             <tr>
-               <th colspan="3" id="co_object_p6" class="prop_table_head">8. Author</th>
+               <th colspan="3" id="co_object_p6" class="prop_table_head">9. Author</th>
             </tr>
          </thead>
          <tbody>
@@ -670,7 +746,7 @@
       <table>
          <thead>
             <tr>
-               <th colspan="3" id="co_object_p114" class="prop_table_head">9. Editor</th>
+               <th colspan="3" id="co_object_p114" class="prop_table_head">10. Editor</th>
             </tr>
          </thead>
          <tbody>
@@ -741,7 +817,7 @@
       <table>
          <thead>
             <tr>
-               <th colspan="3" id="co_object_p115" class="prop_table_head">10. Translator</th>
+               <th colspan="3" id="co_object_p115" class="prop_table_head">11. Translator</th>
             </tr>
          </thead>
          <tbody>
@@ -807,7 +883,7 @@
       <table>
          <thead>
             <tr>
-               <th colspan="3" id="co_object_p85" class="prop_table_head">11. Subjects (LCSH)</th>
+               <th colspan="3" id="co_object_p85" class="prop_table_head">12. Subjects (LCSH)</th>
             </tr>
          </thead>
          <tbody>
@@ -874,7 +950,7 @@
       <table>
          <thead>
             <tr>
-               <th colspan="3" id="co_object_p28" class="prop_table_head">12. Digital Collection</th>
+               <th colspan="3" id="co_object_p28" class="prop_table_head">13. Digital Collection</th>
             </tr>
          </thead>
          <tbody>
@@ -950,7 +1026,7 @@
       <table>
          <thead>
             <tr>
-               <th colspan="3" id="co_object_p75" class="prop_table_head">13. Restrictions</th>
+               <th colspan="3" id="co_object_p75" class="prop_table_head">14. Restrictions</th>
             </tr>
          </thead>
          <tbody>
@@ -1028,7 +1104,7 @@
       <table>
          <thead>
             <tr>
-               <th colspan="3" id="co_object_p77" class="prop_table_head">14. Rights Uri</th>
+               <th colspan="3" id="co_object_p77" class="prop_table_head">15. Rights Uri</th>
             </tr>
          </thead>
          <tbody>
@@ -1107,7 +1183,7 @@
       <table>
          <thead>
             <tr>
-               <th colspan="3" id="co_object_p11" class="prop_table_head">15. Cataloging</th>
+               <th colspan="3" id="co_object_p11" class="prop_table_head">16. Cataloging</th>
             </tr>
          </thead>
          <tbody>
@@ -1174,7 +1250,7 @@
       <table>
          <thead>
             <tr>
-               <th colspan="3" id="co_object_p27" class="prop_table_head">16. Description</th>
+               <th colspan="3" id="co_object_p27" class="prop_table_head">17. Description</th>
             </tr>
          </thead>
          <tbody>
