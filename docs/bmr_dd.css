@@ -37,8 +37,9 @@ table td {
 .prop_info_group {
     background: #e6e8f0;
 }
+/* Change class name indent > padding */
 .indent {
-	padding-left: 10px;
+	padding-left: 15px;
 }
 .italic {
     font-style: italic;
