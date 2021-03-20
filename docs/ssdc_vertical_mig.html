@@ -19,7 +19,8 @@
       <h3 id="co_props">Compound-object Properties</h3>
       <ol>
          <li><a href="#co_object_p88">Title</a></li>
-         <li><a href="#co_object_p116">Title (Aki Yerushalayim)</a></li>
+         <li><a href="#co_object_p117">Title (ALA-LC Romanization)</a></li>
+         <li><a href="#co_object_p116">Title (Aki Yerushalayim Romanization)</a></li>
          <li><a href="#co_object_p50">Language</a></li>
          <li><a href="#co_object_p21">Date</a></li>
          <li><a href="#co_object_p23">Date Edtf</a></li>
@@ -53,15 +54,15 @@
                <td><a href="http://purl.org/dc/elements/1.1/title">title</a> [Dublin Core Element Set 1.1]</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm searchable?</th>
+               <th scope="row">Searchable?</th>
                <td>yes</td>
             </tr>
             <tr>
-               <th scope="row">Turn on controlled vocabulary for this property?</th>
+               <th scope="row">Controlled vocabulary?</th>
                <td>no</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm hidden?</th>
+               <th scope="row">Hidden?</th>
                <td>no</td>
             </tr>
             <tr>
@@ -88,7 +89,19 @@
             <tr>
                <th scope="row">Input instructions</th>
                <td>
-                  <ul></ul>
+                  <ul>
+                     <li>Enter the Ladino title in Hebrew script as it appears on the title page.</li>
+                     <li>Record title exactly as found, even with printer errors.</li>
+                     <li>Roshe tevot (abbreviations) are considered part of the title and should be recorded.</li>
+                     <li>Use a colon and space (": ") to indicate the break between title and subtitle, even
+                        if no colon appears on title page.</li>
+                     <li>Following the title and colon, record a minimum of five words of the subtitle, followed
+                        by an ellipsis (“…”) if not recording the complete subtitle.</li>
+                     <li>Optional: Record the subtitle as it appears in a matching MARC record verified by
+                        cataloging staff; record from the 245 subfield b.</li>
+                     <li>Note: subtitles in 245 subfield b will be preceded by a colon (":"); parallel titles will be preceded by an equals sign (“=“) and should not be recorded.</li>
+                     <li>Required for all compound objects.</li>
+                  </ul>
                </td>
             </tr>
             <tr>
@@ -103,7 +116,7 @@
       <table>
          <thead>
             <tr>
-               <th colspan="3" id="co_object_p116" class="prop_table_head">2. Title (Aki Yerushalayim)</th>
+               <th colspan="3" id="co_object_p117" class="prop_table_head">2. Title (ALA-LC Romanization)</th>
             </tr>
          </thead>
          <tbody>
@@ -118,15 +131,91 @@
                <td><a href="http://purl.org/dc/terms/title">title</a> [DCMI Metadata Terms]</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm searchable?</th>
+               <th scope="row">Searchable?</th>
                <td>yes</td>
             </tr>
             <tr>
-               <th scope="row">Turn on controlled vocabulary for this property?</th>
+               <th scope="row">Controlled vocabulary?</th>
                <td>no</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm hidden?</th>
+               <th scope="row">Hidden?</th>
+               <td>no</td>
+            </tr>
+            <tr>
+               <th rowspan="6" scope="rowgroup" class="prop_info_group">
+                  <p>Required status, definition, guidance</p>
+               </th>
+            </tr>
+            <tr>
+               <th scope="row">Required by CONTENTdm?</th>
+               <td>no</td>
+            </tr>
+            <tr>
+               <th scope="row">Required by UW Libraries?</th>
+               <td>no</td>
+            </tr>
+            <tr>
+               <th scope="row">Property definition</th>
+               <td>
+                  <ul>
+                     <li>A title in non-Latin script Romanized according to the ALA-LC Romanization Tables.</li>
+                  </ul>
+               </td>
+            </tr>
+            <tr>
+               <th scope="row">Input instructions</th>
+               <td>
+                  <ul>
+                     <li>Search for Romanized title in <a href="http://catdir.loc.gov/catdir/toc/becites/ladino/63062107a.html">LOC Ladino catalog.</a></li>
+                     <li>If a potential match is found, confirm that it is the correct title: it may be helpful
+                        to review information included in the web display such as the publisher, printer,
+                        and publisher/printer locations.</li>
+                     <li>Copy the Romanized title just as it appears in the LOC record, usually following the
+                        period after the author name.</li>
+                     <li>When copying from LOC, retain this version: do not edit to match the Title-field value.</li>
+                     <li>If no record exists, Romanize according to the ALA-LC <a href="https://www.loc.gov/catdir/cpso/romanization/ladino.pdf">Ladino romanization table.</a></li>
+                     <li>When Romanizing a title, only include the portion transcribed in the Title field.</li>
+                     <li>Required for all compound objects.</li>
+                  </ul>
+               </td>
+            </tr>
+            <tr>
+               <th scope="row">Input examples</th>
+               <td>
+                  <p>Pavlo y Virzhinyah : romanso</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <p class="backlink"><a href="#co_props">Return to compound-object properties</a><br><a href="#dd_props">Return to data dictionary properties</a></p>
+      <table>
+         <thead>
+            <tr>
+               <th colspan="3" id="co_object_p116" class="prop_table_head">3. Title (Aki Yerushalayim Romanization)</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <th rowspan="5" scope="rowgroup" class="prop_info_group">
+                  <p>CONTENTdm field properties*</p>
+                  <p class="note">*CONTENTdm Administration » Collections » Field properties » <a href="https://briesenberg07.github.io/libraryNotes/images/cdm_edit_field_properties.jpg">edit</a></p>
+               </th>
+            </tr>
+            <tr>
+               <th scope="row">Dublin Core Equivalent<br></th>
+               <td><a href="http://purl.org/dc/terms/title">title</a> [DCMI Metadata Terms]</td>
+            </tr>
+            <tr>
+               <th scope="row">Searchable?</th>
+               <td>yes</td>
+            </tr>
+            <tr>
+               <th scope="row">Controlled vocabulary?</th>
+               <td>no</td>
+            </tr>
+            <tr>
+               <th scope="row">Hidden?</th>
                <td>no</td>
             </tr>
             <tr>
@@ -171,7 +260,7 @@
       <table>
          <thead>
             <tr>
-               <th colspan="3" id="co_object_p50" class="prop_table_head">3. Language</th>
+               <th colspan="3" id="co_object_p50" class="prop_table_head">4. Language</th>
             </tr>
          </thead>
          <tbody>
@@ -186,15 +275,15 @@
                <td><a href="http://purl.org/dc/elements/1.1/language">language</a> [Dublin Core Element Set 1.1]</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm searchable?</th>
+               <th scope="row">Searchable?</th>
                <td>yes</td>
             </tr>
             <tr>
-               <th scope="row">Turn on controlled vocabulary for this property?</th>
+               <th scope="row">Controlled vocabulary?</th>
                <td>no</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm hidden?</th>
+               <th scope="row">Hidden?</th>
                <td>no</td>
             </tr>
             <tr>
@@ -239,7 +328,7 @@
       <table>
          <thead>
             <tr>
-               <th colspan="3" id="co_object_p21" class="prop_table_head">4. Date</th>
+               <th colspan="3" id="co_object_p21" class="prop_table_head">5. Date</th>
             </tr>
          </thead>
          <tbody>
@@ -254,15 +343,15 @@
                <td><a href="http://purl.org/dc/terms/created">created</a> [DCMI Metadata Terms]</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm searchable?</th>
+               <th scope="row">Searchable?</th>
                <td>no</td>
             </tr>
             <tr>
-               <th scope="row">Turn on controlled vocabulary for this property?</th>
+               <th scope="row">Controlled vocabulary?</th>
                <td>no</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm hidden?</th>
+               <th scope="row">Hidden?</th>
                <td>no</td>
             </tr>
             <tr>
@@ -327,7 +416,7 @@
       <table>
          <thead>
             <tr>
-               <th colspan="3" id="co_object_p23" class="prop_table_head">5. Date Edtf</th>
+               <th colspan="3" id="co_object_p23" class="prop_table_head">6. Date Edtf</th>
             </tr>
          </thead>
          <tbody>
@@ -342,15 +431,15 @@
                <td><a href="http://purl.org/dc/terms/created">created</a> [DCMI Metadata Terms]</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm searchable?</th>
+               <th scope="row">Searchable?</th>
                <td>no</td>
             </tr>
             <tr>
-               <th scope="row">Turn on controlled vocabulary for this property?</th>
+               <th scope="row">Controlled vocabulary?</th>
                <td>no</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm hidden?</th>
+               <th scope="row">Hidden?</th>
                <td>yes</td>
             </tr>
             <tr>
@@ -424,7 +513,7 @@
       <table>
          <thead>
             <tr>
-               <th colspan="3" id="co_object_p26" class="prop_table_head">6. Dates</th>
+               <th colspan="3" id="co_object_p26" class="prop_table_head">7. Dates</th>
             </tr>
          </thead>
          <tbody>
@@ -439,15 +528,15 @@
                <td>[No DC equivalent]</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm searchable?</th>
+               <th scope="row">Searchable?</th>
                <td>yes</td>
             </tr>
             <tr>
-               <th scope="row">Turn on controlled vocabulary for this property?</th>
+               <th scope="row">Controlled vocabulary?</th>
                <td>no</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm hidden?</th>
+               <th scope="row">Hidden?</th>
                <td>yes</td>
             </tr>
             <tr>
@@ -510,7 +599,7 @@
       <table>
          <thead>
             <tr>
-               <th colspan="3" id="co_object_p6" class="prop_table_head">7. Author</th>
+               <th colspan="3" id="co_object_p6" class="prop_table_head">8. Author</th>
             </tr>
          </thead>
          <tbody>
@@ -525,15 +614,15 @@
                <td><a href="http://purl.org/dc/terms/creator">creator</a> [DCMI Metadata Terms]</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm searchable?</th>
+               <th scope="row">Searchable?</th>
                <td>yes</td>
             </tr>
             <tr>
-               <th scope="row">Turn on controlled vocabulary for this property?</th>
+               <th scope="row">Controlled vocabulary?</th>
                <td>no</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm hidden?</th>
+               <th scope="row">Hidden?</th>
                <td>no</td>
             </tr>
             <tr>
@@ -581,7 +670,7 @@
       <table>
          <thead>
             <tr>
-               <th colspan="3" id="co_object_p114" class="prop_table_head">8. Editor</th>
+               <th colspan="3" id="co_object_p114" class="prop_table_head">9. Editor</th>
             </tr>
          </thead>
          <tbody>
@@ -596,15 +685,15 @@
                <td><a href="http://purl.org/dc/terms/contributor">contributor</a> [DCMI Metadata Terms]</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm searchable?</th>
+               <th scope="row">Searchable?</th>
                <td>yes</td>
             </tr>
             <tr>
-               <th scope="row">Turn on controlled vocabulary for this property?</th>
+               <th scope="row">Controlled vocabulary?</th>
                <td>no</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm hidden?</th>
+               <th scope="row">Hidden?</th>
                <td>no</td>
             </tr>
             <tr>
@@ -652,7 +741,7 @@
       <table>
          <thead>
             <tr>
-               <th colspan="3" id="co_object_p115" class="prop_table_head">9. Translator</th>
+               <th colspan="3" id="co_object_p115" class="prop_table_head">10. Translator</th>
             </tr>
          </thead>
          <tbody>
@@ -667,15 +756,15 @@
                <td><a href="http://purl.org/dc/terms/contributor">contributor</a> [DCMI Metadata Terms]</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm searchable?</th>
+               <th scope="row">Searchable?</th>
                <td>yes</td>
             </tr>
             <tr>
-               <th scope="row">Turn on controlled vocabulary for this property?</th>
+               <th scope="row">Controlled vocabulary?</th>
                <td>no</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm hidden?</th>
+               <th scope="row">Hidden?</th>
                <td>no</td>
             </tr>
             <tr>
@@ -718,7 +807,7 @@
       <table>
          <thead>
             <tr>
-               <th colspan="3" id="co_object_p85" class="prop_table_head">10. Subjects (LCSH)</th>
+               <th colspan="3" id="co_object_p85" class="prop_table_head">11. Subjects (LCSH)</th>
             </tr>
          </thead>
          <tbody>
@@ -733,15 +822,15 @@
                <td><a href="http://purl.org/dc/elements/1.1/subject">subject</a> [Dublin Core Element Set 1.1]</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm searchable?</th>
+               <th scope="row">Searchable?</th>
                <td>yes</td>
             </tr>
             <tr>
-               <th scope="row">Turn on controlled vocabulary for this property?</th>
+               <th scope="row">Controlled vocabulary?</th>
                <td>yes</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm hidden?</th>
+               <th scope="row">Hidden?</th>
                <td>no</td>
             </tr>
             <tr>
@@ -785,7 +874,7 @@
       <table>
          <thead>
             <tr>
-               <th colspan="3" id="co_object_p28" class="prop_table_head">11. Digital Collection</th>
+               <th colspan="3" id="co_object_p28" class="prop_table_head">12. Digital Collection</th>
             </tr>
          </thead>
          <tbody>
@@ -800,15 +889,15 @@
                <td><a href="http://purl.org/dc/elements/1.1/relation">relation</a> [Dublin Core Element Set 1.1]</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm searchable?</th>
+               <th scope="row">Searchable?</th>
                <td>yes</td>
             </tr>
             <tr>
-               <th scope="row">Turn on controlled vocabulary for this property?</th>
+               <th scope="row">Controlled vocabulary?</th>
                <td>yes</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm hidden?</th>
+               <th scope="row">Hidden?</th>
                <td>no</td>
             </tr>
             <tr>
@@ -861,7 +950,7 @@
       <table>
          <thead>
             <tr>
-               <th colspan="3" id="co_object_p75" class="prop_table_head">12. Restrictions</th>
+               <th colspan="3" id="co_object_p75" class="prop_table_head">13. Restrictions</th>
             </tr>
          </thead>
          <tbody>
@@ -876,15 +965,15 @@
                <td><a href="http://purl.org/dc/elements/1.1/rights">rights</a> [Dublin Core Element Set 1.1]</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm searchable?</th>
+               <th scope="row">Searchable?</th>
                <td>no</td>
             </tr>
             <tr>
-               <th scope="row">Turn on controlled vocabulary for this property?</th>
+               <th scope="row">Controlled vocabulary?</th>
                <td>no</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm hidden?</th>
+               <th scope="row">Hidden?</th>
                <td>no</td>
             </tr>
             <tr>
@@ -939,7 +1028,7 @@
       <table>
          <thead>
             <tr>
-               <th colspan="3" id="co_object_p77" class="prop_table_head">13. Rights Uri</th>
+               <th colspan="3" id="co_object_p77" class="prop_table_head">14. Rights Uri</th>
             </tr>
          </thead>
          <tbody>
@@ -954,15 +1043,15 @@
                <td><a href="http://purl.org/dc/elements/1.1/rights">rights</a> [Dublin Core Element Set 1.1]</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm searchable?</th>
+               <th scope="row">Searchable?</th>
                <td>no</td>
             </tr>
             <tr>
-               <th scope="row">Turn on controlled vocabulary for this property?</th>
+               <th scope="row">Controlled vocabulary?</th>
                <td>no</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm hidden?</th>
+               <th scope="row">Hidden?</th>
                <td>no</td>
             </tr>
             <tr>
@@ -1018,7 +1107,7 @@
       <table>
          <thead>
             <tr>
-               <th colspan="3" id="co_object_p11" class="prop_table_head">14. Cataloging</th>
+               <th colspan="3" id="co_object_p11" class="prop_table_head">15. Cataloging</th>
             </tr>
          </thead>
          <tbody>
@@ -1033,15 +1122,15 @@
                <td>[No DC equivalent]</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm searchable?</th>
+               <th scope="row">Searchable?</th>
                <td>yes</td>
             </tr>
             <tr>
-               <th scope="row">Turn on controlled vocabulary for this property?</th>
+               <th scope="row">Controlled vocabulary?</th>
                <td>no</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm hidden?</th>
+               <th scope="row">Hidden?</th>
                <td>yes</td>
             </tr>
             <tr>
@@ -1085,7 +1174,7 @@
       <table>
          <thead>
             <tr>
-               <th colspan="3" id="co_object_p27" class="prop_table_head">15. Description</th>
+               <th colspan="3" id="co_object_p27" class="prop_table_head">16. Description</th>
             </tr>
          </thead>
          <tbody>
@@ -1100,15 +1189,15 @@
                <td><a href="http://purl.org/dc/terms/description">description</a> [DCMI Metadata Terms]</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm searchable?</th>
+               <th scope="row">Searchable?</th>
                <td>yes</td>
             </tr>
             <tr>
-               <th scope="row">Turn on controlled vocabulary for this property?</th>
+               <th scope="row">Controlled vocabulary?</th>
                <td>no</td>
             </tr>
             <tr>
-               <th scope="row">CONTENTdm hidden?</th>
+               <th scope="row">Hidden?</th>
                <td>no</td>
             </tr>
             <tr>
