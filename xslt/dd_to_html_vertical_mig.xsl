@@ -62,13 +62,16 @@
             <xsl:text>Compound-object Properties</xsl:text>
         </h3>
         <ol>
-            <!-- Should be the same as XPath the for CO-props template -->
+            <!-- **Match XPath @ L~107 (CO prop tables)** -->
+            <!-- This XPath **hard-coded** for SSDC (@dd='p16786coll3') -->
+            <!-- Any unexpected effects??? -->
             <xsl:for-each
                 select="
                     mig:properties/mig2:property
                     [not(mig2:cdm/mig2:cdmDatatype = 'cdmAdministrative')]
                     [not(mig2:cdm/mig2:cdmDatatype = 'uwAdministrative')]
-                    [mig2:descriptions//mig2:instructions/@co = 'object']
+                    [mig2:descriptions//mig2:customization[@co = 'object'][@dd='p16786coll3'] or
+                    mig2:descriptions//mig2:instructions/@co = 'object']
                     [not(mig2:labels/mig2:platformIndependent = //mig:suppressObjectProp)]">
                 <li>
                     <a href="{concat('#co_object_', mig2:uid)}">
@@ -101,17 +104,14 @@
         <h2>
             <xsl:text>COMPOUND-OBJECT DESCRIPTION</xsl:text>
         </h2>
-        <!-- 3rd predicate will result in omitting properties? -->
-        <!-- [?] Can fn:not conditions be combined? -->
-        <!-- [?] What do '//' in 3rd, 4th conditions' XPaths do? -->
-        <!-- [?] Don't understand 4th condition -->
-        <!-- Possible to miss relevant prop with no default CO instruction but custom instruction for CO? -->
+        <!-- **Match with XPath @ L~65 (CO prop list)**; see notes there -->
         <xsl:for-each
             select="
                 mig2:property
                 [not(mig2:cdm/mig2:cdmDatatype = 'cdmAdministrative')]
                 [not(mig2:cdm/mig2:cdmDatatype = 'uwAdministrative')]
-                [mig2:descriptions//mig2:instructions/@co = 'object']
+                [mig2:descriptions//mig2:customization[@co = 'object'][@dd='p16786coll3'] or
+                mig2:descriptions//mig2:instructions/@co = 'object']
                 [not(mig2:labels/mig2:platformIndependent = //mig:suppressObjectProp)]">
             <!-- table structure differs from original -->
             <table>
@@ -198,7 +198,7 @@
                     </tr>
                     <tr>
                         <th scope="row">
-                            <xsl:text>CONTENTdm searchable?</xsl:text>
+                            <xsl:text>Searchable?</xsl:text>
                         </th>
                         <td>
                             <xsl:value-of select="mig2:cdm/mig2:searchable"/>
@@ -206,7 +206,7 @@
                     </tr>
                     <tr>
                         <th scope="row">
-                            <xsl:text>Turn on controlled vocabulary for this property?</xsl:text>
+                            <xsl:text>Controlled vocabulary?</xsl:text>
                         </th>
                         <td>
                             <xsl:value-of select="mig2:cdm/mig2:cdmControlledVocab"/>
@@ -214,7 +214,7 @@
                     </tr>
                     <tr>
                         <th scope="row">
-                            <xsl:text>CONTENTdm hidden?</xsl:text>
+                            <xsl:text>Hidden?</xsl:text>
                         </th>
                         <td>
                             <xsl:value-of select="mig2:cdm/mig2:hidden"/>
