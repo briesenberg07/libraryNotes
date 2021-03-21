@@ -8,19 +8,16 @@ body {
   font-family: monospace;
 }
 table {
+  /* Mozilla recommends fixed table layout with % width per column */
   table-layout: auto;
   width: 100%;
   border-collapse: collapse;
   border: 1px solid black;
 }
-/*
-With only the styling above, there are no internal cell borders (!? I could swear that it used to work differently...??)
-*/
 table th {
 	border: 1px solid black;
 	background: #e6e6e6;
 	text-align: left;
-
 }
 table tr {
 	border: 1px solid black;
@@ -30,6 +27,8 @@ table td {
 	text-align: left;
 }
 .prop_table_head {
+    padding-top: 10px;
+    padding-bottom: 10px;
     background: #e6e8f0;
     text-align: center;
     font-size: 120%;
@@ -37,15 +36,14 @@ table td {
 .prop_info_group {
     background: #e6e8f0;
 }
-/* Change class name indent > padding */
-.indent {
-	padding-left: 15px;
-}
 .italic {
     font-style: italic;
 }
+.pad_lr {
+	padding-left: 15px;
+	padding-right: 15px;
+}
 .backlink {
-    font-style: italic;
     text-align: right;
 }
 
