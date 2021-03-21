@@ -37,6 +37,7 @@
 
     <xsl:template match="mig:migDataDictionary">
         <h1 id="dd_top">
+            <xsl:text>MIG Data Dictionary: </xsl:text>
             <xsl:value-of select="mig:ddName"/>
         </h1>
         <ul>
@@ -126,14 +127,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="prop_info_group table_text">
+                    <tr>
                         <!-- Is scope attribute correct here?? -->
                         <!-- Why would rowspan be 5!?! I do not understand this, but this works -->
-                        <th rowspan="5" scope="rowgroup">
-                            <p>
+                        <th rowspan="5" scope="rowgroup" class="prop_info_group">
+                            <p class="pad_lr">
                                 <xsl:text>CONTENTdm field properties*</xsl:text>
                             </p>
-                            <p class="italic table_text">
+                            <p class="italic pad_lr">
                                 <xsl:text>*CONTENTdm Administration &#xbb; Collections &#xbb; Field properties &#xbb; </xsl:text>
                                 <a
                                     href="https://briesenberg07.github.io/libraryNotes/images/cdm_edit_field_properties.jpg">
@@ -143,12 +144,10 @@
                         </th>
                     </tr>
                     <tr>
-                        <th scope="row" class="table_text">
+                        <th scope="row" class="pad_lr">
                             <xsl:text>Dublin Core Equivalent</xsl:text>
-                            <br/>
-
                         </th>
-                        <td>
+                        <td class="pad_lr">
                             <xsl:choose>
                                 <xsl:when test="mig2:labels/mig2:dc = 'none'">
                                     <xsl:text>[No DC equivalent]</xsl:text>
@@ -156,13 +155,13 @@
                                 <!-- Special condition with hard-coding for the restrictions property (does not match label of equivalent DC Element) -->
                                 <xsl:when
                                     test="mig2:labels/mig2:platformIndependent = 'restrictions'">
-                                    <a class="table_text"
+                                    <a class="pad_lr"
                                         href="http://purl.org/dc/elements/1.1/rights">rights</a>
                                     <xsl:text> [Dublin Core Element Set 1.1]</xsl:text>
                                 </xsl:when>
                                 <!-- Condition for equivalents which 1) are OWL datatype props and 2) match DC Element names -->
                                 <xsl:when test="mig2:rdf/mig2:owlDatatypeProperty = 'yes'">
-                                    <a class="table_text"
+                                    <a class="pad_lr"
                                         href="{concat('http://purl.org/dc/elements/1.1/', mig2:labels/mig2:dc)}">
                                         <xsl:value-of select="mig2:labels/mig2:dc"/>
                                     </a>
@@ -170,14 +169,14 @@
                                 </xsl:when>
                                 <!-- Condition for equivalents which 2) are *not* OWL datatype props and 2) match DC Element names -->
                                 <xsl:when test="mig2:rdf/mig2:owlDatatypeProperty = 'no'">
-                                    <a class="table_text"
+                                    <a class="pad_lr"
                                         href="{concat('http://purl.org/dc/elements/1.1/', mig2:labels/mig2:dc)}">
                                         <xsl:value-of select="mig2:labels/mig2:dc"/>
                                     </a>
                                     <xsl:text> [Dublin Core Element Set 1.1]</xsl:text>
                                 </xsl:when>
                                 <xsl:otherwise>
-                                    <a class="table_text"
+                                    <a class="pad_lr"
                                         href="{concat('http://purl.org/dc/terms/', mig2:labels/mig2:dc)}">
                                         <xsl:value-of select="mig2:labels/mig2:dc"/>
                                     </a>
@@ -187,53 +186,53 @@
                         </td>
                     </tr>
                     <tr>
-                        <th class="table_text" scope="row">
+                        <th class="pad_lr" scope="row">
                             <xsl:text>Searchable?</xsl:text>
                         </th>
-                        <td class="table_text">
+                        <td class="pad_lr">
                             <xsl:value-of select="mig2:cdm/mig2:searchable"/>
                         </td>
                     </tr>
                     <tr>
-                        <th class="table_text" scope="row">
+                        <th class="pad_lr" scope="row">
                             <xsl:text>Controlled vocabulary?</xsl:text>
                         </th>
-                        <td class="table_text">
+                        <td class="pad_lr">
                             <xsl:value-of select="mig2:cdm/mig2:cdmControlledVocab"/>
                         </td>
                     </tr>
                     <tr>
-                        <th class="table_text" scope="row">
+                        <th class="pad_lr" scope="row">
                             <xsl:text>Hidden?</xsl:text>
                         </th>
-                        <td class="table_text">
+                        <td class="pad_lr">
                             <xsl:value-of select="mig2:cdm/mig2:hidden"/>
                         </td>
                     </tr>
                     <tr>
-                        <!-- Again, don't understand "add 1 to rowspan"... -->
-                        <th rowspan="6" scope="rowgroup" class="table_text prop_info_group">
+                        <!-- Don't understand "add 1 to rowspan"... -->
+                        <th rowspan="6" scope="rowgroup" class="pad_lr prop_info_group">
                             <xsl:text>Required status, definition, guidance</xsl:text>
                         </th>
                     </tr>
                     <tr>
-                        <th class="table_text" scope="row">
+                        <th class="pad_lr" scope="row">
                             <xsl:text>Required by CONTENTdm?</xsl:text>
                         </th>
-                        <td class="table_text">
+                        <td class="pad_lr">
                             <xsl:value-of select="mig2:cdm/mig2:cdmRequired"/>
                         </td>
                     </tr>
                     <tr>
-                        <th class="table_text" scope="row">
+                        <th class="pad_lr" scope="row">
                             <xsl:text>Required by UW Libraries?</xsl:text>
                         </th>
-                        <td class="table_text">
+                        <td class="pad_lr">
                             <xsl:value-of select="mig2:uwRequired/mig2:uwObject"/>
                         </td>
                     </tr>
                     <tr>
-                        <th class="table_text" scope="row">
+                        <th class="pad_lr" scope="row">
                             <xsl:text>Property definition</xsl:text>
                         </th>
                         <td>
@@ -247,7 +246,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th class="table_text" scope="row">
+                        <th class="pad_lr" scope="row">
                             <xsl:text>Input instructions</xsl:text>
                         </th>
                         <td>
@@ -276,7 +275,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th class="table_text" scope="row">
+                        <th class="pad_lr" scope="row">
                             <xsl:text>Input examples</xsl:text>
                         </th>
                         <td>
@@ -287,7 +286,7 @@
                                         select="
                                             mig2:examples/mig2:customization[@co = 'object']
                                             [@dd = ../../../../mig:cdmCode]/mig2:para">
-                                        <p class="table_text">
+                                        <p class="pad_lr">
                                             <xsl:value-of select="."/>
                                         </p>
                                     </xsl:for-each>
@@ -297,7 +296,7 @@
                                         select="
                                             mig2:examples/mig2:example
                                             [@co = 'object' or @co = 'all']/mig2:para">
-                                        <p class="table_text">
+                                        <p class="pad_lr">
                                             <xsl:value-of select="."/>
                                         </p>
                                     </xsl:for-each>
@@ -308,7 +307,7 @@
                     <!-- Note that XPath here does not account for @co attribute of admin elements, ouputs all to HTML -->
                     <xsl:if test="mig2:additionalInfo/mig2:admin/mig2:para/text()">
                         <tr>
-                            <th colspan="2" scope="row" class="table_text prop_info_group">
+                            <th colspan="2" scope="row" class="pad_lr prop_info_group">
                                 <xsl:text>Admin notes</xsl:text>
                             </th>
                             <td>
@@ -325,7 +324,7 @@
                     <!-- Note that XPath here does not account for @co attribute of admin elements, ouputs all to HTML -->
                     <xsl:if test="mig2:additionalInfo/mig2:generalNotes/mig2:para/text()">
                         <tr>
-                            <th colspan="2" scope="row" class="table_text prop_info_group">
+                            <th colspan="2" scope="row" class="pad_lr prop_info_group">
                                 <xsl:text>General notes</xsl:text>
                             </th>
                             <td>
@@ -346,12 +345,11 @@
                 <a href="#co_props">
                     <xsl:text>Return to compound-object properties</xsl:text>
                 </a>
-                <br/>
+                <xsl:text>  |  </xsl:text>
                 <a href="#dd_props">
                     <xsl:text>Return to data dictionary properties</xsl:text>
                 </a>
             </p>
         </xsl:for-each>
     </xsl:template>
-
 </xsl:stylesheet>
