@@ -34,11 +34,15 @@ table td {
     text-align: center;
     font-size: 120%;
 }
-.note {
-    font-style: italic;
-}
 .prop_info_group {
     background: #e6e8f0;
+}
+/* Change class name indent > padding */
+.indent {
+	padding-left: 15px;
+}
+.italic {
+    font-style: italic;
 }
 .backlink {
     font-style: italic;

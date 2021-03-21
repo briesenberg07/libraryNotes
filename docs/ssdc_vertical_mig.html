@@ -37,6 +37,12 @@
          <li><a href="#co_object_p27">Description</a></li>
       </ol>
       <h2>COMPOUND-OBJECT DESCRIPTION</h2>
+      
+      <!-- jUST GET THIS CSS WORKING -->
+      <!-- Inheritance doesn't seem to be working for me, so the plan is to put the class on the element directly containing text to be styled -->
+      <!-- TO DO: Change class name "indent" to something with "padding" to reflect the CSS property being used -->
+      <!-- This is probably sub-optimal -->
+      
       <table>
          <thead>
             <tr>
@@ -45,50 +51,53 @@
          </thead>
          <tbody>
             <tr>
-               <th rowspan="5" scope="rowgroup" class="prop_info_group">
-                  <p>CONTENTdm field properties*</p>
-                  <p class="note">*CONTENTdm Administration » Collections » Field properties » <a href="https://briesenberg07.github.io/libraryNotes/images/cdm_edit_field_properties.jpg">edit</a></p>
+               <th rowspan="5" scope="rowgroup">
+                  <p class="prop_info_group indent">CONTENTdm field properties*</p>
+                  <p class="italic indent">*CONTENTdm Administration » Collections » Field properties » <a href="https://briesenberg07.github.io/libraryNotes/images/cdm_edit_field_properties.jpg">edit</a></p>
                </th>
             </tr>
             <tr>
-               <th scope="row">Dublin Core Equivalent<br></th>
-               <td><a href="http://purl.org/dc/elements/1.1/title">title</a> [Dublin Core Element Set 1.1]</td>
+               <!-- NOTE where is this <br> coming from?? -->
+               <th scope="row" class="indent">Dublin Core Equivalent<br></th>
+               <td class="indent"><a href="http://purl.org/dc/elements/1.1/title">title</a> [Dublin Core Element Set 1.1]</td>
             </tr>
             <tr>
-               <th scope="row">Searchable?</th>
-               <td>yes</td>
+               <th scope="row" class="indent">Searchable?</th>
+               <td class="indent">yes</td>
             </tr>
             <tr>
-               <th scope="row">Controlled vocabulary?</th>
-               <td>no</td>
+               <th scope="row" class="indent">Controlled vocabulary?</th>
+               <td class="indent">no</td>
             </tr>
             <tr>
-               <th scope="row">Hidden?</th>
-               <td>no</td>
+               <th scope="row" class="indent">Hidden?</th>
+               <td class="indent">no</td>
             </tr>
             <tr>
                <th rowspan="6" scope="rowgroup" class="prop_info_group">
-                  <p>Required status, definition, guidance</p>
+                  <p class="indent">Required status, definition, guidance</p>
                </th>
             </tr>
             <tr>
-               <th scope="row">Required by CONTENTdm?</th>
-               <td>yes</td>
+               <th scope="row" class="indent">Required by CONTENTdm?</th>
+               <td class="indent">yes</td>
             </tr>
             <tr>
-               <th scope="row">Required by UW Libraries?</th>
-               <td>yes</td>
+               <th scope="row" class="indent">Required by UW Libraries?</th>
+               <td class="indent">yes</td>
             </tr>
             <tr>
-               <th scope="row">Property definition</th>
+               <th scope="row" class="indent">Property definition</th>
                <td>
+                  <!-- NOTE no additional indentation needed for <ul>s -->
                   <ul>
                      <li>A name for the resource.</li>
                   </ul>
                </td>
             </tr>
             <tr>
-               <th scope="row">Input instructions</th>
+               <th scope="row" class="indent">Input instructions</th>
+               <!-- NOTE no additional indentation needed for <ul>s -->
                <td>
                   <ul>
                      <li>Enter the Ladino title in Hebrew script as it appears on the title page.</li>
@@ -106,13 +115,16 @@
                </td>
             </tr>
             <tr>
-               <th scope="row">Input examples</th>
+               <th scope="row" class="indent">Input examples</th>
                <td>
-                  <p>פאב׳לו אי ב׳ירז׳יניאה: רומאנסו</p>
+                  <p class="indent">פאב׳לו אי ב׳ירז׳יניאה: רומאנסו</p>
                </td>
             </tr>
          </tbody>
       </table>
+      
+      <!-- jUST GETTING THE CSS ABOVE WORKING -->
+      
       <p class="backlink"><a href="#co_props">Return to compound-object properties</a><br><a href="#dd_props">Return to data dictionary properties</a></p>
       <table>
          <thead>
