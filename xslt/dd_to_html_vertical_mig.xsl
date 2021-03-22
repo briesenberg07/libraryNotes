@@ -37,7 +37,7 @@
 
     <xsl:template match="mig:migDataDictionary">
         <h1 id="dd_top">
-            <xsl:text>MIG Data Dictionary: </xsl:text>
+            <xsl:text>UWL MIG Data Dictionary: </xsl:text>
             <xsl:value-of select="mig:ddName"/>
         </h1>
         <ul>
@@ -134,6 +134,10 @@
                             <p class="pad_lr">
                                 <xsl:text>CONTENTdm field properties*</xsl:text>
                             </p>
+                            <!-- BMR TO DO: complete field properties shown -
+                                    large
+                                    data type
+                                 [?] Change order to match CONTENTdm UI -->
                             <p class="italic pad_lr">
                                 <xsl:text>*CONTENTdm Administration &#xbb; Collections &#xbb; Field properties &#xbb; </xsl:text>
                                 <a
@@ -155,13 +159,13 @@
                                 <!-- Special condition with hard-coding for the restrictions property (does not match label of equivalent DC Element) -->
                                 <xsl:when
                                     test="mig2:labels/mig2:platformIndependent = 'restrictions'">
-                                    <a class="pad_lr"
+                                    <a
                                         href="http://purl.org/dc/elements/1.1/rights">rights</a>
                                     <xsl:text> [Dublin Core Element Set 1.1]</xsl:text>
                                 </xsl:when>
                                 <!-- Condition for equivalents which 1) are OWL datatype props and 2) match DC Element names -->
                                 <xsl:when test="mig2:rdf/mig2:owlDatatypeProperty = 'yes'">
-                                    <a class="pad_lr"
+                                    <a
                                         href="{concat('http://purl.org/dc/elements/1.1/', mig2:labels/mig2:dc)}">
                                         <xsl:value-of select="mig2:labels/mig2:dc"/>
                                     </a>
@@ -169,14 +173,14 @@
                                 </xsl:when>
                                 <!-- Condition for equivalents which 2) are *not* OWL datatype props and 2) match DC Element names -->
                                 <xsl:when test="mig2:rdf/mig2:owlDatatypeProperty = 'no'">
-                                    <a class="pad_lr"
+                                    <a
                                         href="{concat('http://purl.org/dc/elements/1.1/', mig2:labels/mig2:dc)}">
                                         <xsl:value-of select="mig2:labels/mig2:dc"/>
                                     </a>
                                     <xsl:text> [Dublin Core Element Set 1.1]</xsl:text>
                                 </xsl:when>
                                 <xsl:otherwise>
-                                    <a class="pad_lr"
+                                    <a
                                         href="{concat('http://purl.org/dc/terms/', mig2:labels/mig2:dc)}">
                                         <xsl:value-of select="mig2:labels/mig2:dc"/>
                                     </a>
