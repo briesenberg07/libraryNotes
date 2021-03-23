@@ -39,6 +39,13 @@
                                 </a>
                             </li>
                         </xsl:when>
+                        <xsl:when test="$set = 'no'">
+                            <li>
+                                <a href="{concat('#no_', mig2:uid)}">
+                                    <xsl:value-of select="mig2:cdm/mig2:label"/>
+                                </a>
+                            </li>
+                        </xsl:when>
                         <xsl:otherwise>
                             <xsl:text>ERROR HERE</xsl:text>
                         </xsl:otherwise>
@@ -75,6 +82,13 @@
                                 </a>
                             </li>
                         </xsl:when>
+                        <xsl:when test="$set = 'no'">
+                            <li>
+                                <a href="{concat('#no_', mig2:uid)}">
+                                    <xsl:value-of select="mig2:cdm/mig2:label"/>
+                                </a>
+                            </li>
+                        </xsl:when>
                         <xsl:otherwise>
                             <xsl:text>ERROR HERE</xsl:text>
                         </xsl:otherwise>
@@ -97,12 +111,17 @@
             <xsl:choose>
                 <xsl:when test="$set = 'object'">
                     <h2>
-                        <xsl:text>Compound-object Descriptive Properties</xsl:text>
+                        <xsl:text>Compound Object Descriptive Properties</xsl:text>
                     </h2>
                 </xsl:when>
                 <xsl:when test="$set = 'item'">
                     <h2>
                         <xsl:text>Compound-object Item Descriptive Properties</xsl:text>
+                    </h2>
+                </xsl:when>
+                <xsl:when test="$set = 'no'">
+                    <h2>
+                        <xsl:text>Standalone Object Descriptive Properties</xsl:text>
                     </h2>
                 </xsl:when>
                 <xsl:otherwise>
@@ -128,6 +147,14 @@
                                 </xsl:when>
                                 <xsl:when test="$set = 'item'">
                                     <th colspan="3" id="{concat('item_', mig2:uid)}"
+                                        class="prop_table_head">
+                                        <xsl:value-of select="position()"/>
+                                        <xsl:text>. </xsl:text>
+                                        <xsl:value-of select="mig2:cdm/mig2:label"/>
+                                    </th>
+                                </xsl:when>
+                                <xsl:when test="$set = 'no'">
+                                    <th colspan="3" id="{concat('no_', mig2:uid)}"
                                         class="prop_table_head">
                                         <xsl:value-of select="position()"/>
                                         <xsl:text>. </xsl:text>
@@ -370,12 +397,17 @@
             <xsl:choose>
                 <xsl:when test="$set = 'co'">
                     <h2>
-                        <xsl:text>Compound-object Administrative Properties</xsl:text>
+                        <xsl:text>Compound Object Administrative Properties</xsl:text>
                     </h2>
                 </xsl:when>
                 <xsl:when test="$set = 'item'">
                     <h2>
                         <xsl:text>Compound-object Item Administrative Properties</xsl:text>
+                    </h2>
+                </xsl:when>
+                <xsl:when test="$set = 'no'">
+                    <h2>
+                        <xsl:text>Standalone Object Administrative Properties</xsl:text>
                     </h2>
                 </xsl:when>
                 <xsl:otherwise>
@@ -400,6 +432,14 @@
                                 </xsl:when>
                                 <xsl:when test="$set = 'item'">
                                     <th colspan="3" id="{concat('item_', mig2:uid)}"
+                                        class="prop_table_head">
+                                        <xsl:value-of select="position()"/>
+                                        <xsl:text>. </xsl:text>
+                                        <xsl:value-of select="mig2:cdm/mig2:label"/>
+                                    </th>
+                                </xsl:when>
+                                <xsl:when test="$set = 'no'">
+                                    <th colspan="3" id="{concat('no_', mig2:uid)}"
                                         class="prop_table_head">
                                         <xsl:value-of select="position()"/>
                                         <xsl:text>. </xsl:text>
@@ -649,6 +689,11 @@
                 <xsl:when test="$backlink_set = 'item'">
                     <a href="{concat('#', $backlink_set, '_props')}">
                         <xsl:text>Return to compound-object item properties</xsl:text>
+                    </a>
+                </xsl:when>
+                <xsl:when test="$backlink_set = 'no'">
+                    <a href="{concat('#', $backlink_set, '_props')}">
+                        <xsl:text>Return to standalone object properties</xsl:text>
                     </a>
                 </xsl:when>
                 <xsl:otherwise>

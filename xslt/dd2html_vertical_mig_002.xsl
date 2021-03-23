@@ -74,7 +74,7 @@
 
         <!-- CO property lists -->
         <h3 id="object_props">
-            <xsl:text>Compound-object Properties</xsl:text>
+            <xsl:text>Compound Object Properties</xsl:text>
         </h3>
         <xsl:call-template name="prop_lists">
             <xsl:with-param name="set" select="'object'"/>
@@ -108,8 +108,18 @@
 
         <!-- Standalone object property lists -->
         <h3 id="no_props">
-            <xsl:text>Compound-object Properties</xsl:text>
+            <xsl:text>Standalone Object Properties</xsl:text>
         </h3>
+        <xsl:call-template name="prop_lists">
+            <xsl:with-param name="set" select="'no'"/>
+            <xsl:with-param name="lists_context"
+                select="
+                mig:properties/mig2:property
+                [mig2:descriptions//mig2:customization[@co = 'no'][@dd = $collection] or
+                mig2:descriptions//mig2:instructions/@co = 'no']
+                [not(mig2:labels/mig2:platformIndependent = //mig:suppressObjectProp)]"
+            />
+        </xsl:call-template>
 
         <xsl:apply-templates select="mig:properties"/>
     </xsl:template>
@@ -139,6 +149,17 @@
                     [not(mig2:labels/mig2:platformIndependent = 'subjectsLcsh')]
                     [not(mig2:labels/mig2:platformIndependent = 'cataloging')]"/>
             <xsl:with-param name="set" select="'item'"/>
+        </xsl:call-template>
+        
+        <!-- Standalone properties tables -->
+        <xsl:call-template name="prop_tables">
+            <xsl:with-param name="tables_context"
+                select="
+                mig2:property
+                [mig2:descriptions//mig2:customization[@co = 'no'][@dd = $collection] or
+                mig2:descriptions//mig2:instructions/@co = 'no']
+                [not(mig2:labels/mig2:platformIndependent = //mig:suppressObjectProp)]"/>
+            <xsl:with-param name="set" select="'no'"/>
         </xsl:call-template>
 
     </xsl:template>
