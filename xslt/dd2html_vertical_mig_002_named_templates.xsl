@@ -2,9 +2,8 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:mig="http://www.lib.washington.edu/msd/mig/schemas/dataDictionaries"
-    xmlns:mig2="http://faculty.washington.edu/tgis/schemasProject/xsd4md" 
-    exclude-result-prefixes="xs"
-    version="3.0">
+    xmlns:mig2="http://faculty.washington.edu/tgis/schemasProject/xsd4md"
+    exclude-result-prefixes="xs" version="3.0">
 
     <!-- prop_lists -->
     <xsl:template name="prop_lists">
@@ -297,9 +296,8 @@
                             <td>
                                 <ul>
                                     <xsl:choose>
-                                        <!-- See comment in the original XSLT...is there a problem here? -->
                                         <xsl:when
-                                            test="../../mig:cdmCode = mig2:descriptions/mig2:customization/@dd">
+                                            test="mig2:descriptions/mig2:customization[@co = $set][@dd = ../../../../mig:cdmCode]/node()">
                                             <xsl:for-each
                                                 select="mig2:descriptions/mig2:customization[@co = $set][@dd = ../../../../mig:cdmCode]/mig2:para">
                                                 <li>
@@ -326,11 +324,10 @@
                             <td>
                                 <xsl:choose>
                                     <xsl:when
-                                        test="../../mig:cdmCode = mig2:examples/mig2:customization/@dd">
+                                        test="mig2:examples/mig2:customization[@co = $set][@dd = ../../../../mig:cdmCode]/node()">
                                         <xsl:for-each
                                             select="
-                                                mig2:examples/mig2:customization[@co = $set]
-                                                [@dd = ../../../../mig:cdmCode]/mig2:para">
+                                            mig2:examples/mig2:customization[@co = $set][@dd = ../../../../mig:cdmCode]/mig2:para">
                                             <p class="pad_lr">
                                                 <xsl:value-of select="."/>
                                             </p>
@@ -579,9 +576,8 @@
                             <td>
                                 <ul>
                                     <xsl:choose>
-                                        <!-- See comment in the original XSLT...is there a problem here? -->
                                         <xsl:when
-                                            test="../../mig:cdmCode = mig2:descriptions/mig2:customization/@dd">
+                                            test="mig2:descriptions/mig2:customization[@co = $set][@dd = ../../../../mig:cdmCode]/node()">
                                             <xsl:for-each
                                                 select="mig2:descriptions/mig2:customization[@co = $set][@dd = ../../../../mig:cdmCode]/mig2:para">
                                                 <li>
@@ -608,11 +604,10 @@
                             <td>
                                 <xsl:choose>
                                     <xsl:when
-                                        test="../../mig:cdmCode = mig2:examples/mig2:customization/@dd">
+                                        test="mig2:examples/mig2:customization[@co = $set][@dd = ../../../../mig:cdmCode]/node()">
                                         <xsl:for-each
                                             select="
-                                                mig2:examples/mig2:customization[@co = $set]
-                                                [@dd = ../../../../mig:cdmCode]/mig2:para">
+                                            mig2:examples/mig2:customization[@co = $set][@dd = ../../../../mig:cdmCode]/mig2:para">
                                             <p class="pad_lr">
                                                 <xsl:value-of select="."/>
                                             </p>
