@@ -392,7 +392,7 @@
         <xsl:if
             test="$tables_context[mig2:cdm/mig2:cdmDatatype = 'cdmAdministrative' or mig2:cdm/mig2:cdmDatatype = 'uwAdministrative']/node()">
             <xsl:choose>
-                <xsl:when test="$set = 'co'">
+                <xsl:when test="$set = 'object'">
                     <h2>
                         <xsl:text>Compound Object Administrative Properties</xsl:text>
                     </h2>
@@ -419,8 +419,8 @@
                     <thead>
                         <tr>
                             <xsl:choose>
-                                <xsl:when test="$set = 'co'">
-                                    <th colspan="3" id="{concat('co_', mig2:uid)}"
+                                <xsl:when test="$set = 'object'">
+                                    <th colspan="3" id="{concat('object_', mig2:uid)}"
                                         class="prop_table_head">
                                         <xsl:value-of select="position()"/>
                                         <xsl:text>. </xsl:text>

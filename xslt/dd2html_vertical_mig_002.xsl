@@ -82,7 +82,7 @@
                 select="
                     mig:properties/mig2:property
                     [mig2:descriptions//mig2:customization[@co = 'object'][@dd = $collection] or
-                    mig2:descriptions//mig2:instructions/@co = 'object']
+                    mig2:descriptions//mig2:instructions[@co = 'object']]
                     [not(mig2:labels/mig2:platformIndependent = //mig:suppressObjectProp)]"
             />
         </xsl:call-template>
@@ -98,7 +98,7 @@
                 select="
                     mig:properties/mig2:property
                     [mig2:descriptions//mig2:customization[@co = 'item'][@dd = $collection] or
-                    mig2:descriptions//mig2:instructions/@co = 'item']
+                    mig2:descriptions//mig2:instructions[@co = 'item']]
                     [not(mig2:labels/mig2:platformIndependent = //mig:suppressObjectProp)]
                     [not(mig2:labels/mig2:platformIndependent = 'language')]
                     [not(mig2:labels/mig2:platformIndependent = 'subjectsLcsh')]
@@ -116,12 +116,13 @@
                 select="
                 mig:properties/mig2:property
                 [mig2:descriptions//mig2:customization[@co = 'no'][@dd = $collection] or
-                mig2:descriptions//mig2:instructions/@co = 'no']
+                mig2:descriptions//mig2:instructions[@co = 'no']]
                 [not(mig2:labels/mig2:platformIndependent = //mig:suppressObjectProp)]"
             />
         </xsl:call-template>
 
         <xsl:apply-templates select="mig:properties"/>
+    <!-- I wonder if this really needs to be two templates -->
     </xsl:template>
 
     <xsl:template match="mig:properties">
@@ -131,7 +132,7 @@
                 select="
                     mig2:property
                     [mig2:descriptions//mig2:customization[@co = 'object'][@dd = $collection] or
-                    mig2:descriptions//mig2:instructions/@co = 'object']
+                    mig2:descriptions//mig2:instructions[@co = 'object']]
                     [not(mig2:labels/mig2:platformIndependent = //mig:suppressObjectProp)]"/>
             <xsl:with-param name="set" select="'object'"/>
         </xsl:call-template>
@@ -143,7 +144,7 @@
                 select="
                     mig2:property
                     [mig2:descriptions//mig2:customization[@co = 'item'][@dd = $collection] or
-                    mig2:descriptions//mig2:instructions/@co = 'item']
+                    mig2:descriptions//mig2:instructions[@co = 'item']]
                     [not(mig2:labels/mig2:platformIndependent = //mig:suppressObjectProp)]
                     [not(mig2:labels/mig2:platformIndependent = 'language')]
                     [not(mig2:labels/mig2:platformIndependent = 'subjectsLcsh')]
@@ -157,17 +158,10 @@
                 select="
                 mig2:property
                 [mig2:descriptions//mig2:customization[@co = 'no'][@dd = $collection] or
-                mig2:descriptions//mig2:instructions/@co = 'no']
+                mig2:descriptions//mig2:instructions[@co = 'no']]
                 [not(mig2:labels/mig2:platformIndependent = //mig:suppressObjectProp)]"/>
             <xsl:with-param name="set" select="'no'"/>
         </xsl:call-template>
 
     </xsl:template>
-    
-    
-    
-    
-    
-    
-    
 </xsl:stylesheet>
