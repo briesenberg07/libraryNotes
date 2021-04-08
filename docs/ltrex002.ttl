@@ -1,0 +1,11 @@
+@prefix sdo: <https://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/a_photo> rdf:type sdo:Thing .
+<http://example.org/a_photo> dcterms:title "Northwest U.S. Palm Trees"@en .
+<http://example.org/a_photo> dcterms:creator "Riesenberg, Benjamin"@en .
+<http://example.org/a_photo> dcterms:date "2016-04-17"^^xsd:date .
+<http://example.org/a_photo> dcterms:type <http://purl.org/dc/dcmitype/StillImage> .
+<http://example.org/a_photo> sdo:url <https://upload.wikimedia.org/wikipedia/commons/3/39/PDX_palms.jpg> .

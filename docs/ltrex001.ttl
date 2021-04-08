@@ -1,9 +1,0 @@
-@prefix brln: <https://briesenberg07.github.io/libraryNotes/> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix sdo: <https://schema.org/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-
-brln:ltrex001 dcterms:title "Northwest U.S. Palm Trees"@en .
-brln:ltrex001 dcterms:date "2016-04-17"^^xsd:date .
-brln:ltrex001 dcterms:type <http://purl.org/dc/dcmitype/StillImage> .
-brln:ltrex001 sdo:contentUrl <https://briesenberg07.github.io/libraryNotes/images/palm_trees.jpg> .
