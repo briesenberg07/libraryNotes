@@ -12,5 +12,5 @@ start = @<a_photo_shape>
   dcterms:title rdf:langString ,
   dcterms:creator [ rdf:langString xsd:anyUri ],
   dcterms:date xsd:date ,
-  dcterms:type dcmitype:~
+  dcterms:type [ dcmitype:~ ]
 }
