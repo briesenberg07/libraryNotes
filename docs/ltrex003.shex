@@ -7,11 +7,15 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
 
 ex:a_photo_shape {
-  rdf:type schema:MediaObject {1} ;
+  rdf:type [ schema:MediaObject ] {1} ;
   schema:contentUrl IRI + ;
   dct:title rdf:langString {1} ;
-  dce:creator [ rdf:langString xsd:anyUri ] * ;
+  dce:creator rdf:langString * ;
   dct:spatial IRI * ;
   dct:date xsd:date ? ;
   dct:type [ dcmitype:~ ] +
 }
+
+# VALIDATED! w ltrex002.ttl
+# <http://example.org/a_photo>@<http://example.org/a_photo_shape>
+# http://rdfshape.weso.es/link/16181196199
