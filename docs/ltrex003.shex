@@ -16,6 +16,6 @@ ex:a_photo_shape {
   dct:type [ dcmitype:~ ] +
 }
 
-# VALIDATED! w ltrex002.ttl
+# VALIDATED ltrex002.ttl
 # <http://example.org/a_photo>@<http://example.org/a_photo_shape>
 # http://rdfshape.weso.es/link/16181196199

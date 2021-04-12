@@ -12,3 +12,7 @@ ex:a_photo dce:creator "Riesenberg, Benjamin"@en .
 ex:a_photo dct:spatial <http://vocab.getty.edu/tgn/7014273> .
 ex:a_photo dct:date "2016-04-17"^^xsd:date .
 ex:a_photo dct:type <http://purl.org/dc/dcmitype/StillImage> .
+
+# VALIDATED with ltrex003.shex
+# <http://example.org/a_photo>@<http://example.org/a_photo_shape>
+# http://rdfshape.weso.es/link/16181196199
