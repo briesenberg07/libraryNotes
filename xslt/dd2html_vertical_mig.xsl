@@ -13,6 +13,7 @@
             'no' = for standalone objects -->
 
     <!-- **NO** MODED TEMPLATES AT THIS TIME, THIS STYLESHEET CURRENTLY **ONLY SUPPORTS** COMBINED (CO+STANDALONE) COLLECTIONS -->
+    <!-- SUPPORT FOR OUTPUTTING CO-ONLY/STANDALONE-ONLY DDs IS A 'TO-DO' -->
     
     <xsl:include href="dd2html_vertical_mig_named_templates.xsl"/>
     

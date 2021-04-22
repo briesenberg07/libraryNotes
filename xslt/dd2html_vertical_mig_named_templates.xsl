@@ -189,41 +189,20 @@
                         </tr>
                         <tr>
                             <th scope="row" class="pad_lr">
-                                <xsl:text>Dublin Core Equivalent</xsl:text>
+                                <xsl:text>'DC map' setting</xsl:text>
                             </th>
                             <td class="pad_lr">
                                 <xsl:choose>
                                     <xsl:when test="mig2:labels/mig2:dc = 'none'">
-                                        <xsl:text>[No DC equivalent]</xsl:text>
+                                        <xsl:text>None</xsl:text>
                                     </xsl:when>
                                     <!-- Special condition with hard-coding for the restrictions property (does not match label of equivalent DC Element) -->
                                     <xsl:when
                                         test="mig2:labels/mig2:platformIndependent = 'restrictions'">
-                                        <a href="http://purl.org/dc/elements/1.1/rights">rights</a>
-                                        <xsl:text> [Dublin Core Element Set 1.1]</xsl:text>
-                                    </xsl:when>
-                                    <!-- Condition for equivalents which 1) are OWL datatype props and 2) match DC Element names -->
-                                    <xsl:when test="mig2:rdf/mig2:owlDatatypeProperty = 'yes'">
-                                        <a
-                                            href="{concat('http://purl.org/dc/elements/1.1/', mig2:labels/mig2:dc)}">
-                                            <xsl:value-of select="mig2:labels/mig2:dc"/>
-                                        </a>
-                                        <xsl:text> [Dublin Core Element Set 1.1]</xsl:text>
-                                    </xsl:when>
-                                    <!-- Condition for equivalents which 2) are *not* OWL datatype props and 2) match DC Element names -->
-                                    <xsl:when test="mig2:rdf/mig2:owlDatatypeProperty = 'no'">
-                                        <a
-                                            href="{concat('http://purl.org/dc/elements/1.1/', mig2:labels/mig2:dc)}">
-                                            <xsl:value-of select="mig2:labels/mig2:dc"/>
-                                        </a>
-                                        <xsl:text> [Dublin Core Element Set 1.1]</xsl:text>
+                                        <xsl:text>rights</xsl:text>
                                     </xsl:when>
                                     <xsl:otherwise>
-                                        <a
-                                            href="{concat('http://purl.org/dc/terms/', mig2:labels/mig2:dc)}">
-                                            <xsl:value-of select="mig2:labels/mig2:dc"/>
-                                        </a>
-                                        <xsl:text> [DCMI Metadata Terms]</xsl:text>
+                                        <xsl:value-of select="mig2:labels/mig2:dc"/>
                                     </xsl:otherwise>
                                 </xsl:choose>
                             </td>
@@ -327,7 +306,7 @@
                                         test="mig2:examples/mig2:customization[@co = $set][@dd = ../../../../mig:cdmCode]/node()">
                                         <xsl:for-each
                                             select="
-                                            mig2:examples/mig2:customization[@co = $set][@dd = ../../../../mig:cdmCode]/mig2:para">
+                                                mig2:examples/mig2:customization[@co = $set][@dd = ../../../../mig:cdmCode]/mig2:para">
                                             <p class="pad_lr">
                                                 <xsl:value-of select="."/>
                                             </p>
@@ -607,7 +586,7 @@
                                         test="mig2:examples/mig2:customization[@co = $set][@dd = ../../../../mig:cdmCode]/node()">
                                         <xsl:for-each
                                             select="
-                                            mig2:examples/mig2:customization[@co = $set][@dd = ../../../../mig:cdmCode]/mig2:para">
+                                                mig2:examples/mig2:customization[@co = $set][@dd = ../../../../mig:cdmCode]/mig2:para">
                                             <p class="pad_lr">
                                                 <xsl:value-of select="."/>
                                             </p>
