@@ -15,7 +15,7 @@
     <!-- **NO** MODED TEMPLATES AT THIS TIME, THIS STYLESHEET CURRENTLY **ONLY SUPPORTS** COMBINED (CO+STANDALONE) COLLECTIONS -->
     <!-- SUPPORT FOR OUTPUTTING CO-ONLY/STANDALONE-ONLY DDs IS A 'TO-DO' -->
     
-    <xsl:include href="dd2html_vertical_mig_named_templates.xsl"/>
+    <xsl:include href="next_dd2html_vertical_mig_named_templates.xsl"/>
     
     <!-- add html-version attribute -->
     <xsl:output method="html" html-version="5.0" indent="yes" use-character-maps="angleBrackets"/>
@@ -73,29 +73,28 @@
             <xsl:text>Data Dictionary Properties</xsl:text>
         </h2>
 
-        <!-- CO property lists -->
+        <!-- CO property list -->
         <h3 id="object_props">
             <xsl:text>Compound Object Properties</xsl:text>
         </h3>
-        <xsl:call-template name="prop_lists">
-            <xsl:with-param name="set" select="'object'"/>
-            <xsl:with-param name="lists_context"
+        <xsl:call-template name="prop_list">
+            <xsl:with-param name="prop_list_context"
                 select="
                     mig:properties/mig2:property
                     [mig2:descriptions//mig2:customization[@co = 'object'][@dd = $collection] or
                     mig2:descriptions//mig2:instructions[@co = 'object']]
                     [not(mig2:labels/mig2:platformIndependent = //mig:suppressObjectProp)]"
             />
+            <xsl:with-param name="set" select="'object'"/>
         </xsl:call-template>
 
-        <!-- CO-item property lists -->
+        <!-- CO-item property list -->
         <h3 id="item_props">
             <xsl:text>Compound-object Item Properties</xsl:text>
         </h3>
-        <xsl:call-template name="prop_lists">
-            <xsl:with-param name="set" select="'item'"/>
+        <xsl:call-template name="prop_list">
             <!-- BMR **HARD-CODING TO SUPPRESS UNWANTED CO-ITEM PROPS -->
-            <xsl:with-param name="lists_context"
+            <xsl:with-param name="prop_list_context"
                 select="
                     mig:properties/mig2:property
                     [mig2:descriptions//mig2:customization[@co = 'item'][@dd = $collection] or
@@ -105,31 +104,31 @@
                     [not(mig2:labels/mig2:platformIndependent = 'subjectsLcsh')]
                     [not(mig2:labels/mig2:platformIndependent = 'cataloging')]"
             />
+            <xsl:with-param name="set" select="'item'"/>
         </xsl:call-template>
-
-        <!-- Standalone object property lists -->
+        
+        <!-- Standalone object property list -->
         <h3 id="no_props">
             <xsl:text>Standalone Object Properties</xsl:text>
         </h3>
-        <xsl:call-template name="prop_lists">
-            <xsl:with-param name="set" select="'no'"/>
-            <xsl:with-param name="lists_context"
+        <xsl:call-template name="prop_list">
+            <xsl:with-param name="prop_list_context"
                 select="
                 mig:properties/mig2:property
                 [mig2:descriptions//mig2:customization[@co = 'no'][@dd = $collection] or
                 mig2:descriptions//mig2:instructions[@co = 'no']]
                 [not(mig2:labels/mig2:platformIndependent = //mig:suppressObjectProp)]"
             />
+            <xsl:with-param name="set" select="'no'"/>
         </xsl:call-template>
-
         <xsl:apply-templates select="mig:properties"/>
-    <!-- I wonder if this really needs to be two templates -->
+
     </xsl:template>
 
     <xsl:template match="mig:properties">
         <!-- CO properties tables -->
-        <xsl:call-template name="prop_tables">
-            <xsl:with-param name="tables_context"
+        <xsl:call-template name="prop_detail">
+            <xsl:with-param name="prop_detail_context"
                 select="
                     mig2:property
                     [mig2:descriptions//mig2:customization[@co = 'object'][@dd = $collection] or
@@ -139,9 +138,9 @@
         </xsl:call-template>
 
         <!-- CO-item properties tables -->
-        <xsl:call-template name="prop_tables">
+        <xsl:call-template name="prop_detail">
             <!-- BMR **HARD-CODING TO SUPPRESS UNWANTED CO-ITEM PROPS -->
-            <xsl:with-param name="tables_context"
+            <xsl:with-param name="prop_detail_context"
                 select="
                     mig2:property
                     [mig2:descriptions//mig2:customization[@co = 'item'][@dd = $collection] or
@@ -154,8 +153,8 @@
         </xsl:call-template>
         
         <!-- Standalone properties tables -->
-        <xsl:call-template name="prop_tables">
-            <xsl:with-param name="tables_context"
+        <xsl:call-template name="prop_detail">
+            <xsl:with-param name="prop_detail_context"
                 select="
                 mig2:property
                 [mig2:descriptions//mig2:customization[@co = 'no'][@dd = $collection] or
