@@ -15,7 +15,7 @@
     <!-- **NO** MODED TEMPLATES AT THIS TIME, THIS STYLESHEET CURRENTLY **ONLY SUPPORTS** COMBINED (CO+STANDALONE) COLLECTIONS -->
     <!-- SUPPORT FOR OUTPUTTING CO-ONLY/STANDALONE-ONLY DDs IS A 'TO-DO' -->
     
-    <xsl:include href="next_dd2html_vertical_mig_named_templates.xsl"/>
+    <xsl:include href="dd2html_vertical_mig_named_templates.xsl"/>
     
     <!-- add html-version attribute -->
     <xsl:output method="html" html-version="5.0" indent="yes" use-character-maps="angleBrackets"/>
