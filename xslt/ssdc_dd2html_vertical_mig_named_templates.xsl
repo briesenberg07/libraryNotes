@@ -6,162 +6,164 @@
     exclude-result-prefixes="xs" version="3.0">
 
     <!-- prop_list -->
+    <!-- creates 2 lists, descriptive props and admin props -->
     <xsl:template name="prop_list">
         <xsl:param name="prop_list_context"/>
+        <xsl:param name="resource_type"/>
         <xsl:param name="set"/>
+        
+        <!-- descriptive props; first test to make sure that descriptive-prop nodes exist in the DD prop list -->
         <xsl:if
             test="
                 $prop_list_context
                 [not(mig2:cdm/mig2:cdmDatatype = 'cdmAdministrative')]
                 [not(mig2:cdm/mig2:cdmDatatype = 'uwAdministrative')]/node()">
-            <h4>
+            <h5>
                 <xsl:text>Descriptive Properties</xsl:text>
-            </h4>
+            </h5>
             <ol>
                 <xsl:for-each
                     select="
                         $prop_list_context
                         [not(mig2:cdm/mig2:cdmDatatype = 'cdmAdministrative')]
                         [not(mig2:cdm/mig2:cdmDatatype = 'uwAdministrative')]">
-                    <xsl:choose>
-                        <xsl:when test="$set = 'object'">
-                            <li>
-                                <a href="{concat('#object_', mig2:uid)}">
-                                    <xsl:value-of select="mig2:cdm/mig2:label"/>
-                                </a>
-                            </li>
-                        </xsl:when>
-                        <xsl:when test="$set = 'item'">
-                            <li>
-                                <a href="{concat('#item_', mig2:uid)}">
-                                    <xsl:value-of select="mig2:cdm/mig2:label"/>
-                                </a>
-                            </li>
-                        </xsl:when>
-                        <xsl:when test="$set = 'no'">
-                            <li>
-                                <a href="{concat('#no_', mig2:uid)}">
-                                    <xsl:value-of select="mig2:cdm/mig2:label"/>
-                                </a>
-                            </li>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:text>ERROR HERE</xsl:text>
-                        </xsl:otherwise>
-                    </xsl:choose>
+                    <li>
+                        <!-- BMR: Change href for prop details -->
+                        <a href="{concat('#', $resource_type, '_', $set, '_', mig2:uid)}">
+                            <xsl:value-of select="mig2:cdm/mig2:label"/>
+                        </a>
+                    </li>
                 </xsl:for-each>
             </ol>
         </xsl:if>
+        
+        <!-- administrative props; first test for nodes as above -->
         <xsl:if
             test="
                 $prop_list_context
                 [mig2:cdm/mig2:cdmDatatype = 'cdmAdministrative' or
                 mig2:cdm/mig2:cdmDatatype = 'uwAdministrative']/node()">
-            <h4>
+            <h5>
                 <xsl:text>Administrative Properties</xsl:text>
-            </h4>
+            </h5>
             <ol>
                 <xsl:for-each
                     select="
                         $prop_list_context
                         [mig2:cdm/mig2:cdmDatatype = 'cdmAdministrative' or
                         mig2:cdm/mig2:cdmDatatype = 'uwAdministrative']">
-                    <xsl:choose>
-                        <xsl:when test="$set = 'object'">
-                            <li>
-                                <a href="{concat('#object_', mig2:uid)}">
-                                    <xsl:value-of select="mig2:cdm/mig2:label"/>
-                                </a>
-                            </li>
-                        </xsl:when>
-                        <xsl:when test="$set = 'item'">
-                            <li>
-                                <a href="{concat('#item_', mig2:uid)}">
-                                    <xsl:value-of select="mig2:cdm/mig2:label"/>
-                                </a>
-                            </li>
-                        </xsl:when>
-                        <xsl:when test="$set = 'no'">
-                            <li>
-                                <a href="{concat('#no_', mig2:uid)}">
-                                    <xsl:value-of select="mig2:cdm/mig2:label"/>
-                                </a>
-                            </li>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:text>ERROR HERE</xsl:text>
-                        </xsl:otherwise>
-                    </xsl:choose>
+                    <li>
+                        <!-- BMR: Change href for prop details -->
+                        <a href="{concat('#', $resource_type, '_', $set, '_', mig2:uid)}">
+                            <xsl:value-of select="mig2:cdm/mig2:label"/>
+                        </a>
+                    </li>
                 </xsl:for-each>
             </ol>
         </xsl:if>
     </xsl:template>
 
-    <!-- prop_detail -->
-    <xsl:template name="prop_detail">
+    <!-- prop_detail_heading -->
+    <xsl:template name="prop_detail_heading">
         <xsl:param name="prop_detail_context"/>
+        <xsl:param name="resource_type"/>
         <xsl:param name="set"/>
+        <h2>
+            <xsl:text>Property Details: </xsl:text>
+            <xsl:choose>
+                <xsl:when test="$resource_type = 'text'">
+                    <xsl:text>Textual Resources</xsl:text>
+                </xsl:when>
+                <!-- BMR note choices for set param values here -->
+                <xsl:when test="$resource_type = 'ballad'">
+                    <xsl:text>Audio - Ballads</xsl:text>
+                </xsl:when>
+                <xsl:when test="$resource_type = 'oh'">
+                    <xsl:text>Audio - Oral Histories</xsl:text>
+                </xsl:when>
+            </xsl:choose>
+        </h2>
+        <!-- BMR: breaks here...
+        BECAUSE the transform can't get from the DD to the prop files,
+        BECAUSE the DD is accessed by a URL, but then it gives filepaths for the prop files!!
+        Hmmmm...
+        But I think I fixed that (??) and it still doesn't seem to be able to get any data from this point on...
+        -->
         <xsl:if
             test="
                 $prop_detail_context
                 [not(mig2:cdm/mig2:cdmDatatype = 'cdmAdministrative')]
                 [not(mig2:cdm/mig2:cdmDatatype = 'uwAdministrative')]/node()">
-            <xsl:choose>
-                <xsl:when test="$set = 'object'">
-                    <h2>
-                        <xsl:text>Compound Object Descriptive Properties</xsl:text>
-                    </h2>
-                </xsl:when>
-                <xsl:when test="$set = 'item'">
-                    <h2>
-                        <xsl:text>Compound-object Item Descriptive Properties</xsl:text>
-                    </h2>
-                </xsl:when>
-                <xsl:when test="$set = 'no'">
-                    <h2>
-                        <xsl:text>Standalone Object Descriptive Properties</xsl:text>
-                    </h2>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:text>ERROR HERE</xsl:text>
-                </xsl:otherwise>
-            </xsl:choose>
+            <h3>
+                <xsl:choose>
+                    <xsl:when test="$resource_type = 'text'">
+                        <xsl:text>Textual Resources</xsl:text>
+                    </xsl:when>
+                    <!-- BMR note choices for set param values here -->
+                    <xsl:when test="$resource_type = 'ballad'">
+                        <xsl:text>Audio - Ballads</xsl:text>
+                    </xsl:when>
+                    <xsl:when test="$resource_type = 'oh'">
+                        <xsl:text>Audio - Oral Histories</xsl:text>
+                    </xsl:when>
+                </xsl:choose>
+                <xsl:text>: </xsl:text>
+                <xsl:choose>
+                    <xsl:when test="$set = 'object'">
+                        <xsl:text>Compound-Object Descriptive Properties</xsl:text>
+                    </xsl:when>
+                    <xsl:when test="$set = 'item'">
+                        <xsl:text>Compound-Object Item Descriptive Properties</xsl:text>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:text>ERROR HERE</xsl:text>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </h3>
             <xsl:call-template name="prop_detail_table">
                 <xsl:with-param name="prop_detail_table_context"
                     select="
                         $prop_detail_context
                         [not(mig2:cdm/mig2:cdmDatatype = 'cdmAdministrative')]
                         [not(mig2:cdm/mig2:cdmDatatype = 'uwAdministrative')]"/>
+                <xsl:with-param name="table_resource_type" select="$resource_type"/>
                 <xsl:with-param name="table_set" select="$set"/>
             </xsl:call-template>
         </xsl:if>
         <xsl:if
             test="$prop_detail_context[mig2:cdm/mig2:cdmDatatype = 'cdmAdministrative' or mig2:cdm/mig2:cdmDatatype = 'uwAdministrative']/node()">
-            <xsl:choose>
-                <xsl:when test="$set = 'object'">
-                    <h2>
-                        <xsl:text>Compound Object Administrative Properties</xsl:text>
-                    </h2>
-                </xsl:when>
-                <xsl:when test="$set = 'item'">
-                    <h2>
-                        <xsl:text>Compound-object Item Administrative Properties</xsl:text>
-                    </h2>
-                </xsl:when>
-                <xsl:when test="$set = 'no'">
-                    <h2>
-                        <xsl:text>Standalone Object Administrative Properties</xsl:text>
-                    </h2>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:text>ERROR HERE</xsl:text>
-                </xsl:otherwise>
-            </xsl:choose>
+                <h2>
+                    <xsl:choose>
+                        <xsl:when test="$resource_type = 'text'">
+                            <xsl:text>Textual Resources</xsl:text>
+                        </xsl:when>
+                        <!-- BMR note choices for set param values here -->
+                        <xsl:when test="$resource_type = 'ballad'">
+                            <xsl:text>Audio - Ballads</xsl:text>
+                        </xsl:when>
+                        <xsl:when test="$resource_type = 'oh'">
+                            <xsl:text>Audio - Oral Histories</xsl:text>
+                        </xsl:when>
+                    </xsl:choose>
+                    <xsl:text>: </xsl:text>
+                    <xsl:choose>
+                        <xsl:when test="$set = 'object'">
+                            <xsl:text>Compound Object Administrative Properties</xsl:text>
+                        </xsl:when>
+                        <xsl:when test="$set = 'object'">
+                            <xsl:text>Compound-Object Item Administrative Properties</xsl:text>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:text>ERROR HERE</xsl:text>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </h2>
             <xsl:call-template name="prop_detail_table">
                 <xsl:with-param name="prop_detail_table_context"
                     select="
                         $prop_detail_context
                         [mig2:cdm/mig2:cdmDatatype = 'cdmAdministrative' or mig2:cdm/mig2:cdmDatatype = 'uwAdministrative']"/>
+                <xsl:with-param name="table_resource_type" select="$resource_type"/>
                 <xsl:with-param name="table_set" select="$set"/>
             </xsl:call-template>
         </xsl:if>
@@ -170,40 +172,19 @@
     <!-- prop_detail_table -->
     <xsl:template name="prop_detail_table">
         <xsl:param name="prop_detail_table_context"/>
+        <xsl:param name="table_resource_type"/>
         <xsl:param name="table_set"/>
         <xsl:for-each select="$prop_detail_table_context">
             <table>
                 <thead>
                     <tr>
-                        <xsl:choose>
-                            <xsl:when test="$table_set = 'object'">
-                                <th colspan="3" id="{concat('object_', mig2:uid)}"
-                                    class="prop_table_head">
-                                    <xsl:value-of select="position()"/>
-                                    <xsl:text>. </xsl:text>
-                                    <xsl:value-of select="mig2:cdm/mig2:label"/>
-                                </th>
-                            </xsl:when>
-                            <xsl:when test="$table_set = 'item'">
-                                <th colspan="3" id="{concat('item_', mig2:uid)}"
-                                    class="prop_table_head">
-                                    <xsl:value-of select="position()"/>
-                                    <xsl:text>. </xsl:text>
-                                    <xsl:value-of select="mig2:cdm/mig2:label"/>
-                                </th>
-                            </xsl:when>
-                            <xsl:when test="$table_set = 'no'">
-                                <th colspan="3" id="{concat('no_', mig2:uid)}"
-                                    class="prop_table_head">
-                                    <xsl:value-of select="position()"/>
-                                    <xsl:text>. </xsl:text>
-                                    <xsl:value-of select="mig2:cdm/mig2:label"/>
-                                </th>
-                            </xsl:when>
-                            <xsl:otherwise>
-                                <xsl:text>ERROR HERE</xsl:text>
-                            </xsl:otherwise>
-                        </xsl:choose>
+                        <th colspan="3"
+                            id="{concat($table_resource_type, '_', $table_set, '_', mig2:uid)}"
+                            class="prop_table_head">
+                            <xsl:value-of select="position()"/>
+                            <xsl:text>. </xsl:text>
+                            <xsl:value-of select="mig2:cdm/mig2:label"/>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -402,6 +383,7 @@
                 </tbody>
             </table>
             <xsl:call-template name="backlinks">
+                <xsl:with-param name="backlink_resource_type" select="$table_resource_type"/>
                 <xsl:with-param name="backlink_set" select="$table_set"/>
             </xsl:call-template>
         </xsl:for-each>
@@ -409,29 +391,52 @@
 
     <!-- backlinks -->
     <xsl:template name="backlinks">
+        <xsl:param name="backlink_resource_type"/>
         <xsl:param name="backlink_set"/>
         <p class="backlink italic">
-            <xsl:choose>
-                <xsl:when test="$backlink_set = 'object'">
-                    <a href="{concat('#', $backlink_set, '_props')}">
-                        <xsl:text>Return to compound-object properties</xsl:text>
-                    </a>
-                </xsl:when>
-                <xsl:when test="$backlink_set = 'item'">
-                    <a href="{concat('#', $backlink_set, '_props')}">
-                        <xsl:text>Return to compound-object item properties</xsl:text>
-                    </a>
-                </xsl:when>
-                <xsl:when test="$backlink_set = 'no'">
-                    <a href="{concat('#', $backlink_set, '_props')}">
-                        <xsl:text>Return to standalone object properties</xsl:text>
-                    </a>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:text>ERROR HERE</xsl:text>
-                </xsl:otherwise>
-            </xsl:choose>
+            <!-- return to DD > resource_type > set -->
+            <a href="{concat('#', $backlink_resource_type, '_', $backlink_set, '_props')}">
+                <xsl:text>Return to </xsl:text>
+                <xsl:choose>
+                    <xsl:when test="$backlink_resource_type = 'text'">
+                        <xsl:text>Textual Resources</xsl:text>
+                    </xsl:when>
+                    <xsl:when test="$backlink_resource_type = 'ballad'">
+                        <xsl:text>Audio - Ballads</xsl:text>
+                    </xsl:when>
+                    <xsl:when test="$backlink_resource_type = 'oh'">
+                        <xsl:text>Audio - Oral Histories</xsl:text>
+                    </xsl:when>
+                </xsl:choose>
+                <xsl:text> &gt; </xsl:text>
+                <xsl:choose>
+                    <xsl:when test="$backlink_set = 'object'">
+                        <xsl:text>Compound-Object Properties</xsl:text>
+                    </xsl:when>
+                    <xsl:when test="$backlink_set = 'item'">
+                        <xsl:text>Compound-Object Item Properties</xsl:text>
+                    </xsl:when>
+                </xsl:choose>
+            </a>
             <xsl:text>  |  </xsl:text>
+            <!-- return to DD> resource_type -->
+            <a href="{concat('#', $backlink_resource_type, '_props')}">
+                <xsl:text>Return to </xsl:text>
+                <xsl:choose>
+                    <xsl:when test="$backlink_resource_type = 'text'">
+                        <xsl:text>Textual Resource</xsl:text>
+                    </xsl:when>
+                    <xsl:when test="$backlink_resource_type = 'ballad'">
+                        <xsl:text>Audio - Ballad</xsl:text>
+                    </xsl:when>
+                    <xsl:when test="$backlink_resource_type = 'oh'">
+                        <xsl:text>Audio - Oral History</xsl:text>
+                    </xsl:when>
+                </xsl:choose>
+                <xsl:text> Properties</xsl:text>
+            </a>
+            <xsl:text>  |  </xsl:text>
+            <!-- return to DD -->
             <a href="#dd_props">
                 <xsl:text>Return to data dictionary properties</xsl:text>
             </a>
