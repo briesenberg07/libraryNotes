@@ -394,9 +394,9 @@
         <xsl:param name="backlink_resource_type"/>
         <xsl:param name="backlink_set"/>
         <p class="backlink italic">
+            <xsl:text>Return to </xsl:text>
             <!-- return to DD > resource_type > set -->
             <a href="{concat('#', $backlink_resource_type, '_', $backlink_set, '_props')}">
-                <xsl:text>Return to </xsl:text>
                 <xsl:choose>
                     <xsl:when test="$backlink_resource_type = 'text'">
                         <xsl:text>Textual Resources</xsl:text>
@@ -421,7 +421,6 @@
             <xsl:text>  |  </xsl:text>
             <!-- return to DD> resource_type -->
             <a href="{concat('#', $backlink_resource_type, '_props')}">
-                <xsl:text>Return to </xsl:text>
                 <xsl:choose>
                     <xsl:when test="$backlink_resource_type = 'text'">
                         <xsl:text>Textual Resource</xsl:text>
@@ -438,7 +437,7 @@
             <xsl:text>  |  </xsl:text>
             <!-- return to DD -->
             <a href="#dd_props">
-                <xsl:text>Return to data dictionary properties</xsl:text>
+                <xsl:text>Data Dictionary Properties</xsl:text>
             </a>
         </p>
     </xsl:template>
