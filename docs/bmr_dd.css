@@ -39,6 +39,15 @@ table td {
 .italic {
     font-style: italic;
 }
+.bullet_heading {
+    list-style: none;
+    margin-left: -10pt;
+    padding-top: 3pt;
+    padding-bottom: 3pt;
+    font-size: 110%;
+    font-weight: bold;
+    
+}
 .pad_lr {
 	padding-left: 15px;
 	padding-right: 15px;
