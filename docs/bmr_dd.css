@@ -46,7 +46,11 @@ table td {
     padding-bottom: 3pt;
     font-size: 110%;
     font-weight: bold;
-    
+}
+.p_heading {
+    padding-left: 15px;
+    font-size: 110%;
+    font-weight: bold;
 }
 .pad_lr {
 	padding-left: 15px;
