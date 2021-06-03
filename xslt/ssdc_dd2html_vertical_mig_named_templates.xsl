@@ -11,7 +11,6 @@
         <xsl:param name="prop_list_context"/>
         <xsl:param name="resource_type"/>
         <xsl:param name="set"/>
-        
         <!-- descriptive props; first test to make sure that descriptive-prop nodes exist in the DD prop list -->
         <xsl:if
             test="
@@ -36,7 +35,6 @@
                 </xsl:for-each>
             </ol>
         </xsl:if>
-        
         <!-- administrative props; first test for nodes as above -->
         <xsl:if
             test="
@@ -83,12 +81,6 @@
                 </xsl:when>
             </xsl:choose>
         </h2>
-        <!-- BMR: breaks here...
-        BECAUSE the transform can't get from the DD to the prop files,
-        BECAUSE the DD is accessed by a URL, but then it gives filepaths for the prop files!!
-        Hmmmm...
-        But I think I fixed that (??) and it still doesn't seem to be able to get any data from this point on...
-        -->
         <xsl:if
             test="
                 $prop_detail_context
@@ -101,10 +93,10 @@
                     </xsl:when>
                     <!-- BMR note choices for set param values here -->
                     <xsl:when test="$resource_type = 'ballad'">
-                        <xsl:text>Audio - Ballads</xsl:text>
+                        <xsl:text>Audio Resources - Ballads</xsl:text>
                     </xsl:when>
                     <xsl:when test="$resource_type = 'oh'">
-                        <xsl:text>Audio - Oral Histories</xsl:text>
+                        <xsl:text>Audio Resources - Oral Histories</xsl:text>
                     </xsl:when>
                 </xsl:choose>
                 <xsl:text>: </xsl:text>
@@ -132,32 +124,32 @@
         </xsl:if>
         <xsl:if
             test="$prop_detail_context[mig2:cdm/mig2:cdmDatatype = 'cdmAdministrative' or mig2:cdm/mig2:cdmDatatype = 'uwAdministrative']/node()">
-                <h2>
-                    <xsl:choose>
-                        <xsl:when test="$resource_type = 'text'">
-                            <xsl:text>Textual Resources</xsl:text>
-                        </xsl:when>
-                        <!-- BMR note choices for set param values here -->
-                        <xsl:when test="$resource_type = 'ballad'">
-                            <xsl:text>Audio - Ballads</xsl:text>
-                        </xsl:when>
-                        <xsl:when test="$resource_type = 'oh'">
-                            <xsl:text>Audio - Oral Histories</xsl:text>
-                        </xsl:when>
-                    </xsl:choose>
-                    <xsl:text>: </xsl:text>
-                    <xsl:choose>
-                        <xsl:when test="$set = 'object'">
-                            <xsl:text>Compound Object Administrative Properties</xsl:text>
-                        </xsl:when>
-                        <xsl:when test="$set = 'object'">
-                            <xsl:text>Compound-Object Item Administrative Properties</xsl:text>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:text>ERROR HERE</xsl:text>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                </h2>
+            <h2>
+                <xsl:choose>
+                    <xsl:when test="$resource_type = 'text'">
+                        <xsl:text>Textual Resources</xsl:text>
+                    </xsl:when>
+                    <!-- BMR note choices for set param values here -->
+                    <xsl:when test="$resource_type = 'ballad'">
+                        <xsl:text>Audio Resources - Ballads</xsl:text>
+                    </xsl:when>
+                    <xsl:when test="$resource_type = 'oh'">
+                        <xsl:text>Audio Resources - Oral Histories</xsl:text>
+                    </xsl:when>
+                </xsl:choose>
+                <xsl:text>: </xsl:text>
+                <xsl:choose>
+                    <xsl:when test="$set = 'object'">
+                        <xsl:text>Compound Object Administrative Properties</xsl:text>
+                    </xsl:when>
+                    <xsl:when test="$set = 'object'">
+                        <xsl:text>Compound-Object Item Administrative Properties</xsl:text>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:text>ERROR HERE</xsl:text>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </h2>
             <xsl:call-template name="prop_detail_table">
                 <xsl:with-param name="prop_detail_table_context"
                     select="
@@ -299,9 +291,22 @@
                                         test="mig2:descriptions/mig2:customization[@co = $table_set][@dd = ../../../../mig:cdmCode]/node()">
                                         <xsl:for-each
                                             select="mig2:descriptions/mig2:customization[@co = $table_set][@dd = ../../../../mig:cdmCode]/mig2:para">
-                                            <li>
-                                                <xsl:value-of select="."/>
-                                            </li>
+                                            <!-- Workaround: Use fn:matches to output heading <para>s 
+                                                (TEXTUAL RESOURCES|AUDIO RESOURCES - BALLADS|AUDIO RESOURCES - ORAL HISTORIES)
+                                                with a class for styling which will supress bullet, etc. -->
+                                            <xsl:choose>
+                                                <xsl:when
+                                                  test="matches(., 'TEXTUAL RESOURCES|AUDIO RESOURCES - BALLADS|AUDIO RESOURCES - ORAL HISTORIES')">
+                                                  <li class="bullet_heading">
+                                                  <xsl:value-of select="."/>
+                                                  </li>
+                                                </xsl:when>
+                                                <xsl:otherwise>
+                                                  <li>
+                                                  <xsl:value-of select="."/>
+                                                  </li>
+                                                </xsl:otherwise>
+                                            </xsl:choose>
                                         </xsl:for-each>
                                     </xsl:when>
                                     <xsl:otherwise>
@@ -327,9 +332,19 @@
                                     <xsl:for-each
                                         select="
                                             mig2:examples/mig2:customization[@co = $table_set][@dd = ../../../../mig:cdmCode]/mig2:para">
-                                        <p class="pad_lr">
-                                            <xsl:value-of select="."/>
-                                        </p>
+                                        <xsl:choose>
+                                            <xsl:when
+                                                test="matches(., 'TEXTUAL RESOURCES|AUDIO RESOURCES - BALLADS|AUDIO RESOURCES - ORAL HISTORIES')">
+                                                <p class="p_heading">
+                                                  <xsl:value-of select="."/>
+                                                </p>
+                                            </xsl:when>
+                                            <xsl:otherwise>
+                                                <p class="pad_lr">
+                                                  <xsl:value-of select="."/>
+                                                </p>
+                                            </xsl:otherwise>
+                                        </xsl:choose>
                                     </xsl:for-each>
                                 </xsl:when>
                                 <xsl:otherwise>
